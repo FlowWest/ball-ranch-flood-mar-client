@@ -1,54 +1,23 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal TypeScript starter
-</h1>
+# Ball Ranch Flood Mar Client
 
-## 🚀 Quick start
+## Table of Contents
 
-1.  **Create a Gatsby site.**
+1. **[About]()**
+2. **[Wireframes](https://lucid.app/lucidchart/7f9860fd-11a5-44bb-be38-a5bc1e0edecd/edit?invitationId=inv_a38afa28-99a9-4550-93d6-367b490b0525)**
+3. **[Technologies Required](#tech)**
+4. **[Additional Resources](#additional)**
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+## About
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
-    ```
+Client application for Phase 1 of the 'Ball Ranch FloodMAR' project.  
+This app is built off the Gatsby framework.
 
-2.  **Start developing.**
+## Tech
 
-    Navigate into your new site’s directory and start it up.
+- Javascript Mapping Library: [@googlemaps/react-wrapper](https://developers.google.com/maps/documentation/javascript/react-map)
+- Plotting & Charting Library: [recharts](https://recharts.org/en-US)
+- Gatsby Plugins: [[...]() , [...]() , [...]()]
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## Additional
 
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+- [Ball Ranch Initial Research Summary](https://docs.google.com/presentation/d/1wVD5QhMY39jG5M5knCh9q2LbEBE3EMm4ajq-haL-DR4/edit?usp=sharing)
