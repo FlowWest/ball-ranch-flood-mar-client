@@ -14,7 +14,7 @@ This app is built off the Gatsby framework.
 
 ## Tech
 
-- Javascript Mapping Library: [@googlemaps/react-wrapper](https://developers.google.com/maps/documentation/javascript/react-map)
+- Javascript Mapping Library: [mapbox](https://www.npmjs.com/package/mapbox-gl)
 - Plotting & Charting Library: [recharts](https://recharts.org/en-US)
 - Gatsby Plugins: [[...]() , [...]() , [...]()]
 
