@@ -3,7 +3,7 @@
 ## Table of Contents
 
 1. **[About](#about)**
-2. **[Wireframes](https://lucid.app/lucidchart/7f9860fd-11a5-44bb-be38-a5bc1e0edecd/edit?invitationId=inv_a38afa28-99a9-4550-93d6-367b490b0525)**
+2. **[Wireframes](https://lucid.app/lucidchart/ae432d12-0835-44af-9b09-7ddc489f72b3/edit?invitationId=inv_3ebdb813-9d43-4e08-a531-cb32d58192d9&page=hgcqfZLqXkN8#?referringapp=slack)**
 3. **[Technologies Required](#tech)**
 4. **[Additional Resources](#additional)**
 
