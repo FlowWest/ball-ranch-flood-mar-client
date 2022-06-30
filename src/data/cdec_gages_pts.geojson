@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "cdec_gages_pts",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "STATION": "FRIANT DAM (MILLERTON)", "ID": "MIL", "ELEV": "581", "LATITUDE": 37.000999, "LONGITUDE": -119.705002, "COUNTY": "FRESNO", "RIVER_BASI": "SAN JOAQUIN R" }, "geometry": { "type": "Point", "coordinates": [ -119.705002, 37.000999 ] } },
+{ "type": "Feature", "properties": { "STATION": "LITTLE DRY CREEK (USBR)", "ID": "LDC", "ELEV": "350", "LATITUDE": 36.934193, "LONGITUDE": -119.729553, "COUNTY": "FRESNO", "RIVER_BASI": "SAN JOAQUIN R" }, "geometry": { "type": "Point", "coordinates": [ -119.729553, 36.934193 ] } },
+{ "type": "Feature", "properties": { "STATION": "SAN JOAQUIN R AT HWY 41", "ID": "H41", "ELEV": "260", "LATITUDE": 36.876202, "LONGITUDE": -119.793198, "COUNTY": "MADERA", "RIVER_BASI": "SAN JOAQUIN R" }, "geometry": { "type": "Point", "coordinates": [ -119.793198, 36.876202 ] } },
+{ "type": "Feature", "properties": { "STATION": "SAN JOAQUIN RIVER BELOW FRIANT", "ID": "SJF", "ELEV": "294", "LATITUDE": 36.984394, "LONGITUDE": -119.724312, "COUNTY": "FRESNO", "RIVER_BASI": "SAN JOAQUIN R" }, "geometry": { "type": "Point", "coordinates": [ -119.724312, 36.984394 ] } }
+]
+}
