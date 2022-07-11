@@ -1,4 +1,5 @@
-import * as React from 'react'
+import React from 'react'
+import Map from '../components/uiComponents/map'
 
 const IndexPage = () => {
   return (
@@ -8,7 +9,7 @@ const IndexPage = () => {
       <br />
       <br />
       <br />
-      <div>Here</div>
+      <Map />
     </main>
   )
 }
