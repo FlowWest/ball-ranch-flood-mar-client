@@ -1,11 +1,8 @@
-import React, { useRef, useEffect, useState, FunctionComponent } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import makeStyles from '@mui/styles/makeStyles'
-import { Theme } from '@mui/material/styles'
-import projectBoundaryGeoJson from '../../data/sjrc_project_boundary.geojson'
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiaHVudGVyLWgiLCJhIjoiY2w1YmRleHV2MDZpbTNkcGdodXBtM21tdiJ9.aCMvMCxgb5-boqaJhmo5lw'
+mapboxgl.accessToken = process.env.GATSBY_MAPBOX_ACCESS_TOKEN
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,18 +10,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Map = () => {
+const Map = (props) => {
   const styles = useStyles()
-  const mapDiv = useRef < HTMLDivElement > null
-  let [map, setMap] = (useState < mapboxgl.Map) | (null > null)
+  const mapDiv = useRef(null)
+  let [map, setMap] = useState(null)
 
   useEffect(() => {
     const attachMap = (setMap, mapDiv) => {
       const map = new mapboxgl.Map({
-        container: mapDiv.current || '', // NO ERROR
+        container: mapDiv.current || '',
         style: 'mapbox://styles/mapbox/outdoors-v11',
-        center: [-121.91390991210938, 40.316184625814095],
-        zoom: 10,
+        center: props.data.features[0].geometry.coordinates[0][0][0],
+        zoom: 12,
         attributionControl: false,
       })
       setMap(map)
@@ -32,14 +29,24 @@ const Map = () => {
 
     !map && attachMap(setMap, mapDiv)
 
-    if (map)
+    if (map && props.data) {
       map.on('load', () => {
-        map?.addSource('project-boundary', {
+        map?.addSource(props.data.name, {
           type: 'geojson',
-          data: projectBoundaryGeoJson,
+          data: props.data,
+        })
+
+        map.addLayer({
+          id: `${props.data.name}_layer`,
+          type: 'fill',
+          source: props.data.name,
+          paint: {
+            'fill-color': '#000',
+          },
         })
       })
-  }, [map])
+    }
+  }, [map, props.data])
 
   return <div className={styles.root} ref={mapDiv} />
 }
