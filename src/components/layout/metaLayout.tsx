@@ -1,7 +1,6 @@
 import React from 'react'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
-import { Container } from '@mui/material'
 import Header from './header'
 import { FCR } from '../../util'
 
@@ -14,7 +13,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: '100vh',
   },
   main: {
-    paddingBlock: '5rem',
     backgroundColor: theme.palette.background.default,
   },
 }))
@@ -27,9 +25,7 @@ const MetaLayout: FCR<MetaLayoutProps> = (props) => {
   return (
     <div className={styles.root}>
       <Header />
-      <Container maxWidth='lg'>
-        <main className={styles.main}>{props.children}</main>
-      </Container>
+      <main className={styles.main}>{props.children}</main>
     </div>
   )
 }

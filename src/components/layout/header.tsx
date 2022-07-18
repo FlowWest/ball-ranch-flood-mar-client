@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.primary,
-    marginTop: '1rem',
+    paddingTop: '3rem',
   },
   container: {
     display: 'flex',
@@ -55,7 +55,7 @@ const Header: FC<HeaderProps> = (props) => {
       <Toolbar>
         <Container maxWidth={false} className={styles.container}>
           <Grid item sx={{ flex: 1 }}>
-            <Typography variant='h6' className={styles.title}>
+            <Typography variant='h1' className={styles.title}>
               <Link
                 to='/'
                 component={GatsbyLink}
