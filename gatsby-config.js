@@ -13,7 +13,9 @@ module.exports = {
     },
   },
   plugins: [
+    // Typescript Plugin
     'gatsby-plugin-typescript',
+    // MUI Plugin
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
@@ -23,11 +25,19 @@ module.exports = {
         // },
       },
     },
+    // Custom Gatsby Layout Plugin
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout/index.tsx`),
       },
     },
+    // Image Plugins
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `images`, path: `${__dirname}/src/images` },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }
