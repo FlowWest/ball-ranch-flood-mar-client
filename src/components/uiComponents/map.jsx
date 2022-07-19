@@ -53,7 +53,7 @@ const Map = (props) => {
     const attachMap = (setMap, mapDiv) => {
       const map = new mapboxgl.Map({
         container: mapDiv.current || '',
-        style: 'mapbox://styles/mapbox/outdoors-v11',
+        style: 'mapbox://styles/mapbox/satellite-v9',
         center: props.data
           ? props.data.features[0].geometry.coordinates[0][0][0]
           : undefined,
@@ -79,7 +79,7 @@ const Map = (props) => {
           type: 'fill',
           source: props.data.name,
           paint: {
-            'fill-color': '#A4798D',
+            'fill-color': '#85D6FF',
           },
         })
       })
