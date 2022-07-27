@@ -1,179 +1,231 @@
-import * as React from "react"
+import React, { useEffect } from 'react'
+import { Container, Typography } from '@mui/material'
+import { Theme } from '@mui/material/styles'
+import makeStyles from '@mui/styles/makeStyles'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import backgroundBanner from '../images/banner.jpeg'
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "TypeScript Documentation",
-  url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
+const useStyles = makeStyles((theme: Theme) => ({
+  landingCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '8rem 0',
+    marginBottom: '5rem',
+    color: 'white',
+    backgroundColor: 'olive',
+    backgroundImage: `url(${backgroundBanner})`,
+    backgroundSize: 'cover',
   },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
+  pageContainer: {
+    [theme.breakpoints.down('lg')]: {
+      margin: '0',
+    },
+    [theme.breakpoints.up('lg')]: {
+      margin: '0 5rem',
+    },
+    [theme.breakpoints.up('xl')]: {
+      margin: '0 15rem',
+    },
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
+  rowContainer: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
   },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
+  maxWidthContainer: {
+    width: '100%',
   },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
+  paragraphContainer: {
+    maxWidth: '50rem',
   },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
+  greyContainer: {
+    backgroundColor: '#F2F3F5',
+    padding: '3rem 3rem 1rem 3rem',
+    // TODO: REMOVE BELOW
+    marginBottom: '5rem',
   },
-]
+  headerOne: {
+    fontSize: '5rem',
+    fontWeight: 700,
+  },
+  headerTwo: {
+    fontSize: '4rem',
+    fontWeight: 700,
+  },
+  paragraphHeader: {
+    fontSize: '2.5rem',
+    fontWeight: 600,
+    marginBottom: '1rem',
+  },
+  paragraphContent: {
+    fontSize: '1.5rem',
+    fontWeight: 100,
+    lineHeight: '2.75rem',
+  },
+  marginBottom5: {
+    marginBottom: '5rem',
+  },
+  marginBottom3: {
+    marginBottom: '3rem',
+  },
+  marginBottom1: {
+    marginBottom: '1rem',
+  },
+  listBox: {
+    margin: '3rem',
+    padding: '1rem',
+    border: '1px solid black',
+    width: '25rem',
+    height: '25rem',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  imageOne: {
+    minWidth: '600px',
+    maxHeight: '100%',
+    marginRight: '3rem',
+  },
+}))
 
-// markup
-const IndexPage = () => {
+interface IndexPageProps {
+  data: any
+}
+
+const IndexPage = (props: IndexPageProps) => {
+  const styles = useStyles()
+
+  useEffect(() => {
+    console.log(`${styles.rowContainer} ${styles.marginBottom5}`)
+  }, [])
+
   return (
-    <main style={pageStyles}>
+    <main>
       <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        🎉🎉🎉
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
+      <div className={styles.landingCard}>
+        <Typography variant='h2' className={`${styles.headerOne} ${styles.marginBottom1}`}>
+          Ball Ranch
+        </Typography>
+        <Typography variant='h3' className={styles.headerTwo}>
+          Flood-MAR Feasibility
+        </Typography>
+      </div>
+
+      <div className={styles.pageContainer}>
+        <div className={`${styles.rowContainer} ${styles.marginBottom3}`}>
+          <div className={styles.imageOne}>
+            <Img
+              fluid={props.data.imageOne.childImageSharp.fluid}
+              imgStyle={{ objectFit: 'cover' }}
+              alt='Image of river.'
+            />
+          </div>
+          <div className={styles.paragraphContainer}>
+            <Typography className={styles.paragraphHeader}>
+              About Ball Ranch
+            </Typography>
+            <Typography className={styles.paragraphContent}>
+              The Ball Ranch Managed Aquifer Recharge (MAR) Planning and
+              Analysis Project is assessing the feasibility and potential
+              benefits of recharging groundwater on Ball Ranch. The first phase
+              of the project is quantifying site groundwater conditions,
+              cataloging groundwater dependent ecosystem characteristics,
+              analyzing surface water supplies (from wet season flows), and
+              assessing stakeholder support. This site summarizes information on
+              each of these topics acquired by this project, and presents an
+              initial assessment of the feasibility of Flood MAR at Ball Ranch.
+            </Typography>
+          </div>
+        </div>
+
+        <div className={styles.rowContainer}>
+          <div className={styles.paragraphContainer}>
+            <Typography className={styles.paragraphHeader}>
+              What is Flood MAR?
+            </Typography>
+            <Typography className={styles.paragraphContent}>
+              Flood-MAR is a water resource management strategy that uses wet
+              season flows from rainfall or snowmelt to drive groundwater
+              recharge on agricultural lands, working landscapes, and natural
+              managed lands. Flood-MAR can be implemented at multiple scales,
+              from individual landowner flood water diversions using existing
+              infrastructure to regional floodplain inundation using new
+              infrastructure or changes to existing infrastructure such as
+              setting back levees.
+            </Typography>
+          </div>
+          <div className={styles.listBox}>
+            <Typography>
+              Flood-MAR projects can provide broad benefits for California and
+              the ecosystems of the state, including:
+            </Typography>
+            <ul>
+              <li>Water supply reliability</li>
+              <li>Flood risk reduction</li>
+              <li>Drought preparedness</li>
+              <li>Aquifer replenishment</li>
+              <li>Ecosystem enhancement</li>
+              <li>Subsidence Mitigation</li>
+              <li>Water quality improvement</li>
+              <li>Working landscape preservation and stewardship</li>
+              <li>Climate change adaptation</li>
+              <li>Recreation and aesthetic</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={`${styles.maxWidthContainer} ${styles.greyContainer}`}>
+          <div>
+            <Typography className={styles.paragraphHeader}>
+              Why Ball Ranch?
+            </Typography>
+            <Typography className={styles.paragraphContent}>
+              Ball Ranch is a 360 acre property acquired by the San Joaquin
+              River Conservancy for ecosystem recovery and public use benefits.
+              The property is bounded by the San Joaquin River and the Little
+              Dry Creek watersheds, and has numerous depressions created by
+              historical aggregate mining that can temporarily store surface
+              water. Implementing Flood MAR at Ball Ranch could take advantage
+              of potential surface water supplies and topography suitable for
+              groundwater recharge to restore lost functions of groundwater
+              dependent ecosystems and enhance adjacent restoration efforts
+              including the San Joaquin River Restoration Program.
+            </Typography>
+            <br />
+            <Typography className={styles.paragraphContent}>
+              The following data sources help understand why Flood-MAR is
+              feasible on Ball Ranch:
+            </Typography>
+          </div>
+        </div>
+      </div>
+      {/* <Map data={sjrcProjectBoundaryData} /> */}
     </main>
   )
 }
 
 export default IndexPage
+
+export const fluidImage = graphql`
+  fragment fluidImage on File {
+    childImageSharp {
+      fluid(maxWidth: 1600) {
+        ...GatsbyImageSharpFluid
+      }
+      original {
+        width
+      }
+    }
+  }
+`
+export const pageQuery = graphql`
+  query {
+    imageOne: file(relativePath: { eq: "imageOne.jpeg" }) {
+      ...fluidImage
+    }
+  }
+`
