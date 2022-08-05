@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 import mapboxgl from 'mapbox-gl'
 import makeStyles from '@mui/styles/makeStyles'
 import { Slide, Paper, IconButton } from '@mui/material'
@@ -13,12 +14,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'hidden',
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   map: {
-    height: '600px',
-    // height: '100%',
     width: '100%',
+    height: '600px',
   },
   slide: {
     position: 'absolute',
@@ -39,15 +39,21 @@ const useStyles = makeStyles((theme) => ({
   chartContainer: {
     width: '100%',
     height: '100%',
-    padding: '1rem 2rem 5rem 2rem'
+    padding: '1rem 2rem 5rem 2rem',
   },
 }))
 
 const Map = (props) => {
   const styles = useStyles()
   const mapDiv = useRef(null)
+
   let [map, setMap] = useState(null)
   let [panelOpen, setPanelOpen] = useState(false)
+
+  const popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+  })
 
   useEffect(() => {
     const attachMap = (setMap, mapDiv) => {
@@ -85,13 +91,22 @@ const Map = (props) => {
       })
 
       // Change the cursor to a pointer when the mouse is over the places layer.
-      map.on('mouseenter', props.data.name, () => {
+      map.on('mouseenter', props.data.name, (e) => {
         map.getCanvas().style.cursor = 'pointer'
+
+        var coordinates = props.data.features[0].geometry.coordinates[1][0][0]
+
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
+        }
+
+        popup.setLngLat(coordinates).setHTML('bruh').addTo(map)
       })
 
       // Change it back to a pointer when it leaves.
       map.on('mouseleave', props.data.name, () => {
         map.getCanvas().style.cursor = ''
+        popup.remove()
       })
 
       // Trigger modal when layer is clicked
