@@ -102,17 +102,12 @@ const Map = (props) => {
       })
 
       for (const dataSrc of props.data) {
-        const dataSrcType = dataSrc.features[0].geometry.type
-
         // Change the cursor to a pointer and show popup when the mouse is over a layer.
         map.on('mouseenter', dataSrc.name, (e) => {
           map.getCanvas().style.cursor = 'pointer'
 
-          var coordinates =
-            dataSrcType == 'Point'
-              ? props.data[1].features[0].geometry.coordinates
-              : dataSrc.features[0].geometry.coordinates[1][0][0]
-
+          const coordinates = e.lngLat
+          
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
           }
