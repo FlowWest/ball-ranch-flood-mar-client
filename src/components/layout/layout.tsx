@@ -9,6 +9,7 @@ const Layout: FCR = (props) => (
   <StyledEngineProvider injectFirst>
     <AppThemeProvider>
       <CssBaseline />
+      <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet"/>
       <MetaLayout>{props.children}</MetaLayout>
     </AppThemeProvider>
   </StyledEngineProvider>
