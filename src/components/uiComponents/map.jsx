@@ -49,6 +49,7 @@ const Map = (props) => {
 
   let [map, setMap] = useState(null)
   let [panelOpen, setPanelOpen] = useState(false)
+  let [panelData, setPanelData] = useState([])
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
@@ -61,7 +62,7 @@ const Map = (props) => {
         container: mapDiv.current || '',
         style: 'mapbox://styles/mapbox/satellite-v9',
         center: props.data
-          ? props.data[0].features[0].geometry.coordinates[0][0][0]
+          ? props.data.spatial[0].features[0].geometry.coordinates[0][0][0]
           : undefined,
         zoom: 11.5,
         attributionControl: false,
@@ -71,20 +72,21 @@ const Map = (props) => {
 
     !map && attachMap(setMap, mapDiv)
 
-    if (map && props.data) {
+    if (map && props.data.spatial) {
       map.on('load', () => {
-        const colorFillMap = ['#85D6FF', '#7209B7']
-        const fillPaint = (idx) => {
-          return { 'fill-color': colorFillMap[idx] }
-        }
-        const circlePaint = {
+        const colorFillMap = ['#85D6FF', '#7209B7', '#FF6F59', '#43AA8B']
+        const circlePaint = (idx) => ({
           'circle-radius': 4,
           'circle-stroke-width': 2,
-          'circle-color': 'blue',
+          'circle-color': colorFillMap[idx],
           'circle-stroke-color': 'white',
-        }
+        })
+        const polygonPaint = (idx) => ({
+          'fill-color': colorFillMap[idx],
+          'fill-opacity': 0.75,
+        })
 
-        props.data.forEach((dataSrc, idx) => {
+        props.data.spatial.forEach((dataSrc, idx) => {
           map?.addSource(dataSrc.name, {
             type: 'geojson',
             data: dataSrc,
@@ -96,23 +98,24 @@ const Map = (props) => {
             id: dataSrc.name,
             type: dataSrcType == 'Point' ? 'circle' : 'fill',
             source: dataSrc.name,
-            paint: dataSrcType == 'Point' ? circlePaint : fillPaint(idx),
+            paint:
+              dataSrcType == 'Point' ? circlePaint(idx) : polygonPaint(idx),
           })
         })
       })
 
-      for (const dataSrc of props.data) {
+      for (const dataSrc of props.data.spatial) {
         // Change the cursor to a pointer and show popup when the mouse is over a layer.
         map.on('mouseenter', dataSrc.name, (e) => {
           map.getCanvas().style.cursor = 'pointer'
 
           const coordinates = e.lngLat
-          
+
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
           }
 
-          popup.setLngLat(coordinates).setHTML('bruh').addTo(map)
+          popup.setLngLat(coordinates).setHTML(dataSrc.name).addTo(map)
         })
 
         // Change back to a pointer and hide popup when it leaves.
@@ -123,9 +126,11 @@ const Map = (props) => {
 
         // Trigger modal when layer is clicked
         map.on('click', dataSrc.name, (e) => {
-          console.log(`Clicked: ${dataSrc.name}`, e)
-          console.log('open panel')
           setPanelOpen(true)
+          setPanelData({
+            name: dataSrc.name,
+            tabular: props.data.tabular[dataSrc.name],
+          })
         })
       }
     }
@@ -143,14 +148,17 @@ const Map = (props) => {
           <div className={styles.paperToolBar}>
             <p>Title of layer viewed</p>
             <IconButton
-              onClick={() => setPanelOpen(false)}
+              onClick={() => {
+                setPanelOpen(false)
+                setPanelData([])
+              }}
               style={{ borderRadius: 0 }}
             >
               <CloseIcon />
             </IconButton>
           </div>
           <div className={styles.chartContainer}>
-            <Chart />
+            <Chart data={panelData} />
           </div>
         </Paper>
       </Slide>
