@@ -99,10 +99,6 @@ interface IndexPageProps {
 const IndexPage = (props: IndexPageProps) => {
   const styles = useStyles()
 
-  useEffect(() => {
-    console.log(`${styles.rowContainer} ${styles.marginBottom5}`)
-  }, [])
-
   return (
     <main>
       <title>Home Page</title>
