@@ -4,19 +4,20 @@ import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import backgroundBanner from '../images/banner.jpeg'
+import heroBanner from '../images/hero-image.jpg'
 
 const useStyles = makeStyles((theme: Theme) => ({
   landingCard: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    padding: '8rem 0',
+    alignItems: 'end',
+    padding: '5rem',
     marginBottom: '5rem',
     color: 'white',
     backgroundColor: 'olive',
-    backgroundImage: `url(${backgroundBanner})`,
+    backgroundImage: `url(${heroBanner})`,
     backgroundSize: 'cover',
+    height: '576px',
   },
   pageContainer: {
     [theme.breakpoints.down('lg')]: {
@@ -52,6 +53,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   headerOne: {
     fontSize: '5rem',
     fontWeight: 700,
+    marginBottom: '0 !important'
   },
   headerTwo: {
     fontSize: '4rem',
