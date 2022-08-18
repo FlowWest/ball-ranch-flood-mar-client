@@ -11,7 +11,6 @@ import {
 } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
-import headerIcon from '../../images/icon.jpg'
 
 import { FC } from '../../util'
 
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.primary,
-    height: '108px',
+    height: '15vh',
   },
   toolbar: {
     width: '100%',
@@ -36,12 +35,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   title: {
     fontSize: '36px',
-    fontWeight: 400,
-    fontFamily: 'Chau Philomene One',
+    fontWeight: 700,
+    fontFamily: 'Oswald',
     letterSpacing: '0.25px',
-  },
-  icon: {
-    width: '100px',
+    lineHeight: '32px',
+    color: '#1E1E1E',
   },
   linksContainer: {
     display: 'flex',
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'Roboto',
+    fontFamily: 'Lato',
     textTransform: 'uppercase',
     fontSize: '14px',
     fontWeight: 500,
@@ -95,7 +93,6 @@ const Header: FC<HeaderProps> = (props) => {
                 Ball Ranch Flood-MAR
               </Link>
             </Typography>
-            <img src={headerIcon} className={styles.icon} />
           </Grid>
           <Grid item sx={{ flex: 2 }} className={styles.linksContainer}>
             <Box component={GatsbyLink} className={styles.link} to='/404'>
