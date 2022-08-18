@@ -1,24 +1,17 @@
 import React, { useEffect } from 'react'
-import { Container, Typography } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import backgroundBanner from '../images/banner.jpeg'
+import heroBanner from '../images/hero-image.jpg'
+import heroBannerTwo from '../images/hero-image-two.jpg'
+import Hero from '../components/pageComponents/feasability/hero'
+import ImageRow from '../components/pageComponents/feasability/imageRow'
+import DataSectionCard from '../components/pageComponents/feasability/dataSectionCard'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  landingCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '8rem 0',
-    marginBottom: '5rem',
-    color: 'white',
-    backgroundColor: 'olive',
-    backgroundImage: `url(${backgroundBanner})`,
-    backgroundSize: 'cover',
-  },
-  pageContainer: {
+  marginedContainer: {
     [theme.breakpoints.down('lg')]: {
       margin: '0',
     },
@@ -32,63 +25,27 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  rowContainer: {
-    display: 'flex',
+  dataSection: {
     width: '100%',
-    justifyContent: 'space-between',
-  },
-  maxWidthContainer: {
-    width: '100%',
-  },
-  paragraphContainer: {
-    maxWidth: '50rem',
-  },
-  greyContainer: {
-    backgroundColor: '#F2F3F5',
-    padding: '3rem 3rem 1rem 3rem',
-    // TODO: REMOVE BELOW
+    height: '624px',
+    backgroundColor: '#8A9155A6',
+    padding: '3rem',
     marginBottom: '5rem',
-  },
-  headerOne: {
-    fontSize: '5rem',
-    fontWeight: 700,
-  },
-  headerTwo: {
-    fontSize: '4rem',
-    fontWeight: 700,
-  },
-  paragraphHeader: {
-    fontSize: '2.5rem',
-    fontWeight: 600,
-    marginBottom: '1rem',
-  },
-  paragraphContent: {
-    fontSize: '1.5rem',
-    fontWeight: 100,
-    lineHeight: '2.75rem',
-  },
-  marginBottom5: {
-    marginBottom: '5rem',
-  },
-  marginBottom3: {
-    marginBottom: '3rem',
-  },
-  marginBottom1: {
-    marginBottom: '1rem',
-  },
-  listBox: {
-    margin: '3rem',
-    padding: '1rem',
-    border: '1px solid black',
-    width: '25rem',
-    height: '25rem',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  imageOne: {
-    minWidth: '600px',
-    maxHeight: '100%',
-    marginRight: '3rem',
+  dataHeader: {
+    fontFamily: 'Oswald',
+    fontSize: '36px',
+    fontWeight: 700,
+    color: '#1B2C20',
+  },
+  dataCardRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 }))
 
@@ -102,104 +59,51 @@ const IndexPage = (props: IndexPageProps) => {
   return (
     <main>
       <title>Home Page</title>
-      <div className={styles.landingCard}>
-        <Typography variant='h2' className={`${styles.headerOne} ${styles.marginBottom1}`}>
-          Ball Ranch
-        </Typography>
-        <Typography variant='h3' className={styles.headerTwo}>
-          Flood-MAR Feasibility
-        </Typography>
+      <Hero />
+
+      <div className={styles.marginedContainer}>
+        <ImageRow
+          image={props.data.imageOne.childImageSharp.fluid}
+          reverse={false}
+          alt='Image of diagram'
+        />
+        <ImageRow
+          image={props.data.imageTwo.childImageSharp.fluid}
+          reverse={true}
+          alt='Image of river'
+        />
       </div>
 
-      <div className={styles.pageContainer}>
-        <div className={`${styles.rowContainer} ${styles.marginBottom3}`}>
-          <div className={styles.imageOne}>
-            <Img
-              fluid={props.data.imageOne.childImageSharp.fluid}
-              imgStyle={{ objectFit: 'cover' }}
-              alt='Image of river.'
-            />
-          </div>
-          <div className={styles.paragraphContainer}>
-            <Typography className={styles.paragraphHeader}>
-              About Ball Ranch
-            </Typography>
-            <Typography className={styles.paragraphContent}>
-              The Ball Ranch Managed Aquifer Recharge (MAR) Planning and
-              Analysis Project is assessing the feasibility and potential
-              benefits of recharging groundwater on Ball Ranch. The first phase
-              of the project is quantifying site groundwater conditions,
-              cataloging groundwater dependent ecosystem characteristics,
-              analyzing surface water supplies (from wet season flows), and
-              assessing stakeholder support. This site summarizes information on
-              each of these topics acquired by this project, and presents an
-              initial assessment of the feasibility of Flood MAR at Ball Ranch.
-            </Typography>
-          </div>
+      <div className={styles.dataSection}>
+        <div>
+          <Typography className={styles.dataHeader}>Data</Typography>
         </div>
-
-        <div className={styles.rowContainer}>
-          <div className={styles.paragraphContainer}>
-            <Typography className={styles.paragraphHeader}>
-              What is Flood MAR?
-            </Typography>
-            <Typography className={styles.paragraphContent}>
-              Flood-MAR is a water resource management strategy that uses wet
-              season flows from rainfall or snowmelt to drive groundwater
-              recharge on agricultural lands, working landscapes, and natural
-              managed lands. Flood-MAR can be implemented at multiple scales,
-              from individual landowner flood water diversions using existing
-              infrastructure to regional floodplain inundation using new
-              infrastructure or changes to existing infrastructure such as
-              setting back levees.
-            </Typography>
-          </div>
-          <div className={styles.listBox}>
-            <Typography>
-              Flood-MAR projects can provide broad benefits for California and
-              the ecosystems of the state, including:
-            </Typography>
-            <ul>
-              <li>Water supply reliability</li>
-              <li>Flood risk reduction</li>
-              <li>Drought preparedness</li>
-              <li>Aquifer replenishment</li>
-              <li>Ecosystem enhancement</li>
-              <li>Subsidence Mitigation</li>
-              <li>Water quality improvement</li>
-              <li>Working landscape preservation and stewardship</li>
-              <li>Climate change adaptation</li>
-              <li>Recreation and aesthetic</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={`${styles.maxWidthContainer} ${styles.greyContainer}`}>
-          <div>
-            <Typography className={styles.paragraphHeader}>
-              Why Ball Ranch?
-            </Typography>
-            <Typography className={styles.paragraphContent}>
-              Ball Ranch is a 360 acre property acquired by the San Joaquin
-              River Conservancy for ecosystem recovery and public use benefits.
-              The property is bounded by the San Joaquin River and the Little
-              Dry Creek watersheds, and has numerous depressions created by
-              historical aggregate mining that can temporarily store surface
-              water. Implementing Flood MAR at Ball Ranch could take advantage
-              of potential surface water supplies and topography suitable for
-              groundwater recharge to restore lost functions of groundwater
-              dependent ecosystems and enhance adjacent restoration efforts
-              including the San Joaquin River Restoration Program.
-            </Typography>
-            <br />
-            <Typography className={styles.paragraphContent}>
-              The following data sources help understand why Flood-MAR is
-              feasible on Ball Ranch:
-            </Typography>
-          </div>
+        <div className={styles.dataCardRow}>
+          <DataSectionCard
+            image={props.data.dataCardImageOne.childImageSharp.fluid}
+            header='Soils and Geology'
+            paragraph='Drainage of Ball Ranch soils were assessed using publicly available data'
+            alt='Image of flowers'
+          />
+          <DataSectionCard
+            image={props.data.dataCardImageTwo.childImageSharp.fluid}
+            header='Ecology'
+            paragraph='An assessment of species that historically populated Ball Ranch, what currently exists, and what could be re-introduced with the establishment of Flood-MAR.'
+            alt='Image of a perched bird'
+          />
+          <DataSectionCard
+            image={props.data.dataCardImageThree.childImageSharp.fluid}
+            header='Water Balance'
+            paragraph='Using existing data, gain an understanding of where water enters/leaves Ball Ranch and identify potential for surface water increases to enable Flood-MAR'
+            alt='Image of soil'
+          />
+          <DataSectionCard
+            image={props.data.dataCardImageFour.childImageSharp.fluid}
+            header='Groundwater Monitoring'
+            paragraph='Data collected from CASGEM and Fresno State piezometers were assessed to show groundwater level trends over time. '
+          />
         </div>
       </div>
-      {/* <Map data={sjrcProjectBoundaryData} /> */}
     </main>
   )
 }
@@ -220,7 +124,22 @@ export const fluidImage = graphql`
 `
 export const pageQuery = graphql`
   query {
-    imageOne: file(relativePath: { eq: "imageOne.jpeg" }) {
+    imageOne: file(relativePath: { eq: "imageOne.jpg" }) {
+      ...fluidImage
+    }
+    imageTwo: file(relativePath: { eq: "imageTwo.jpg" }) {
+      ...fluidImage
+    }
+    dataCardImageOne: file(relativePath: { eq: "dataCardImageOne.jpg" }) {
+      ...fluidImage
+    }
+    dataCardImageTwo: file(relativePath: { eq: "dataCardImageTwo.jpg" }) {
+      ...fluidImage
+    }
+    dataCardImageThree: file(relativePath: { eq: "dataCardImageThree.jpg" }) {
+      ...fluidImage
+    }
+    dataCardImageFour: file(relativePath: { eq: "dataCardImageFour.jpg" }) {
       ...fluidImage
     }
   }
