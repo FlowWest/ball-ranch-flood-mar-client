@@ -40,7 +40,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Chau Philomene One`],
+        fonts: [`Oswald`, 'Lato'],
         display: 'swap',
       },
     },
