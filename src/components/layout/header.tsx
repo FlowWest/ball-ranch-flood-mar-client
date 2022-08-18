@@ -12,8 +12,6 @@ import {
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 
-import { FC } from '../../util'
-
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
@@ -69,9 +67,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export interface HeaderProps {}
-
-const Header: FC<HeaderProps> = (props) => {
+const Header = () => {
   const styles = useStyles()
 
   return (
