@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     padding: '0 5rem',
-    marginBottom: '5rem'
+    marginBottom: '5rem',
   },
   nextStepsRow: {
     display: 'flex',
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '1rem 1.5rem',
   },
   boldFont: {
-    fontWeight: 600
+    fontWeight: 600,
   },
   greenBackdrop: {
     backgroundColor: '#B6AF6226',
@@ -91,11 +91,15 @@ const IndexPage = (props: IndexPageProps) => {
         <ImageRow
           image={props.data.imageOne.childImageSharp.fluid}
           reverse={false}
+          header='What is Flood-Mar'
+          content='Flood-MAR is a water resource management strategy that uses wet season flows from rainfall or snowmelt to drive groundwater recharge on agricultural lands, working landscapes, and natural managed lands. Flood-MAR can be implemented at multiple scales, from individual landowner flood water diversions using existing infrastructure to regional floodplain inundation using new infrastructure or changes to existing infrastructure such as setting back levees.'
           alt='Image of diagram'
         />
         <ImageRow
           image={props.data.imageTwo.childImageSharp.fluid}
           reverse={true}
+          header='Why Ball Ranch'
+          content='Ball Ranch is a 360 acre property acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and the Little Dry Creek watersheds, and has numerous depressions created by historical aggregate mining that can temporarily store surface water. Implementing Flood-MAR at Ball Ranch could take advantage of potential surface water supplies and topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
           alt='Image of river'
         />
       </div>
@@ -140,25 +144,28 @@ const IndexPage = (props: IndexPageProps) => {
             <br />
             <ul>
               <li>
-                <span className={styles.boldFont}>Flow Regimes.</span> Identify what flow regimes could
-                impact species both negatively and beneficially.
+                <span className={styles.boldFont}>Flow Regimes.</span> Identify
+                what flow regimes could impact species both negatively and
+                beneficially.
               </li>
               <br />
               <li>
-                <span className={styles.boldFont}>Subsurface Resistivity.</span> Map Ball Ranch subsurface
-                resistivity using TowTEM
+                <span className={styles.boldFont}>Subsurface Resistivity.</span>{' '}
+                Map Ball Ranch subsurface resistivity using TowTEM
               </li>
               <br />
               <li>
-                <span className={styles.boldFont}>Flooding Impact.</span> Identify if there is any flooding
-                impact from recharging the aquifer at Ball Ranch
+                <span className={styles.boldFont}>Flooding Impact.</span>{' '}
+                Identify if there is any flooding impact from recharging the
+                aquifer at Ball Ranch
               </li>
               <br />
               <li>
-                <span className={styles.boldFont}>Quantifying benefits.</span> Develop framework for
-                characterizing where water goes and if it has recharge benefit,
-                SJR habitat benefit, or SJR temperature benefit and confirm if
-                flood benefit can be characterized or quantified.
+                <span className={styles.boldFont}>Quantifying benefits.</span>{' '}
+                Develop framework for characterizing where water goes and if it
+                has recharge benefit, SJR habitat benefit, or SJR temperature
+                benefit and confirm if flood benefit can be characterized or
+                quantified.
               </li>
             </ul>
           </div>
