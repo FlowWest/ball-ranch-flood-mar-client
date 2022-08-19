@@ -30,22 +30,48 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '624px',
     backgroundColor: '#8A9155A6',
     padding: '3rem',
-    marginBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: '7.5rem',
   },
-  dataHeader: {
+  sectionHeader: {
     fontFamily: 'Oswald',
     fontSize: '36px',
     fontWeight: 700,
     color: '#1B2C20',
   },
-  dataCardRow: {
+  dataSectionRow: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
+  },
+  nextStepsSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    fontFamily: 'Lato',
+    fontWeight: 400,
+    padding: '0 5rem',
+    marginBottom: '5rem'
+  },
+  nextStepsRow: {
+    display: 'flex',
+  },
+  nextStepsColumn: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '3rem 2.5rem 0 2.5rem',
+    padding: '1rem 1.5rem',
+  },
+  boldFont: {
+    fontWeight: 600
+  },
+  greenBackdrop: {
+    backgroundColor: '#B6AF6226',
   },
 }))
 
@@ -75,10 +101,8 @@ const IndexPage = (props: IndexPageProps) => {
       </div>
 
       <div className={styles.dataSection}>
-        <div>
-          <Typography className={styles.dataHeader}>Data</Typography>
-        </div>
-        <div className={styles.dataCardRow}>
+        <Typography className={styles.sectionHeader}>Data</Typography>
+        <div className={styles.dataSectionRow}>
           <DataSectionCard
             image={props.data.dataCardImageOne.childImageSharp.fluid}
             header='Soils and Geology'
@@ -102,6 +126,77 @@ const IndexPage = (props: IndexPageProps) => {
             header='Groundwater Monitoring'
             paragraph='Data collected from CASGEM and Fresno State piezometers were assessed to show groundwater level trends over time. '
           />
+        </div>
+      </div>
+
+      <div className={styles.nextStepsSection}>
+        <Typography className={styles.sectionHeader}>Next Steps</Typography>
+        <div className={styles.nextStepsRow}>
+          <div className={styles.nextStepsColumn}>
+            <Typography className={styles.boldFont}>
+              The team identified data gaps when conducting the feasibility
+              analysis. Remaining data gaps and next steps include:
+            </Typography>
+            <br />
+            <ul>
+              <li>
+                <span className={styles.boldFont}>Flow Regimes.</span> Identify what flow regimes could
+                impact species both negatively and beneficially.
+              </li>
+              <br />
+              <li>
+                <span className={styles.boldFont}>Subsurface Resistivity.</span> Map Ball Ranch subsurface
+                resistivity using TowTEM
+              </li>
+              <br />
+              <li>
+                <span className={styles.boldFont}>Flooding Impact.</span> Identify if there is any flooding
+                impact from recharging the aquifer at Ball Ranch
+              </li>
+              <br />
+              <li>
+                <span className={styles.boldFont}>Quantifying benefits.</span> Develop framework for
+                characterizing where water goes and if it has recharge benefit,
+                SJR habitat benefit, or SJR temperature benefit and confirm if
+                flood benefit can be characterized or quantified.
+              </li>
+            </ul>
+          </div>
+          <div className={`${styles.nextStepsColumn} ${styles.greenBackdrop}`}>
+            <Typography>
+              A cohesive strategy for project implementation is the next phase
+              of this project and could include:
+            </Typography>
+            <ol>
+              <li>
+                Identification and quantification of groundwater recharge
+                limitations;
+              </li>
+              <br />
+              <li>
+                Identification of and recommendations for addressing data gaps
+                and information needs;
+              </li>
+              <br />
+              <li>
+                Identification of revisions required to long-term management
+                protocols for the site resulting from implementation;
+              </li>
+              <br />
+              <li>Data collection and data management plans;</li>
+              <br />
+              <li>
+                Conceptual alternatives for the Phase II Implementation Project;
+              </li>
+              <br />
+              <li>
+                A preferred alternative to carry forward to the Phase II
+                Implementation Project;
+              </li>
+              <br />
+              <li>A final design of the preferred alternative.</li>
+            </ol>
+          </div>
         </div>
       </div>
     </main>

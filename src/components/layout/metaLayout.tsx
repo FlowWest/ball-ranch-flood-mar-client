@@ -3,6 +3,7 @@ import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import Header from './header'
 import { FCR } from '../../util'
+import Footer from './footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -26,6 +27,7 @@ const MetaLayout: FCR<MetaLayoutProps> = (props) => {
     <div className={styles.root}>
       <Header />
       <main className={styles.main}>{props.children}</main>
+      <Footer />
     </div>
   )
 }
