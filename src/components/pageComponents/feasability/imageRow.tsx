@@ -48,6 +48,8 @@ const useStyles = makeStyles(() => ({
 interface ImageRowProps {
   image: any
   reverse: boolean
+  header: string
+  content: string
   alt?: string
 }
 
@@ -73,16 +75,10 @@ const ImageRow = (props: ImageRowProps) => {
       </div>
       <div className={styles.paragraphContainer}>
         <Typography className={styles.paragraphHeader}>
-          What is Flood-Mar
+          {props.header}
         </Typography>
         <Typography className={styles.paragraphContent}>
-          Flood-MAR is a water resource management strategy that uses wet season
-          flows from rainfall or snowmelt to drive groundwater recharge on
-          agricultural lands, working landscapes, and natural managed lands.
-          Flood-MAR can be implemented at multiple scales, from individual
-          landowner flood water diversions using existing infrastructure to
-          regional floodplain inundation using new infrastructure or changes to
-          existing infrastructure such as setting back levees.
+          {props.content}
         </Typography>
       </div>
     </div>
