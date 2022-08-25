@@ -4,6 +4,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import heroBanner from '../images/data-exploration-hero.jpg'
 import Hero from '../components/pageComponents/feasability/hero'
 import LinksRow from '../components/uiComponents/linksRow'
+import MapContent from '../components/pageComponents/dataExploration/mapContent'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -33,7 +34,7 @@ interface DataExplorationPageProps {
 const DataExplorationPage = (props: DataExplorationPageProps) => {
   const [activePage, setActivePage] = useState('Map')
   const activePageCmptDict: any = {
-    Map: <div />,
+    Map: <MapContent />,
     'Ground Water': <div />,
     'Surface Water': <div />,
     Ecology: <div />,
