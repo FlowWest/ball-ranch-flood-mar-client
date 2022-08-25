@@ -17,15 +17,28 @@ import cdecLDC from '../../../data/gage/cdec_ldc.json'
 import cdecSJF from '../../../data/gage/cdec_sjf.json'
 
 const useStyles = makeStyles(() => ({
+  mapContentContainer: {
+    fontFamily: 'Lato',
+  },
+  header: {
+    fontFamily: 'Oswald',
+    fontWeight: 600,
+    fontSize: '36px',
+    marginBottom: '1rem'
+  },
+  text: {
+    fontWeight: 400,
+    marginBottom: '3rem'
+  },
 }))
 
 const MapContent = () => {
   const styles = useStyles()
 
   return (
-    <div>
-      <Typography>Map</Typography>
-      <Typography>
+    <div className={styles.mapContentContainer}>
+      <Typography className={styles.header}>Map</Typography>
+      <Typography className={styles.text}>
         The following data was aggregated and analyzed in the feasibility
         assessment of Flood-MAR on Ball Ranch. Use the toggle to explore spatial
         and temporal data that was used in the feasibility assessment. Click on
