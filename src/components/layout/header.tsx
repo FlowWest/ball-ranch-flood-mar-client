@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
+import LinksRow from '../uiComponents/linksRow'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -39,32 +40,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     lineHeight: '32px',
     color: '#1E1E1E',
   },
-  linksContainer: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    alignItems: 'end',
-    height: '100%',
-    padding: '2rem 0',
-    maxWidth: '491px',
-  },
-  link: {
-    height: '100%',
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: 'Lato',
-    textTransform: 'uppercase',
-    fontSize: '14px',
-    fontWeight: 500,
-    letterSpacing: '1.25px',
-    textDecoration: 'none',
-    color: 'rgba(0, 0, 0, 0.54)',
-    '&:hover': {
-      color: '#0B2901',
-      borderBottom: '2px solid #0B2901',
-    },
-  },
 }))
 
 const Header = () => {
@@ -90,17 +65,16 @@ const Header = () => {
               </Link>
             </Typography>
           </Grid>
-          <Grid item sx={{ flex: 2 }} className={styles.linksContainer}>
-            <Box component={GatsbyLink} className={styles.link} to='/404'>
-              Analysis
-            </Box>
-            <Box component={GatsbyLink} className={styles.link} to='/404'>
-              Project Partners
-            </Box>
-            <Box component={GatsbyLink} className={styles.link} to='/404'>
-              Contact
-            </Box>
-          </Grid>
+
+          <LinksRow
+            flex={2}
+            maxWidth='491px'
+            links={[
+              { text: 'Analysis', route: '/404' },
+              { text: 'Project Partners', route: '/404' },
+              { text: 'Contact', route: '/404' },
+            ]}
+          />
         </Container>
       </Toolbar>
     </AppBar>
