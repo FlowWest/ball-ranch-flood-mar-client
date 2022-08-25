@@ -1,21 +1,25 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Theme, Typography } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 
-import heroBannerTwo from '../../../images/hero-image-two.jpg'
+interface StyleProps {
+  image: any
+  imageHeight: string
+  marginBottom?: string
+}
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   landingCard: {
-    height: '85vh',
+    height: ({ imageHeight }) => imageHeight,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'end',
     color: 'white',
     backgroundColor: 'olive',
-    backgroundImage: `url(${heroBannerTwo})`,
+    backgroundImage: ({ image }) => `url(${image})`,
     backgroundSize: 'cover',
-    marginBottom: '8rem',
+    marginBottom: ({marginBottom}) => marginBottom ?? '8rem',
   },
   headerOne: {
     fontFamily: 'Oswald',
@@ -33,6 +37,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.15)',
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -46,30 +51,49 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const Hero = () => {
-  const styles = useStyles()
+interface HeroProps {
+  header: string
+  subheader: string
+  imageObj: any
+  imageHeight: string
+  marginBottom?: string
+  fitInLowOpacityContainer?: boolean
+}
 
-  return (
-    <div className={styles.landingCard}>
-      <Typography
-        variant='h2'
-        className={styles.headerOne}
-      >
-        Assessing the feasibility of recharging groundwater on Ball Ranch
-      </Typography>
-      <div className={styles.lowOpacityContainer}>
-        <Typography className={styles.heroParagraph}>
-          The first phase of the project is quantifying site groundwater
-          conditions, cataloging groundwater dependent ecosystem
-          characteristics, analyzing surface water supplies (from wet season
-          flows), and assessing stakeholder support. This site summarizes
-          information on each of these topics acquired by this project, and
-          presents an initial assessment of the feasibility of Flood-MAR at Ball
-          Ranch.
-        </Typography>
+const Hero = (props: HeroProps) => {
+  const styles = useStyles({
+    image: props.imageObj,
+    imageHeight: props.imageHeight,
+    marginBottom: props.marginBottom
+  })
+
+  if (props.fitInLowOpacityContainer) {
+    return (
+      <div className={styles.landingCard}>
+        <div className={styles.lowOpacityContainer}>
+          <Typography variant='h2' className={styles.headerOne}>
+            {props.header}
+          </Typography>
+          <Typography className={styles.heroParagraph}>
+            {props.subheader}
+          </Typography>
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div className={styles.landingCard}>
+        <Typography variant='h2' className={styles.headerOne}>
+          {props.header}
+        </Typography>
+        <div className={styles.lowOpacityContainer}>
+          <Typography className={styles.heroParagraph}>
+            {props.subheader}
+          </Typography>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default Hero
