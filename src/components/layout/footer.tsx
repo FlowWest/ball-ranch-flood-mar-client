@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'space-between',
     padding: '3rem 6rem',
     color: '#FFF',
+    marginTop: '5rem',
   },
   footerHeader: {
     fontFamily: 'Oswald',
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
     fontSize: '20px',
     marginBottom: '1rem',
-  }
+  },
 }))
 
 const Footer = () => {
