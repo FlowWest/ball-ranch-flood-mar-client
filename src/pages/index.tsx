@@ -3,10 +3,8 @@ import { Container, Grid, Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import heroBanner from '../images/hero-image.jpg'
-import heroBannerTwo from '../images/hero-image-two.jpg'
 import Hero from '../components/pageComponents/feasability/hero'
+import indexPageBanner from '../images/index-page-banner.jpg'
 import ImageRow from '../components/pageComponents/feasability/imageRow'
 import DataSectionCard from '../components/pageComponents/feasability/dataSectionCard'
 
@@ -85,7 +83,18 @@ const IndexPage = (props: IndexPageProps) => {
   return (
     <main>
       <title>Home Page</title>
-      <Hero />
+      <Hero
+        imageObj={indexPageBanner}
+        imageHeight='85vh'
+        header='Assessing the feasibility of recharging groundwater on Ball Ranch'
+        subheader='The first phase of the project is quantifying site groundwater
+          conditions, cataloging groundwater dependent ecosystem
+          characteristics, analyzing surface water supplies (from wet season
+          flows), and assessing stakeholder support. This site summarizes
+          information on each of these topics acquired by this project, and
+          presents an initial assessment of the feasibility of Flood-MAR at Ball
+          Ranch.'
+      />
 
       <div className={styles.marginedContainer}>
         <ImageRow
@@ -232,16 +241,16 @@ export const pageQuery = graphql`
     imageTwo: file(relativePath: { eq: "imageTwo.jpg" }) {
       ...fluidImage
     }
-    dataCardImageOne: file(relativePath: { eq: "dataCardImageOne.jpg" }) {
+    dataCardImageOne: file(relativePath: { eq: "data-card-image-one.jpg" }) {
       ...fluidImage
     }
-    dataCardImageTwo: file(relativePath: { eq: "dataCardImageTwo.jpg" }) {
+    dataCardImageTwo: file(relativePath: { eq: "data-card-image-two.jpg" }) {
       ...fluidImage
     }
-    dataCardImageThree: file(relativePath: { eq: "dataCardImageThree.jpg" }) {
+    dataCardImageThree: file(relativePath: { eq: "data-card-image-three.jpg" }) {
       ...fluidImage
     }
-    dataCardImageFour: file(relativePath: { eq: "dataCardImageFour.jpg" }) {
+    dataCardImageFour: file(relativePath: { eq: "data-card-image-four.jpg" }) {
       ...fluidImage
     }
   }
