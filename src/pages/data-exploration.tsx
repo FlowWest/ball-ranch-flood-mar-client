@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   linksRowContainer: {
     height: '6rem',
-    margin: '0 5rem',
+    margin: '0 5rem 4rem 5rem',
   },
 }))
 
