@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     padding: '0 5rem',
-    marginBottom: '5rem',
   },
   nextStepsRow: {
     display: 'flex',
