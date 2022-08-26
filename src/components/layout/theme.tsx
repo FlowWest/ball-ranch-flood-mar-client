@@ -6,6 +6,9 @@ type AppThemeProviderProps = {}
 
 const AppThemeProvider: FCR<AppThemeProviderProps> = ({ children }) => {
   const theme = createTheme({
+    typography: {
+      fontFamily: ['Lato', 'Oswald'].join(',')
+    },
     palette: {
       primary: {
         main: '#337598',
