@@ -17,18 +17,22 @@ import cdecLDC from '../../../data/gage/cdec_ldc.json'
 import cdecSJF from '../../../data/gage/cdec_sjf.json'
 
 const useStyles = makeStyles(() => ({
-  mapContentContainer: {
+  contentContainer: {
     fontFamily: 'Lato',
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
     fontSize: '36px',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
   },
   text: {
     fontWeight: 400,
-    marginBottom: '3rem'
+    marginBottom: '3rem',
+    lineHeight: '2.5rem',
+  },
+  map: {
+    margin: '0 30px',
   },
 }))
 
@@ -36,7 +40,7 @@ const MapContent = () => {
   const styles = useStyles()
 
   return (
-    <div className={styles.mapContentContainer}>
+    <div className={styles.contentContainer}>
       <Typography className={styles.header}>Map</Typography>
       <Typography className={styles.text}>
         The following data was aggregated and analyzed in the feasibility
@@ -44,22 +48,24 @@ const MapContent = () => {
         and temporal data that was used in the feasibility assessment. Click on
         data in map for more information.{' '}
       </Typography>
-      <Map
-        data={{
-          spatial: [
-            sjrcProjectBoundary,
-            casgemWellPts,
-            fresnoStateWellsPts,
-            cdecGagesPoints,
-          ],
-          tabular: {
-            sjrc_project_boundary: [evapotranspirationData],
-            casgem_well_pts: [casgemWellsDta],
-            fresno_state_wells_pts: [fresnoWellsDta],
-            cdec_gages_pts: [cdecH41, cdecLDC, cdecSJF],
-          },
-        }}
-      />
+      <div className={styles.map}>
+        <Map
+          data={{
+            spatial: [
+              sjrcProjectBoundary,
+              casgemWellPts,
+              fresnoStateWellsPts,
+              cdecGagesPoints,
+            ],
+            tabular: {
+              sjrc_project_boundary: [evapotranspirationData],
+              casgem_well_pts: [casgemWellsDta],
+              fresno_state_wells_pts: [fresnoWellsDta],
+              cdec_gages_pts: [cdecH41, cdecLDC, cdecSJF],
+            },
+          }}
+        />
+      </div>
     </div>
   )
 }
