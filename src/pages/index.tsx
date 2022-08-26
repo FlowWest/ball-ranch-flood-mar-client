@@ -3,10 +3,10 @@ import { Container, Grid, Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'
-import Hero from '../components/pageComponents/feasability/hero'
+import Hero from '../components/uiComponents/hero'
 import indexPageBanner from '../images/index-page-banner.jpg'
-import ImageRow from '../components/pageComponents/feasability/imageRow'
-import DataSectionCard from '../components/pageComponents/feasability/dataSectionCard'
+import ImageRow from '../components/pageComponents/index/imageRow'
+import DataSectionCard from '../components/pageComponents/index/dataSectionCard'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {

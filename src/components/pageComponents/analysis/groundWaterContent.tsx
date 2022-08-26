@@ -65,7 +65,6 @@ const useStyles = makeStyles(() => ({
 
 interface GroundWaterContentProps {
   images: any
-  alt?: string
 }
 
 const GroundWaterContent = (props: GroundWaterContentProps) => {
@@ -90,7 +89,6 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
           <Img
             fluid={props.images.groundWaterImage}
             imgStyle={{ objectFit: 'cover' }}
-            alt={props.alt}
           />
         </div>
       </div>
@@ -106,11 +104,10 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             <Img
               fluid={props.images.casgemLogo}
               imgStyle={{ objectFit: 'cover' }}
-              alt={props.alt}
             />
           </div>
           <div className={styles.columnContainer}>
-            <Typography className={styles.cardHeader}>Casgem</Typography>
+            <Typography className={styles.cardHeader}>CASGEM</Typography>
             <Typography className={styles.cardText}>
               CASGEM monitoring network has XXXX wells at Ball Ranch and nearby.
               Data spans XXXX-XX-XX though YYYY-YY-YY
@@ -122,7 +119,6 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             <Img
               fluid={props.images.csuFresnoLogo}
               imgStyle={{ objectFit: 'cover' }}
-              alt={props.alt}
             />
           </div>
           <div className={styles.columnContainer}>
