@@ -9,6 +9,7 @@ import MapContent from '../components/pageComponents/analysis/mapContent'
 import GroundWaterContent from '../components/pageComponents/analysis/groundWaterContent'
 import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWaterContent'
 import EcologyContent from '../components/pageComponents/analysis/ecologyContent'
+import EvapoContent from '../components/pageComponents/analysis/evapotranspirationContent'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -82,7 +83,14 @@ const AnalysisPage = (props: AnalysisPageProps) => {
         }}
       />
     ),
-    Evapotranspiration: <div />,
+    Evapotranspiration: (
+      <EvapoContent
+        images={{
+          evapoImage: props.data.evapoImage.childImageSharp.fluid,
+          evapoChart: props.data.evapoChart.childImageSharp.fluid,
+        }}
+      />
+    ),
     Soils: <div />,
   }
   const styles = useStyles()
@@ -177,6 +185,12 @@ export const pageQuery = graphql`
       ...fluidImage
     }
     ecologyChartsImage: file(relativePath: { eq: "ecology-charts-image.jpg" }) {
+      ...fluidImage
+    }
+    evapoImage: file(relativePath: { eq: "evapo-image.jpg" }) {
+      ...fluidImage
+    }
+    evapoChart: file(relativePath: { eq: "evapo-chart.jpg" }) {
       ...fluidImage
     }
   }
