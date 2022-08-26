@@ -40,7 +40,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Oswald\:300,600,700`, `Lato\:400,500,600,700`],
+        fonts: [`Oswald\:300,600,700`, `Lato\:300,400,500,600,700`],
         display: 'swap',
       },
     },

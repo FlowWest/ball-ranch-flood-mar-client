@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 400,
     fontSize: '20px',
     marginBottom: '1rem',
-  }
+  },
 }))
 
 const Footer = () => {
