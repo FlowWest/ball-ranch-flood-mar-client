@@ -3,10 +3,11 @@ import { graphql } from 'gatsby'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import heroBanner from '../images/data-exploration-hero.jpg'
-import Hero from '../components/pageComponents/feasability/hero'
+import Hero from '../components/uiComponents/hero'
 import LinksRow from '../components/uiComponents/linksRow'
-import MapContent from '../components/pageComponents/dataExploration/mapContent'
-import GroundWaterContent from '../components/pageComponents/dataExploration/groundwaterContent'
+import MapContent from '../components/pageComponents/analysis/mapContent'
+import GroundWaterContent from '../components/pageComponents/analysis/groundWaterContent'
+import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWaterContent'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: '0',
     },
     [theme.breakpoints.up('lg')]: {
-      margin: '0 5rem',
+      margin: '0 10rem',
     },
     [theme.breakpoints.up('xl')]: {
       margin: '0 15rem',
@@ -45,11 +46,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-interface DataExplorationPageProps {
+interface AnalysisPageProps {
   data: any
 }
 
-const DataExplorationPage = (props: DataExplorationPageProps) => {
+const AnalysisPage = (props: AnalysisPageProps) => {
   const [activePage, setActivePage] = useState('Map')
   const activePageCmptDict: any = {
     Map: <MapContent />,
@@ -62,7 +63,14 @@ const DataExplorationPage = (props: DataExplorationPageProps) => {
         }}
       />
     ),
-    'Surface Water': <div />,
+    'Surface Water': (
+      <SurfaceWaterContent
+        images={{
+          surfaceWaterImage: props.data.surfaceWaterImage.childImageSharp.fluid,
+          mockChartImage: props.data.mockChartImage.childImageSharp.fluid,
+        }}
+      />
+    ),
     Ecology: <div />,
     Evapotranspiration: <div />,
     Soils: <div />,
@@ -121,7 +129,7 @@ const DataExplorationPage = (props: DataExplorationPageProps) => {
   )
 }
 
-export default DataExplorationPage
+export default AnalysisPage
 
 export const fluidImage = graphql`
   fragment fluidImage on File {
@@ -144,6 +152,12 @@ export const pageQuery = graphql`
       ...fluidImage
     }
     csuFresnoLogo: file(relativePath: { eq: "csu-fresno-logo.jpg" }) {
+      ...fluidImage
+    }
+    surfaceWaterImage: file(relativePath: { eq: "surface-water-image.jpg" }) {
+      ...fluidImage
+    }
+    mockChartImage: file(relativePath: { eq: "mock-chart-image.jpg" }) {
       ...fluidImage
     }
   }
