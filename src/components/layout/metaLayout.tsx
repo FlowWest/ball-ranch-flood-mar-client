@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   main: {
     backgroundColor: theme.palette.background.default,
+    paddingBottom: '5rem'
   },
 }))
 

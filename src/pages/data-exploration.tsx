@@ -6,7 +6,7 @@ import heroBanner from '../images/data-exploration-hero.jpg'
 import Hero from '../components/pageComponents/feasability/hero'
 import LinksRow from '../components/uiComponents/linksRow'
 import MapContent from '../components/pageComponents/dataExploration/mapContent'
-import GroundWaterContent from '../components/pageComponents/dataExploration/groundWaterContent'
+import GroundWaterContent from '../components/pageComponents/dataExploration/groundwaterContent'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -25,7 +25,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   linksRowContainer: {
     height: '6rem',
-    margin: '0 5rem 4rem 5rem',
+    margin: '0 5rem',
+  },
+  scrollableContainer: {
+    overflow: 'scroll',
+    maxHeight: '80vh',
+    paddingTop: '5rem',
+
+    '&::-webkit-scrollbar': {
+      '-webkit-appearance': 'none',
+      width: '7px',
+    },
+
+    '&::-webkit-scrollbar-thumb': {
+      borderRadius: '4px',
+      backgroundColor: 'rgba(0, 0, 0, .20)',
+      boxShadow: '0 0 1px rgba(255, 255, 255, .5)',
+    },
   },
 }))
 
@@ -39,7 +55,11 @@ const DataExplorationPage = (props: DataExplorationPageProps) => {
     Map: <MapContent />,
     'Ground Water': (
       <GroundWaterContent
-        image={props.data.groundWaterImage.childImageSharp.fluid}
+        images={{
+          groundWaterImage: props.data.groundWaterImage.childImageSharp.fluid,
+          casgemLogo: props.data.casgemLogo.childImageSharp.fluid,
+          csuFresnoLogo: props.data.csuFresnoLogo.childImageSharp.fluid,
+        }}
       />
     ),
     'Surface Water': <div />,
@@ -92,7 +112,9 @@ const DataExplorationPage = (props: DataExplorationPageProps) => {
           ]}
         />
       </div>
-      <div className={styles.marginedContainer}>
+      <div
+        className={`${styles.marginedContainer} ${styles.scrollableContainer}`}
+      >
         {activePageCmptDict[activePage]}
       </div>
     </main>
@@ -116,6 +138,12 @@ export const fluidImage = graphql`
 export const pageQuery = graphql`
   query {
     groundWaterImage: file(relativePath: { eq: "ground-water-image.jpg" }) {
+      ...fluidImage
+    }
+    casgemLogo: file(relativePath: { eq: "casgem-logo.jpg" }) {
+      ...fluidImage
+    }
+    csuFresnoLogo: file(relativePath: { eq: "csu-fresno-logo.jpg" }) {
       ...fluidImage
     }
   }
