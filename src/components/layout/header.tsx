@@ -70,7 +70,7 @@ const Header = () => {
             flex={2}
             maxWidth='491px'
             links={[
-              { text: 'Analysis', route: '/404' },
+              { text: 'Analysis', route: '/analysis' },
               { text: 'Project Partners', route: '/404' },
               { text: 'Contact', route: '/404' },
             ]}
