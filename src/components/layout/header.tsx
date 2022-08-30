@@ -71,7 +71,7 @@ const Header = () => {
             maxWidth='491px'
             links={[
               { text: 'Analysis', route: '/analysis' },
-              { text: 'Project Partners', route: '/404' },
+              { text: 'Project Partners', route: '/project-partners' },
               { text: 'Contact', route: '/404' },
             ]}
           />
