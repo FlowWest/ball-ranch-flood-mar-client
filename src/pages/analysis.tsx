@@ -104,7 +104,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
 
   return (
     <main>
-      <title>Home Page</title>
+      <title>Analysis</title>
       <Hero
         imageObj={heroBanner}
         imageHeight='295px'
