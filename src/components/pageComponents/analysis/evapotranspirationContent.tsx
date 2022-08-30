@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -25,13 +26,19 @@ const useStyles = makeStyles(() => ({
   },
   evapoTextContainer: {
     maxWidth: '450px',
+    [mediaQueries.below992]: {
+      maxWidth: '400px',
+    },
   },
   evapoChart: {
     width: '900px',
+    [mediaQueries.below992]: {
+      width: '100%',
+    },
   },
   chartSubHeader: {
     maxWidth: '750px',
-    marginBottom: '4rem'
+    marginBottom: '4rem',
   },
   header: {
     fontFamily: 'Oswald',
@@ -45,8 +52,8 @@ const useStyles = makeStyles(() => ({
     marginBottom: '3rem',
   },
   marginBottom2: {
-    marginBottom: '2rem'
-  }
+    marginBottom: '2rem',
+  },
 }))
 
 interface EvapoContentProps {

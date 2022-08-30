@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import Img from 'gatsby-image'
 import { Typography, Divider } from '@mui/material'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -11,10 +12,14 @@ const useStyles = makeStyles(() => ({
   },
   rowContainer: {
     display: 'flex',
+    justifyContent: 'center',
   },
   columnContainer: {
     display: 'flex',
     flexDirection: 'column',
+    [mediaQueries.below992]: {
+      alignItems: 'center',
+    },
   },
   textContainer: {
     maxWidth: '20rem',
@@ -31,6 +36,10 @@ const useStyles = makeStyles(() => ({
   imageContainer: {
     width: '470px',
     marginLeft: '5rem',
+    [mediaQueries.below992]: {
+      marginLeft: '2rem',
+      width: '300px',
+    },
   },
   greenBox: {
     backgroundColor: '#B6AF6226',
@@ -39,18 +48,28 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 7rem',
+    [mediaQueries.below992]: {
+      width: '100%',
+      padding: '0 3rem'
+    },
   },
   cardHeader: {
     fontFamily: 'Oswald',
     fontWeight: 300,
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    [mediaQueries.below992]: {
+      alignSelf: 'start',
+    },
   },
   cardText: {
     fontWeight: 400,
-    maxWidth: '400px'
+    maxWidth: '400px',
   },
   logoImage: {
     width: '205px',
+    [mediaQueries.below992]: {
+      marginRight: '2rem'
+    },
   },
   marginBottom5: {
     marginBottom: '5rem',
