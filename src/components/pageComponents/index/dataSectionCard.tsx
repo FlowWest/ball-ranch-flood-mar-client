@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
   dataCardHeader: {
     fontFamily: 'Lato',
     fontWeight: 700,
-    fontSize: '20px',
     letterSpacing: '0.25px',
     color: 'rgba(0, 0, 0, 0.87)',
     marginBottom: '1rem',
@@ -32,7 +31,6 @@ const useStyles = makeStyles(() => ({
   dataCardParagraph: {
     fontFamily: 'Lato',
     fontWeight: 400,
-    fontSize: '20px',
     color: 'rgba(0, 0, 0, 0.87)',
     lineHeight: '100%',
   },
@@ -58,10 +56,10 @@ const DataSectionCard = (props: DataSectionCardProps) => {
         />
       </div>
       <div className={styles.dataCardContent}>
-        <Typography className={styles.dataCardHeader}>
+        <Typography variant='h2' className={styles.dataCardHeader}>
           {props.header}
         </Typography>
-        <Typography className={styles.dataCardParagraph}>
+        <Typography variant='h2' className={styles.dataCardParagraph}>
           {props.paragraph}
         </Typography>
       </div>

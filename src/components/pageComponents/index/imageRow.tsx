@@ -21,13 +21,11 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Oswald',
     fontWeight: 600,
     color: '#000',
-    fontSize: '36px',
     marginBottom: '1rem',
   },
   paragraphContent: {
     fontFamily: 'Lato',
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2.5rem',
   },
   // dynamic classes
@@ -74,10 +72,10 @@ const ImageRow = (props: ImageRowProps) => {
         />
       </div>
       <div className={styles.paragraphContainer}>
-        <Typography className={styles.paragraphHeader}>
+        <Typography variant='h1' className={styles.paragraphHeader}>
           {props.header}
         </Typography>
-        <Typography className={styles.paragraphContent}>
+        <Typography variant='h2' className={styles.paragraphContent}>
           {props.content}
         </Typography>
       </div>

@@ -36,11 +36,9 @@ const useStyles = makeStyles(() => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
   marginBottom3: {
@@ -68,10 +66,13 @@ const EvapoContent = (props: EvapoContentProps) => {
           />
         </div>
         <div className={styles.evapoTextContainer}>
-          <Typography className={`${styles.header} ${styles.marginBottom3}`}>
+          <Typography
+            variant='h1'
+            className={`${styles.header} ${styles.marginBottom3}`}
+          >
             Evapotranspiration
           </Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h2' className={styles.text}>
             Evapotranspiration (ET) is the volume of water transferred from the
             land surface to the atmosphere. This could influence the
             effectiveness of Flood-MAR at Ball Ranch. The OpenET platform uses
@@ -86,7 +87,10 @@ const EvapoContent = (props: EvapoContentProps) => {
       </div>
       <Divider sx={{ border: '1px solid #000', margin: '7rem 6rem' }} />
       <div className={styles.columnContainer}>
-        <Typography className={`${styles.header} ${styles.marginBottom2}`}>
+        <Typography
+          variant='h1'
+          className={`${styles.header} ${styles.marginBottom2}`}
+        >
           Evapotranspiration Over Time
         </Typography>
         <Typography className={styles.chartSubHeader}>
