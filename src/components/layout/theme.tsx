@@ -3,20 +3,19 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { FCR } from '../../util'
 
 export const mediaQueries = {
-  /* Extra small devices (phones, 600px and down) */
-below600: '@media only screen and (max-width: 600px)',
+  /* Anything above include: Small devices (portrait tablets and large phones, 600px and up) */
+  below600: '@media only screen and (max-width: 600px)',
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-above600: '@media only screen and (min-width: 600px)',
+  /* Anything above include: Medium devices (landscape tablets, 768px and up) */
+  below768: '@media only screen and (max-width: 768px)',
 
-/* Medium devices (landscape tablets, 768px and up) */
-above768: '@media only screen and (min-width: 768px)',
+  /* Anything above include: Large devices (laptops/desktops, 992px and up) */
+  below992: '@media only screen and (max-width: 992px)',
 
-/* Large devices (laptops/desktops, 992px and up) */
-above992: '@media only screen and (min-width: 992px)',
+  /* Anything above include: Extra large devices (large laptops and desktops, 1200px and up) */
+  below1200: '@media only screen and (max-width: 1200px)',
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-above1200: '@media only screen and (min-width: 1200px)'
+  above1200: '@media only screen and (min-width: 1200px)',
 }
 
 type AppThemeProviderProps = {}
@@ -26,37 +25,37 @@ export const AppThemeProvider: FCR<AppThemeProviderProps> = ({ children }) => {
     typography: {
       fontFamily: ['Lato', 'Oswald'].join(','),
       h1: {
-        [mediaQueries.below600]: {
-          fontSize: '18px',
-        },
-        [mediaQueries.above600]: {
-          fontSize: '18px',
-        },
-        [mediaQueries.above768]: {
-          fontSize: '18px',
-        },
-        [mediaQueries.above992]: {
-          fontSize: '36px',
-        },
         [mediaQueries.above1200]: {
           fontSize: '36px',
+        },
+        [mediaQueries.below1200]: {
+          fontSize: '36px',
+        },
+        [mediaQueries.below992]: {
+          fontSize: '36px',
+        },
+        [mediaQueries.below768]: {
+          fontSize: '18px',
+        },
+        [mediaQueries.below600]: {
+          fontSize: '18px',
         },
       },
       h2: {
-        [mediaQueries.below600]: {
-          fontSize: '10px',
-        },
-        [mediaQueries.above600]: {
-          fontSize: '10px',
-        },
-        [mediaQueries.above768]: {
-          fontSize: '10px',
-        },
-        [mediaQueries.above992]: {
-          fontSize: '20px',
-        },
         [mediaQueries.above1200]: {
           fontSize: '20px',
+        },
+        [mediaQueries.below1200]: {
+          fontSize: '20px',
+        },
+        [mediaQueries.below992]: {
+          fontSize: '20px',
+        },
+        [mediaQueries.below768]: {
+          fontSize: '10px',
+        },
+        [mediaQueries.below600]: {
+          fontSize: '10px',
         },
       },
     },
