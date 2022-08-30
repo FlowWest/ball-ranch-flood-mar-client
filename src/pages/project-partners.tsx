@@ -6,21 +6,28 @@ import projectPartnersHero from '../images/project-partners-hero.jpg'
 import Hero from '../components/uiComponents/hero'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../components/layout/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
-    [theme.breakpoints.down('lg')]: {
-      margin: '0',
+    [mediaQueries.below992]: {
+      margin: '0 3rem',
     },
-    [theme.breakpoints.up('lg')]: {
-      margin: '0 10rem',
+    [mediaQueries.below1200]: {
+      margin: '0 5rem',
     },
-    [theme.breakpoints.up('xl')]: {
-      margin: '0 15rem',
+    [mediaQueries.above1200]: {
+      margin: '0 5rem',
     },
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  workshopSection: {
+    [mediaQueries.below992]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
   rowContainer: {
     display: 'flex',
@@ -32,6 +39,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   textContainer: {
     maxWidth: '350px',
     marginRight: '5rem',
+    [mediaQueries.below992]: {
+      maxWidth: '600px',
+      marginRight: '0',
+      marginBottom: '5rem',
+      display: 'flex',
+      flexDirection: 'column'
+    },
   },
   presentorsCard: {
     backgroundColor: '#ECECEA9C',
@@ -70,7 +84,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontWeight: 200,
   },
   projectPartnerCpmt: {
-    marginBottom: '5rem'
+    marginBottom: '5rem',
+    [mediaQueries.below992]: {
+      alignItems: 'center',
+    },
   },
   projectPartnerImage: {
     width: '350px',
@@ -81,6 +98,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
+    [mediaQueries.below992]: {
+      alignSelf: 'center',
+    },
   },
   text: {
     fontWeight: 400,
@@ -99,8 +119,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   marginRight1: {
-    marginRight: '1rem'
-  }
+    marginRight: '1rem',
+  },
 }))
 
 interface ProjectPartnersPageProps {
@@ -190,7 +210,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
         fitInLowOpacityContainer={true}
       />
       <div className={styles.marginedContainer}>
-        <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
+        <div className={`${styles.workshopSection} ${styles.rowContainer} ${styles.alignCenter}`}>
           <div className={styles.textContainer}>
             <Typography
               variant='h1'
