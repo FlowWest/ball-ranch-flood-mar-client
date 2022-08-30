@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -14,6 +15,9 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '500px',
     position: 'relative',
+    [mediaQueries.below992]: {
+      height: '700px',
+    },
   },
   columnContainer: {
     display: 'flex',
@@ -26,18 +30,24 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
   },
   overlayTextContent: {
-    width: '630px',
+    maxWidth: '630px',
     position: 'absolute',
     top: 0,
     left: 50,
     zIndex: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    [mediaQueries.below992]: {
+      maxWidth: '400px',
+    },
   },
   overlayImageContent: {
     width: '648px',
     position: 'absolute',
     top: 0,
     right: 50,
+    [mediaQueries.below992]: {
+      width: '400px',
+    },
   },
   header: {
     fontFamily: 'Oswald',
@@ -50,10 +60,16 @@ const useStyles = makeStyles(() => ({
   },
   chartSection: {
     width: '80%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    [mediaQueries.below992]: {
+      width: '100%',
+    },
   },
   chart: {
     width: '550px',
+    [mediaQueries.below992]: {
+      width: '350px',
+    },
   },
   chartHeader: {
     fontFamily: 'Lato',
@@ -63,13 +79,13 @@ const useStyles = makeStyles(() => ({
   scenariosContainer: {
     maxWidth: '300px',
     height: '300px',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
   },
   bold: {
     fontWeight: 700,
   },
   marginTop3: {
-    marginTop: '3rem'
+    marginTop: '3rem',
   },
 }))
 

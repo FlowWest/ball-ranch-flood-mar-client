@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -10,26 +11,41 @@ const useStyles = makeStyles(() => ({
   },
   rowContainer: {
     display: 'flex',
+    [mediaQueries.below992]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
   columnContainer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
+    [mediaQueries.below992]: {
+      alignItems: 'center',
+    },
   },
   soilsImage: {
     width: '450px',
-    marginRight: '5rem'
+    marginRight: '5rem',
+    [mediaQueries.below992]: {
+      marginBottom: '3rem',
+      marginRight: '0',
+      width: '300px',
+    },
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    marginBottom: '3rem'
+    marginBottom: '3rem',
   },
   text: {
     maxWidth: '500px',
     fontWeight: 400,
     lineHeight: '2rem',
-  }
+    [mediaQueries.below992]: {
+      width: '100%',
+    },
+  },
 }))
 
 interface SoilsContentProps {

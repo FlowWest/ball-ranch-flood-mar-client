@@ -11,17 +11,18 @@ import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWa
 import EcologyContent from '../components/pageComponents/analysis/ecologyContent'
 import EvapoContent from '../components/pageComponents/analysis/evapotranspirationContent'
 import SoilsContent from '../components/pageComponents/analysis/soilsContent'
+import { mediaQueries } from '../components/layout/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
-    [theme.breakpoints.down('lg')]: {
-      margin: '0',
+    [mediaQueries.below992]: {
+      margin: '0 3rem',
     },
-    [theme.breakpoints.up('lg')]: {
+    [mediaQueries.below1200]: {
+      margin: '0 5rem',
+    },
+    [mediaQueries.above1200]: {
       margin: '0 10rem',
-    },
-    [theme.breakpoints.up('xl')]: {
-      margin: '0 15rem',
     },
     display: 'flex',
     flexDirection: 'column',
