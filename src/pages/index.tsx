@@ -7,17 +7,18 @@ import Hero from '../components/uiComponents/hero'
 import indexPageBanner from '../images/index-page-banner.jpg'
 import ImageRow from '../components/pageComponents/index/imageRow'
 import DataSectionCard from '../components/pageComponents/index/dataSectionCard'
+import { mediaQueries } from '../components/layout/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
-    [theme.breakpoints.down('lg')]: {
-      margin: '0',
+    [mediaQueries.below992]: {
+      margin: '0 3rem',
     },
-    [theme.breakpoints.up('lg')]: {
+    [mediaQueries.below1200]: {
       margin: '0 5rem',
     },
-    [theme.breakpoints.up('xl')]: {
-      margin: '0 15rem',
+    [mediaQueries.above1200]: {
+      margin: '0 5rem',
     },
     display: 'flex',
     flexDirection: 'column',
@@ -25,7 +26,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   dataSection: {
     width: '100%',
-    height: '624px',
     backgroundColor: '#8A9155A6',
     padding: '3rem',
     display: 'flex',
@@ -43,6 +43,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
+    marginTop: '4rem',
+    [mediaQueries.below992]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   },
   nextStepsSection: {
     display: 'flex',
@@ -52,6 +57,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     padding: '0 5rem',
+    [mediaQueries.below992]: {
+      padding: '0 1rem',
+    },
   },
   nextStepsRow: {
     display: 'flex',
