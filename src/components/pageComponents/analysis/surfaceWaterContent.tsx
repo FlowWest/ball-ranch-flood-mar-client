@@ -42,12 +42,10 @@ const useStyles = makeStyles(() => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
     marginBottom: '3rem',
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
   chartSection: {
@@ -86,8 +84,10 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
     <div className={styles.contentContainer}>
       <div className={styles.overlayContainer}>
         <div className={styles.overlayTextContent}>
-          <Typography className={styles.header}>Surface Water</Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h1' className={styles.header}>
+            Surface Water
+          </Typography>
+          <Typography variant='h2' className={styles.text}>
             The California Department of Water Resources (DWR) conducted a
             preliminary analysis of potential surface water supply to Ball Ranch
             from Little Dry Creek, Big Dry Creek, and the Fresno stormwater
@@ -113,10 +113,14 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
       </div>
       <Divider sx={{ border: '1px solid #000', margin: '8rem 6rem' }} />
       <div className={`${styles.columnContainer} ${styles.centerColumn}`}>
-        <Typography className={styles.header}>
+        <Typography variant='h1' className={styles.header}>
           Scenario Planning - Surface Water Avalibilty
         </Typography>
-        <Typography className={styles.text} sx={{ maxWidth: '900px' }}>
+        <Typography
+          variant='h2'
+          className={styles.text}
+          sx={{ maxWidth: '900px' }}
+        >
           An analysis by MDK Consulting analyzed three potential scenarios for
           diverting water to Ball Ranch (figure 1). During Above Normal and Wet
           water years, there is water available for scenarios 1 and 2; scneario

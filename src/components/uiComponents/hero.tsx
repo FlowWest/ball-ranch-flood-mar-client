@@ -24,7 +24,6 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
   headerOne: {
     fontFamily: 'Oswald',
     fontStyle: 'normal',
-    fontSize: '36px',
     fontWeight: 600,
     lineHeight: '100%',
     marginBottom: '1rem !important',
@@ -44,7 +43,6 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
   heroParagraph: {
     fontFamily: 'Lato',
     fontWeight: 400,
-    fontSize: '20px',
     textAlign: 'center',
     color: '#FFF',
     maxWidth: '80%',
@@ -71,10 +69,10 @@ const Hero = (props: HeroProps) => {
     return (
       <div className={styles.landingCard}>
         <div className={styles.lowOpacityContainer}>
-          <Typography variant='h2' className={styles.headerOne}>
+          <Typography variant='h1' className={styles.headerOne}>
             {props.header}
           </Typography>
-          <Typography className={styles.heroParagraph}>
+          <Typography variant='h2' className={styles.heroParagraph}>
             {props.subheader}
           </Typography>
         </div>
@@ -83,11 +81,11 @@ const Hero = (props: HeroProps) => {
   } else {
     return (
       <div className={styles.landingCard}>
-        <Typography variant='h2' className={styles.headerOne}>
+        <Typography variant='h1' className={styles.headerOne}>
           {props.header}
         </Typography>
         <div className={styles.lowOpacityContainer}>
-          <Typography className={styles.heroParagraph}>
+          <Typography variant='h2' className={styles.heroParagraph}>
             {props.subheader}
           </Typography>
         </div>

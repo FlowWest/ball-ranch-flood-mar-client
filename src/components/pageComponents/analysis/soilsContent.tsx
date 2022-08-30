@@ -23,13 +23,11 @@ const useStyles = makeStyles(() => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
     marginBottom: '3rem'
   },
   text: {
     maxWidth: '500px',
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   }
 }))
@@ -51,8 +49,10 @@ const SoilsContent = (props: SoilsContentProps) => {
           />
         </div>
         <div className={styles.columnContainer}>
-          <Typography className={styles.header}>Soils</Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h1' className={styles.header}>
+            Soils
+          </Typography>
+          <Typography variant='h2' className={styles.text}>
             Saturated hydraulic conductivity (Ksat) is the measure of how easily
             water moves through the soil, expressed in micrometers per second.
             Saturated hydraulic conductivity data for Ball Ranch was downloaded

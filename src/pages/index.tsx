@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sectionHeader: {
     fontFamily: 'Oswald',
-    fontSize: '36px',
     fontWeight: 700,
     color: '#1B2C20',
   },
@@ -113,7 +112,9 @@ const IndexPage = (props: IndexPageProps) => {
       </div>
 
       <div className={styles.dataSection}>
-        <Typography className={styles.sectionHeader}>Data</Typography>
+        <Typography variant='h1' className={styles.sectionHeader}>
+          Data
+        </Typography>
         <div className={styles.dataSectionRow}>
           <DataSectionCard
             image={props.data.dataCardImageOne.childImageSharp.fluid}
@@ -142,7 +143,9 @@ const IndexPage = (props: IndexPageProps) => {
       </div>
 
       <div className={styles.nextStepsSection}>
-        <Typography className={styles.sectionHeader}>Next Steps</Typography>
+        <Typography variant='h1' className={styles.sectionHeader}>
+          Next Steps
+        </Typography>
         <div className={styles.nextStepsRow}>
           <div className={styles.nextStepsColumn}>
             <Typography className={styles.boldFont}>
@@ -246,7 +249,9 @@ export const pageQuery = graphql`
     dataCardImageTwo: file(relativePath: { eq: "data-card-image-two.jpg" }) {
       ...fluidImage
     }
-    dataCardImageThree: file(relativePath: { eq: "data-card-image-three.jpg" }) {
+    dataCardImageThree: file(
+      relativePath: { eq: "data-card-image-three.jpg" }
+    ) {
       ...fluidImage
     }
     dataCardImageFour: file(relativePath: { eq: "data-card-image-four.jpg" }) {

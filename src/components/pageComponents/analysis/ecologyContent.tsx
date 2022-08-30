@@ -57,12 +57,10 @@ const useStyles = makeStyles(() => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
     marginBottom: '2rem',
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
 }))
@@ -78,8 +76,10 @@ const EcologyContent = (props: EcologyContentProps) => {
     <div className={styles.contentContainer}>
       <div className={styles.overlayContainer}>
         <div className={styles.overlayTextContent}>
-          <Typography className={styles.header}>Ecology</Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h1' className={styles.header}>
+            Ecology
+          </Typography>
+          <Typography variant='h2' className={styles.text}>
             The entire San Joaquin River corridor was historically an extremely
             rich ecosystem supporting a wide variety of aquatic and terrestrial
             vegetation and wildlife species. Significant changes to the
@@ -103,7 +103,7 @@ const EcologyContent = (props: EcologyContentProps) => {
         </div>
       </div>
       <div className={styles.greenContainer}>
-        <Typography className={styles.header}>
+        <Typography variant='h1' className={styles.header}>
           Historical and Current Views of Ball Ranch
         </Typography>
         <div className={styles.imageSliderContainer}>
@@ -112,7 +112,7 @@ const EcologyContent = (props: EcologyContentProps) => {
             imgStyle={{ objectFit: 'cover' }}
           />
         </div>
-        <Typography className={styles.text}>
+        <Typography variant='h2' className={styles.text}>
           Slide bar to see how landscape changes between 19XX and Present Day
         </Typography>
       </div>
@@ -124,7 +124,7 @@ const EcologyContent = (props: EcologyContentProps) => {
           />
         </div>
         <div className={styles.chartsSectionTextContainer}>
-          <Typography className={styles.header}>
+          <Typography variant='h1' className={styles.header}>
             Species composition change over time
           </Typography>
           <Typography>

@@ -64,11 +64,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: '160px',
   },
   presentorName: {
-    fontSize: '20px',
     fontWeight: 400,
   },
   presentorOrg: {
-    fontSize: '20px',
     fontWeight: 200,
   },
   projectPartnerCpmt: {
@@ -82,12 +80,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   header: {
     fontFamily: 'Oswald',
-    fontSize: '36px',
     fontWeight: 600,
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
   marginBottom3: {
@@ -140,8 +136,12 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
           <Img fluid={props.fluidImage} imgStyle={{ objectFit: 'none' }} />
         </div>
         <div className={`${styles.presentorInfo} ${styles.columnContainer}`}>
-          <Typography className={styles.presentorName}>{props.name}</Typography>
-          <Typography className={styles.presentorOrg}>{props.org}</Typography>
+          <Typography variant='h2' className={styles.presentorName}>
+            {props.name}
+          </Typography>
+          <Typography variant='h2' className={styles.presentorOrg}>
+            {props.org}
+          </Typography>
         </div>
       </div>
     )
@@ -171,7 +171,9 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
             <Img fluid={props.fluidImage} imgStyle={{ objectFit: 'cover' }} />
           </div>
         )}
-        <Typography className={styles.text}>{props.info}</Typography>
+        <Typography variant='h2' className={styles.text}>
+          {props.info}
+        </Typography>
       </div>
     )
   }
@@ -190,10 +192,13 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
       <div className={styles.marginedContainer}>
         <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
           <div className={styles.textContainer}>
-            <Typography className={`${styles.header} ${styles.marginBottom2}`}>
+            <Typography
+              variant='h1'
+              className={`${styles.header} ${styles.marginBottom2}`}
+            >
               Stakeholder Workshop
             </Typography>
-            <Typography className={styles.text}>
+            <Typography variant='h2' className={styles.text}>
               The Ball Ranch Flood-MAR team engaged a diverse set of
               stakeholders and experts through a series of interviews with 20
               organizations, a stakeholder workshop with 26 participants, and a
@@ -258,7 +263,10 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
         />
 
         <div className={styles.columnContainer}>
-          <Typography className={`${styles.header} ${styles.marginBottom5}`}>
+          <Typography
+            variant='h1'
+            className={`${styles.header} ${styles.marginBottom5}`}
+          >
             Project Partners
           </Typography>
           <ProjectPartnerCmpt

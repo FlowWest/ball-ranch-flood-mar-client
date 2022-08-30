@@ -22,7 +22,6 @@ const useStyles = makeStyles(() => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
   },
   text: {
     fontWeight: 400,
@@ -44,12 +43,10 @@ const useStyles = makeStyles(() => ({
   cardHeader: {
     fontFamily: 'Oswald',
     fontWeight: 300,
-    fontSize: '36px',
     marginBottom: '2rem'
   },
   cardText: {
     fontWeight: 400,
-    fontSize: '20px',
     maxWidth: '400px'
   },
   logoImage: {
@@ -74,7 +71,9 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
     <div className={styles.contentContainer}>
       <div className={styles.rowContainer}>
         <div className={styles.textContainer}>
-          <Typography className={styles.header}>Ground Water</Typography>
+          <Typography variant='h1' className={styles.header}>
+            Ground Water
+          </Typography>
           <Typography className={styles.text}>
             Analysis of soils, topography, and groundwater levels at and in the
             vicinity of Ball Ranch indicates that suitable conditions exist to
@@ -94,7 +93,10 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
       </div>
       <Divider sx={{ border: '1px solid #000', margin: '8rem 0' }} />
       <div className={styles.columnContainer}>
-        <Typography className={`${styles.header} ${styles.marginBottom5}`}>
+        <Typography
+          variant='h1'
+          className={`${styles.header} ${styles.marginBottom5}`}
+        >
           Monitoring Programs
         </Typography>
         <div
@@ -107,8 +109,10 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             />
           </div>
           <div className={styles.columnContainer}>
-            <Typography className={styles.cardHeader}>CASGEM</Typography>
-            <Typography className={styles.cardText}>
+            <Typography variant='h1' className={styles.cardHeader}>
+              CASGEM
+            </Typography>
+            <Typography variant='h2' className={styles.cardText}>
               CASGEM monitoring network has XXXX wells at Ball Ranch and nearby.
               Data spans XXXX-XX-XX though YYYY-YY-YY
             </Typography>
@@ -122,8 +126,10 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             />
           </div>
           <div className={styles.columnContainer}>
-            <Typography className={styles.cardHeader}>Fresno State Piezometers</Typography>
-            <Typography className={styles.cardText}>
+            <Typography variant='h1' className={styles.cardHeader}>
+              Fresno State Piezometers
+            </Typography>
+            <Typography variant='h2' className={styles.cardText}>
               Fresno State has installed XX monitoring wells at the Bal Ranch
               site collecting data from XXXX-XX-XX to YYYY-YY-YY
             </Typography>
