@@ -17,14 +17,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   footerHeader: {
     fontFamily: 'Oswald',
     fontWeight: 300,
-    fontSize: '36px',
     color: '#FFF',
     marginBottom: '1.5rem',
   },
   footerParagraph: {
     fontFamily: 'Roboto',
     fontWeight: 400,
-    fontSize: '20px',
     color: '#FFF',
     maxWidth: '25rem',
   },
@@ -39,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   footerText: {
     fontFamily: 'Lato',
     fontWeight: 400,
-    fontSize: '20px',
     marginBottom: '1rem',
   },
 }))
@@ -50,10 +47,10 @@ const Footer = () => {
   return (
     <div className={styles.footerContainer}>
       <div>
-        <Typography className={styles.footerHeader}>
+        <Typography variant='h1' className={styles.footerHeader}>
           About Ball Ranch
         </Typography>
-        <Typography className={styles.footerParagraph}>
+        <Typography variant='h2' className={styles.footerParagraph}>
           The Ball Ranch Managed Aquifer Recharge (MAR) Planning and Analysis
           Project is assessing the feasibility and potential benefits of
           recharging groundwater on Ball Ranch. The first phase of the project
@@ -63,32 +60,50 @@ const Footer = () => {
         </Typography>
       </div>
       <div>
-        <Typography className={styles.footerHeader}>Our Partners</Typography>
+        <Typography variant='h1' className={styles.footerHeader}>
+          Our Partners
+        </Typography>
         <div className={styles.columnContainer}>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography className={styles.footerText}>FlowWest</Typography>
+            <Typography variant='h2' className={styles.footerText}>
+              FlowWest
+            </Typography>
           </div>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography className={styles.footerText}>River Partners</Typography>
+            <Typography variant='h2' className={styles.footerText}>
+              River Partners
+            </Typography>
           </div>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography className={styles.footerText}>San Joaquin River Conservency</Typography>
+            <Typography variant='h2' className={styles.footerText}>
+              San Joaquin River Conservency
+            </Typography>
           </div>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography className={styles.footerText}>California Department of Water Resources</Typography>
+            <Typography variant='h2' className={styles.footerText}>
+              California Department of Water Resources
+            </Typography>
           </div>
         </div>
       </div>
       <div>
-        <Typography className={styles.footerHeader}>Contact</Typography>
+        <Typography variant='h1' className={styles.footerHeader}>
+          Contact
+        </Typography>
         <div className={styles.columnContainer}>
-          <Typography className={styles.footerText}>1234 Ball Ranch Drive</Typography>
-          <Typography className={styles.footerText}>San Jose, California 12345-6789</Typography>
-          <Typography className={styles.footerText}>555-555-5555</Typography>
+          <Typography variant='h2' className={styles.footerText}>
+            1234 Ball Ranch Drive
+          </Typography>
+          <Typography variant='h2' className={styles.footerText}>
+            San Jose, California 12345-6789
+          </Typography>
+          <Typography variant='h2' className={styles.footerText}>
+            555-555-5555
+          </Typography>
         </div>
       </div>
     </div>

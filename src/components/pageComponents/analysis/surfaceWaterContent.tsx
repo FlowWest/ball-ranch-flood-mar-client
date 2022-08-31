@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -14,6 +15,9 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '500px',
     position: 'relative',
+    [mediaQueries.below992]: {
+      height: '700px',
+    },
   },
   columnContainer: {
     display: 'flex',
@@ -26,36 +30,46 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
   },
   overlayTextContent: {
-    width: '630px',
+    maxWidth: '630px',
     position: 'absolute',
     top: 0,
     left: 50,
     zIndex: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    [mediaQueries.below992]: {
+      maxWidth: '400px',
+    },
   },
   overlayImageContent: {
     width: '648px',
     position: 'absolute',
     top: 0,
     right: 50,
+    [mediaQueries.below992]: {
+      width: '400px',
+    },
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
     marginBottom: '3rem',
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
   chartSection: {
     width: '80%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    [mediaQueries.below992]: {
+      width: '100%',
+    },
   },
   chart: {
     width: '550px',
+    [mediaQueries.below992]: {
+      width: '350px',
+    },
   },
   chartHeader: {
     fontFamily: 'Lato',
@@ -65,13 +79,13 @@ const useStyles = makeStyles(() => ({
   scenariosContainer: {
     maxWidth: '300px',
     height: '300px',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
   },
   bold: {
     fontWeight: 700,
   },
   marginTop3: {
-    marginTop: '3rem'
+    marginTop: '3rem',
   },
 }))
 
@@ -86,8 +100,10 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
     <div className={styles.contentContainer}>
       <div className={styles.overlayContainer}>
         <div className={styles.overlayTextContent}>
-          <Typography className={styles.header}>Surface Water</Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h1' className={styles.header}>
+            Surface Water
+          </Typography>
+          <Typography variant='h2' className={styles.text}>
             The California Department of Water Resources (DWR) conducted a
             preliminary analysis of potential surface water supply to Ball Ranch
             from Little Dry Creek, Big Dry Creek, and the Fresno stormwater
@@ -113,10 +129,14 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
       </div>
       <Divider sx={{ border: '1px solid #000', margin: '8rem 6rem' }} />
       <div className={`${styles.columnContainer} ${styles.centerColumn}`}>
-        <Typography className={styles.header}>
+        <Typography variant='h1' className={styles.header}>
           Scenario Planning - Surface Water Avalibilty
         </Typography>
-        <Typography className={styles.text} sx={{ maxWidth: '900px' }}>
+        <Typography
+          variant='h2'
+          className={styles.text}
+          sx={{ maxWidth: '900px' }}
+        >
           An analysis by MDK Consulting analyzed three potential scenarios for
           diverting water to Ball Ranch (figure 1). During Above Normal and Wet
           water years, there is water available for scenarios 1 and 2; scneario

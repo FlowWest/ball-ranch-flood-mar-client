@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -13,20 +14,29 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '500px',
     position: 'relative',
+    [mediaQueries.below992]: {
+      height: '700px',
+    },
   },
   overlayTextContent: {
-    width: '630px',
+    maxWidth: '630px',
     position: 'absolute',
     top: 0,
     left: 50,
     zIndex: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    [mediaQueries.below992]: {
+      maxWidth: '400px',
+    },
   },
   overlayImageContent: {
     width: '648px',
     position: 'absolute',
     top: 0,
     right: 50,
+    [mediaQueries.below992]: {
+      width: '400px',
+    },
   },
   greenContainer: {
     backgroundColor: '#8A9155A6',
@@ -35,11 +45,14 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    margin: '9rem 0'
+    margin: '9rem 0',
   },
   imageSliderContainer: {
     width: '900px',
     marginBottom: '2rem',
+    [mediaQueries.below992]: {
+      width: '100%',
+    },
   },
   chartsSection: {
     width: '100%',
@@ -48,21 +61,26 @@ const useStyles = makeStyles(() => ({
   },
   chartsImage: {
     width: '450px',
+    [mediaQueries.below992]: {
+      width: '300px',
+      marginRight: '1rem'
+    },
   },
   chartsSectionTextContainer: {
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '454px',
+    [mediaQueries.below992]: {
+      maxWidth: '375px',
+    },
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
     marginBottom: '2rem',
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
 }))
@@ -78,8 +96,10 @@ const EcologyContent = (props: EcologyContentProps) => {
     <div className={styles.contentContainer}>
       <div className={styles.overlayContainer}>
         <div className={styles.overlayTextContent}>
-          <Typography className={styles.header}>Ecology</Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h1' className={styles.header}>
+            Ecology
+          </Typography>
+          <Typography variant='h2' className={styles.text}>
             The entire San Joaquin River corridor was historically an extremely
             rich ecosystem supporting a wide variety of aquatic and terrestrial
             vegetation and wildlife species. Significant changes to the
@@ -103,7 +123,7 @@ const EcologyContent = (props: EcologyContentProps) => {
         </div>
       </div>
       <div className={styles.greenContainer}>
-        <Typography className={styles.header}>
+        <Typography variant='h1' className={styles.header}>
           Historical and Current Views of Ball Ranch
         </Typography>
         <div className={styles.imageSliderContainer}>
@@ -112,7 +132,7 @@ const EcologyContent = (props: EcologyContentProps) => {
             imgStyle={{ objectFit: 'cover' }}
           />
         </div>
-        <Typography className={styles.text}>
+        <Typography variant='h2' className={styles.text}>
           Slide bar to see how landscape changes between 19XX and Present Day
         </Typography>
       </div>
@@ -124,7 +144,7 @@ const EcologyContent = (props: EcologyContentProps) => {
           />
         </div>
         <div className={styles.chartsSectionTextContainer}>
-          <Typography className={styles.header}>
+          <Typography variant='h1' className={styles.header}>
             Species composition change over time
           </Typography>
           <Typography>
