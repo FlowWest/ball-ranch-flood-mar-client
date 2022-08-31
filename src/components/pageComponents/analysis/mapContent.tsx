@@ -23,7 +23,6 @@ const useStyles = makeStyles(() => ({
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
     marginBottom: '1rem',
   },
   text: {
@@ -41,7 +40,9 @@ const MapContent = () => {
 
   return (
     <div className={styles.contentContainer}>
-      <Typography className={styles.header}>Map</Typography>
+      <Typography variant='h1' className={styles.header}>
+        Map
+      </Typography>
       <Typography className={styles.text}>
         The following data was aggregated and analyzed in the feasibility
         assessment of Flood-MAR on Ball Ranch. Use the toggle to explore spatial

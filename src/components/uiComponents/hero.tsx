@@ -1,6 +1,7 @@
 import React from 'react'
 import { Theme, Typography } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
+import { mediaQueries } from '../layout/theme'
 
 interface StyleProps {
   image: any
@@ -19,12 +20,11 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     backgroundColor: 'olive',
     backgroundImage: ({ image }) => `url(${image})`,
     backgroundSize: 'cover',
-    marginBottom: ({marginBottom}) => marginBottom ?? '8rem',
+    marginBottom: ({ marginBottom }) => marginBottom ?? '8rem',
   },
   headerOne: {
     fontFamily: 'Oswald',
     fontStyle: 'normal',
-    fontSize: '36px',
     fontWeight: 600,
     lineHeight: '100%',
     marginBottom: '1rem !important',
@@ -33,21 +33,26 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     maxWidth: '40rem',
   },
   lowOpacityContainer: {
-    height: '157px',
+    minHeight: '157px',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.15)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    [mediaQueries.below992]: {
+      padding: '1rem',
+    },
   },
-  heroParagraph: {
+  subheader: {
     fontFamily: 'Lato',
     fontWeight: 400,
-    fontSize: '20px',
     textAlign: 'center',
     color: '#FFF',
     maxWidth: '80%',
+    [mediaQueries.below992]: {
+      maxWidth: '90%',
+    },
   },
 }))
 
@@ -64,17 +69,17 @@ const Hero = (props: HeroProps) => {
   const styles = useStyles({
     image: props.imageObj,
     imageHeight: props.imageHeight,
-    marginBottom: props.marginBottom
+    marginBottom: props.marginBottom,
   })
 
   if (props.fitInLowOpacityContainer) {
     return (
       <div className={styles.landingCard}>
         <div className={styles.lowOpacityContainer}>
-          <Typography variant='h2' className={styles.headerOne}>
+          <Typography variant='h1' className={styles.headerOne}>
             {props.header}
           </Typography>
-          <Typography className={styles.heroParagraph}>
+          <Typography variant='h2' className={styles.subheader}>
             {props.subheader}
           </Typography>
         </div>
@@ -83,13 +88,15 @@ const Hero = (props: HeroProps) => {
   } else {
     return (
       <div className={styles.landingCard}>
-        <Typography variant='h2' className={styles.headerOne}>
+        <Typography variant='h1' className={styles.headerOne}>
           {props.header}
         </Typography>
         <div className={styles.lowOpacityContainer}>
-          <Typography className={styles.heroParagraph}>
-            {props.subheader}
-          </Typography>
+          {props.subheader ? (
+            <Typography variant='h2' className={styles.subheader}>
+              {props.subheader}
+            </Typography>
+          ): <></>}
         </div>
       </div>
     )

@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   title: {
-    fontSize: '36px',
     fontWeight: 700,
     fontFamily: 'Oswald',
     letterSpacing: '0.25px',

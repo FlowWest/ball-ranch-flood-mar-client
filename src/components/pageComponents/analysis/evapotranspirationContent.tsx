@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
+import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -25,30 +26,34 @@ const useStyles = makeStyles(() => ({
   },
   evapoTextContainer: {
     maxWidth: '450px',
+    [mediaQueries.below992]: {
+      maxWidth: '400px',
+    },
   },
   evapoChart: {
     width: '900px',
+    [mediaQueries.below992]: {
+      width: '100%',
+    },
   },
   chartSubHeader: {
     maxWidth: '750px',
-    marginBottom: '4rem'
+    marginBottom: '4rem',
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
-    fontSize: '36px',
   },
   text: {
     fontWeight: 400,
-    fontSize: '20px',
     lineHeight: '2rem',
   },
   marginBottom3: {
     marginBottom: '3rem',
   },
   marginBottom2: {
-    marginBottom: '2rem'
-  }
+    marginBottom: '2rem',
+  },
 }))
 
 interface EvapoContentProps {
@@ -68,10 +73,13 @@ const EvapoContent = (props: EvapoContentProps) => {
           />
         </div>
         <div className={styles.evapoTextContainer}>
-          <Typography className={`${styles.header} ${styles.marginBottom3}`}>
+          <Typography
+            variant='h1'
+            className={`${styles.header} ${styles.marginBottom3}`}
+          >
             Evapotranspiration
           </Typography>
-          <Typography className={styles.text}>
+          <Typography variant='h2' className={styles.text}>
             Evapotranspiration (ET) is the volume of water transferred from the
             land surface to the atmosphere. This could influence the
             effectiveness of Flood-MAR at Ball Ranch. The OpenET platform uses
@@ -86,7 +94,10 @@ const EvapoContent = (props: EvapoContentProps) => {
       </div>
       <Divider sx={{ border: '1px solid #000', margin: '7rem 6rem' }} />
       <div className={styles.columnContainer}>
-        <Typography className={`${styles.header} ${styles.marginBottom2}`}>
+        <Typography
+          variant='h1'
+          className={`${styles.header} ${styles.marginBottom2}`}
+        >
           Evapotranspiration Over Time
         </Typography>
         <Typography className={styles.chartSubHeader}>
