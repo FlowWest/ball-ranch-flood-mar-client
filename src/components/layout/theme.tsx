@@ -41,7 +41,25 @@ export const AppThemeProvider: FCR<AppThemeProviderProps> = ({ children }) => {
           fontSize: '18px',
         },
       },
-      h2: {
+      subtitle1: {
+        [mediaQueries.above1200]: {
+          fontSize: '25px',
+        },
+        [mediaQueries.below1200]: {
+          fontSize: '25px',
+        },
+        [mediaQueries.below992]: {
+          fontSize: '25px',
+        },
+        [mediaQueries.below768]: {
+          fontSize: '15px',
+        },
+        [mediaQueries.below600]: {
+          fontSize: '15px',
+        },
+      },
+      body1: {
+        lineHeight: '2rem',
         [mediaQueries.above1200]: {
           fontSize: '20px',
         },

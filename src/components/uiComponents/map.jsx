@@ -24,13 +24,14 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: 0,
     right: 0,
-    width: '45%',
-    height: '97%',
-    opacity: 0.9,
+    width: '60%',
+    height: '100%',
   },
-  paper: {
-    display: 'flex',
-    flexDirection: 'column',
+  paperContent: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#fff',
+    padding: '1rem',
   },
   paperToolBar: {
     display: 'flex',
@@ -77,9 +78,9 @@ const Map = (props) => {
         const colorFillMap = ['#85D6FF', '#7209B7', '#FF6F59', '#43AA8B']
         const circlePaint = (idx) => ({
           'circle-radius': 4,
-          'circle-stroke-width': 2,
+          // 'circle-stroke-width': 2,
           'circle-color': colorFillMap[idx],
-          'circle-stroke-color': 'white',
+          // 'circle-stroke-color': 'white',
         })
         const polygonPaint = (idx) => ({
           'fill-color': colorFillMap[idx],
@@ -142,23 +143,32 @@ const Map = (props) => {
       <Slide in={panelOpen} direction='left' className={styles.slide}>
         <Paper
           elevation={3}
-          style={{ margin: 5, padding: '0 0 0 0.5rem' }}
+          style={{
+            // margin: 5,
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '3rem 3rem 3rem 3.5rem',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            borderRadius: 0,
+          }}
           className={styles.paper}
         >
-          <div className={styles.paperToolBar}>
-            <p>Title of layer viewed</p>
-            <IconButton
-              onClick={() => {
-                setPanelOpen(false)
-                setPanelData([])
-              }}
-              style={{ borderRadius: 0 }}
-            >
-              <CloseIcon />
-            </IconButton>
-          </div>
-          <div className={styles.chartContainer}>
-            <Chart data={panelData} />
+          <div className={styles.paperContent}>
+            <div className={styles.paperToolBar}>
+              <p>Title of layer viewed</p>
+              <IconButton
+                onClick={() => {
+                  setPanelOpen(false)
+                  setPanelData([])
+                }}
+                style={{ borderRadius: 0 }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <div className={styles.chartContainer}>
+              <Chart data={panelData} />
+            </div>
           </div>
         </Paper>
       </Slide>
