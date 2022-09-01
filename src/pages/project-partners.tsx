@@ -104,7 +104,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   text: {
     fontWeight: 400,
-    lineHeight: '2rem',
   },
   marginBottom3: {
     marginBottom: '3rem',
@@ -112,11 +111,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   marginBottom2: {
     marginBottom: '2rem',
   },
+  marginBottom1: {
+    marginBottom: '1rem'
+  },
   marginBottom5: {
     marginBottom: '5rem',
   },
   alignCenter: {
     alignItems: 'center',
+  },
+  alignSelf: {
+    alignSelf: 'center'
   },
   marginRight1: {
     marginRight: '1rem',
@@ -156,10 +161,10 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
           <Img fluid={props.fluidImage} imgStyle={{ objectFit: 'none' }} />
         </div>
         <div className={`${styles.presentorInfo} ${styles.columnContainer}`}>
-          <Typography variant='h2' className={styles.presentorName}>
+          <Typography variant='body1' className={styles.presentorName}>
             {props.name}
           </Typography>
-          <Typography variant='h2' className={styles.presentorOrg}>
+          <Typography variant='body1' className={styles.presentorOrg}>
             {props.org}
           </Typography>
         </div>
@@ -172,7 +177,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
       <div className={`${styles.projectPartnerCpmt} ${styles.columnContainer}`}>
         {props.fluidImages ? (
           <div
-            className={`${styles.rowContainer} ${styles.alignCenter} ${styles.marginBottom2}`}
+            className={`${styles.rowContainer} ${styles.alignCenter} ${styles.marginBottom1}`}
           >
             {props.fluidImages.map((image) => {
               return (
@@ -186,12 +191,12 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
           </div>
         ) : (
           <div
-            className={`${styles.projectPartnerImage} ${styles.marginBottom2}`}
+            className={`${styles.projectPartnerImage} ${styles.marginBottom1}`}
           >
             <Img fluid={props.fluidImage} imgStyle={{ objectFit: 'cover' }} />
           </div>
         )}
-        <Typography variant='h2' className={styles.text}>
+        <Typography variant='body1' className={styles.text}>
           {props.info}
         </Typography>
       </div>
@@ -210,7 +215,9 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
         fitInLowOpacityContainer={true}
       />
       <div className={styles.marginedContainer}>
-        <div className={`${styles.workshopSection} ${styles.rowContainer} ${styles.alignCenter}`}>
+        <div
+          className={`${styles.workshopSection} ${styles.rowContainer} ${styles.alignCenter}`}
+        >
           <div className={styles.textContainer}>
             <Typography
               variant='h1'
@@ -218,7 +225,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
             >
               Stakeholder Workshop
             </Typography>
-            <Typography variant='h2' className={styles.text}>
+            <Typography variant='body1' className={styles.text}>
               The Ball Ranch Flood-MAR team engaged a diverse set of
               stakeholders and experts through a series of interviews with 20
               organizations, a stakeholder workshop with 26 participants, and a
@@ -276,8 +283,8 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
 
         <Divider
           sx={{
-            border: '1px solid #000',
-            margin: '7rem 6rem',
+            border: '1px solid rgba(0, 0, 0, 0.25)',
+            margin: '6rem 6rem',
             alignSelf: 'stretch',
           }}
         />
@@ -285,7 +292,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
         <div className={styles.columnContainer}>
           <Typography
             variant='h1'
-            className={`${styles.header} ${styles.marginBottom5}`}
+            className={`${styles.header} ${styles.marginBottom5} ${styles.alignSelf}`}
           >
             Project Partners
           </Typography>

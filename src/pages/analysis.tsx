@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: '0 5rem',
     },
     [mediaQueries.above1200]: {
-      margin: '0 10rem',
+      margin: '0 15rem',
     },
     display: 'flex',
     flexDirection: 'column',
@@ -110,7 +110,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
         imageObj={heroBanner}
         imageHeight='295px'
         header='Analysis'
-        subheader='Use the tabs below to explore analyses of Ball Ranch.'
+        subheader='Select the tabs below to explore analyses of Ball Ranch.'
         marginBottom='0rem'
         fitInLowOpacityContainer={true}
       />

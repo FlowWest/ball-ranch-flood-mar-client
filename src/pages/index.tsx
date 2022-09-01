@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: '0 5rem',
     },
     [mediaQueries.above1200]: {
-      margin: '0 5rem',
+      margin: '0 10rem',
     },
     display: 'flex',
     flexDirection: 'column',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   dataSection: {
     width: '100%',
     backgroundColor: '#8A9155A6',
-    padding: '3rem',
+    padding: '3rem 3rem 4rem 3rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -41,9 +41,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   dataSectionRow: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     width: '100%',
-    marginTop: '4rem',
+    marginTop: '3rem',
     [mediaQueries.below992]: {
       flexDirection: 'column',
       alignItems: 'center',
@@ -72,10 +72,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '1rem 1.5rem',
   },
   boldFont: {
-    fontWeight: 600,
+    fontWeight: 900,
   },
   greenBackdrop: {
     backgroundColor: '#B6AF6226',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
+  },
+  orderedList: {
+    marginTop: '0',
+    paddingLeft: '1.5rem',
+    '& li:not(:last-child)': {
+      marginBottom: '1.5rem',
+    },
+  },
+  orderedListHeader: {
+    alignSelf: 'center',
+    marginBottom: '2rem',
   },
 }))
 
@@ -113,7 +125,7 @@ const IndexPage = (props: IndexPageProps) => {
         <ImageRow
           image={props.data.imageTwo.childImageSharp.fluid}
           reverse={true}
-          header='Why Ball Ranch'
+          header='Why Ball Ranch?'
           content='Ball Ranch is a 360 acre property acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and the Little Dry Creek watersheds, and has numerous depressions created by historical aggregate mining that can temporarily store surface water. Implementing Flood-MAR at Ball Ranch could take advantage of potential surface water supplies and topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
           alt='Image of river'
         />
@@ -156,70 +168,64 @@ const IndexPage = (props: IndexPageProps) => {
         </Typography>
         <div className={styles.nextStepsRow}>
           <div className={styles.nextStepsColumn}>
-            <Typography className={styles.boldFont}>
-              The team identified data gaps when conducting the feasibility
-              analysis. Remaining data gaps and next steps include:
+            <Typography variant='subtitle1' className={styles.boldFont}>
+              The feasibility analysis identified remaining data gaps and next
+              steps including the following.
             </Typography>
             <br />
-            <ul>
-              <li>
-                <span className={styles.boldFont}>Flow Regimes.</span> Identify
-                what flow regimes could impact species both negatively and
-                beneficially.
-              </li>
-              <br />
-              <li>
-                <span className={styles.boldFont}>Subsurface Resistivity.</span>{' '}
-                Map Ball Ranch subsurface resistivity using TowTEM
-              </li>
-              <br />
-              <li>
-                <span className={styles.boldFont}>Flooding Impact.</span>{' '}
-                Identify if there is any flooding impact from recharging the
-                aquifer at Ball Ranch
-              </li>
-              <br />
-              <li>
-                <span className={styles.boldFont}>Quantifying benefits.</span>{' '}
-                Develop framework for characterizing where water goes and if it
-                has recharge benefit, SJR habitat benefit, or SJR temperature
-                benefit and confirm if flood benefit can be characterized or
-                quantified.
-              </li>
-            </ul>
+            <span className={styles.boldFont}>Flow Regimes.</span>
+            <Typography>
+              Identify what flow regimes could impact species both negatively
+              and beneficially.
+            </Typography>
+            <br />
+            <span className={styles.boldFont}>Subsurface Resistivity.</span>
+            <Typography>
+              Map Ball Ranch subsurface resistivity using TowTEM.
+            </Typography>
+            <br />
+            <span className={styles.boldFont}>Flooding Impact.</span>
+            <Typography>
+              Identify if there is any flooding impact from recharging the
+              aquifer at Ball Ranch.
+            </Typography>
+            <br />
+            <span className={styles.boldFont}>Quantifying benefits.</span>
+            <Typography>
+              Develop framework for characterizing where water goes and if it
+              has recharge benefit, SJR habitat benefit, or SJR temperature
+              benefit and confirm if flood benefit can be characterized or
+              quantified.
+            </Typography>
           </div>
           <div className={`${styles.nextStepsColumn} ${styles.greenBackdrop}`}>
-            <Typography>
-              A cohesive strategy for project implementation is the next phase
-              of this project and could include:
+            <Typography
+              variant='subtitle1'
+              className={styles.orderedListHeader}
+            >
+              Cohesive strategy for implementation
             </Typography>
-            <ol>
+            <ol className={styles.orderedList}>
               <li>
                 Identification and quantification of groundwater recharge
                 limitations;
               </li>
-              <br />
               <li>
                 Identification of and recommendations for addressing data gaps
                 and information needs;
               </li>
-              <br />
               <li>
                 Identification of revisions required to long-term management
                 protocols for the site resulting from implementation;
               </li>
-              <br />
               <li>Data collection and data management plans;</li>
-              <br />
               <li>
                 Conceptual alternatives for the Phase II Implementation Project;
               </li>
-              <br />
               <li>
                 A preferred alternative to carry forward to the Phase II
                 Implementation Project;
               </li>
-              <br />
               <li>A final design of the preferred alternative.</li>
             </ol>
           </div>

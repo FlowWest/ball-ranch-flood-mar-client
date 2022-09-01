@@ -19,6 +19,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   dataCardImage: {
+    borderRadius: '4px',
+    overflow: 'hidden',
     width: '100%',
     [mediaQueries.below992]: {
       width: '100%',
@@ -45,7 +47,6 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     color: 'rgba(0, 0, 0, 0.87)',
-    lineHeight: '100%',
   },
 }))
 
@@ -69,10 +70,10 @@ const DataSectionCard = (props: DataSectionCardProps) => {
         />
       </div>
       <div className={styles.dataCardContent}>
-        <Typography variant='h2' className={styles.dataCardHeader}>
+        <Typography variant='body1' className={styles.dataCardHeader}>
           {props.header}
         </Typography>
-        <Typography variant='h2' className={styles.dataCardParagraph}>
+        <Typography variant='body1' className={styles.dataCardParagraph}>
           {props.paragraph}
         </Typography>
       </div>
