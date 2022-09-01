@@ -56,7 +56,6 @@ const useStyles = makeStyles(() => ({
   },
   text: {
     fontWeight: 400,
-    lineHeight: '2rem',
   },
   chartSection: {
     width: '80%',
@@ -103,7 +102,7 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
           <Typography variant='h1' className={styles.header}>
             Surface Water
           </Typography>
-          <Typography variant='h2' className={styles.text}>
+          <Typography variant='body1' className={styles.text}>
             The California Department of Water Resources (DWR) conducted a
             preliminary analysis of potential surface water supply to Ball Ranch
             from Little Dry Creek, Big Dry Creek, and the Fresno stormwater
@@ -127,13 +126,15 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
           />
         </div>
       </div>
-      <Divider sx={{ border: '1px solid #000', margin: '8rem 6rem' }} />
+      <Divider
+        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
+      />
       <div className={`${styles.columnContainer} ${styles.centerColumn}`}>
         <Typography variant='h1' className={styles.header}>
           Scenario Planning - Surface Water Avalibilty
         </Typography>
         <Typography
-          variant='h2'
+          variant='body1'
           className={styles.text}
           sx={{ maxWidth: '900px' }}
         >

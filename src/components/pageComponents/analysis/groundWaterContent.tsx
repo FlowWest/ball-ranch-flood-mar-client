@@ -1,18 +1,18 @@
 import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import Img from 'gatsby-image'
-import { Typography, Divider } from '@mui/material'
+import { Typography } from '@mui/material'
 import { mediaQueries } from '../../layout/theme'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
+    width: '100%',
     fontFamily: 'Lato',
     display: 'flex',
     flexDirection: 'column',
   },
   rowContainer: {
     display: 'flex',
-    justifyContent: 'center',
   },
   columnContainer: {
     display: 'flex',
@@ -31,26 +31,19 @@ const useStyles = makeStyles(() => ({
   text: {
     fontWeight: 400,
     marginTop: '3rem',
-    lineHeight: '2.5rem',
-  },
-  imageContainer: {
-    width: '470px',
-    marginLeft: '5rem',
-    [mediaQueries.below992]: {
-      marginLeft: '2rem',
-      width: '300px',
-    },
   },
   greenBox: {
     backgroundColor: '#B6AF6226',
-    width: '950px',
-    height: '270px',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0 7rem',
+    padding: '1rem 2rem',
+    '&:hover': {
+      cursor: 'pointer',
+    },
     [mediaQueries.below992]: {
       width: '100%',
-      padding: '0 3rem'
+      padding: '0 3rem',
     },
   },
   cardHeader: {
@@ -63,16 +56,21 @@ const useStyles = makeStyles(() => ({
   },
   cardText: {
     fontWeight: 400,
-    maxWidth: '400px',
+    maxWidth: '250px',
   },
   logoImage: {
-    width: '205px',
+    width: '125px',
+    marginRight: '2rem',
     [mediaQueries.below992]: {
-      marginRight: '2rem'
+      marginRight: '2rem',
     },
   },
-  marginBottom5: {
-    marginBottom: '5rem',
+  link: {
+    textDecoration: 'none',
+    color: '#000',
+  },
+  spaceEvenly: {
+    justifyContent: 'space-evenly',
   },
   marginBottom3: {
     marginBottom: '3rem',
@@ -88,12 +86,12 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
 
   return (
     <div className={styles.contentContainer}>
-      <div className={styles.rowContainer}>
+      <div className={`${styles.rowContainer} ${styles.spaceEvenly}`}>
         <div className={styles.textContainer}>
           <Typography variant='h1' className={styles.header}>
             Ground Water
           </Typography>
-          <Typography className={styles.text}>
+          <Typography variant='body1' className={styles.text}>
             Analysis of soils, topography, and groundwater levels at and in the
             vicinity of Ball Ranch indicates that suitable conditions exist to
             percolate surface water delivered to depressions on Ball Ranch to
@@ -103,56 +101,58 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             Ball Ranch.
           </Typography>
         </div>
-        <div className={styles.imageContainer}>
-          <Img
-            fluid={props.images.groundWaterImage}
-            imgStyle={{ objectFit: 'cover' }}
-          />
-        </div>
-      </div>
-      <Divider sx={{ border: '1px solid #000', margin: '8rem 0' }} />
-      <div className={styles.columnContainer}>
-        <Typography
-          variant='h1'
-          className={`${styles.header} ${styles.marginBottom5}`}
-        >
-          Monitoring Programs
-        </Typography>
-        <div
-          className={`${styles.greenBox} ${styles.rowContainer} ${styles.marginBottom3}`}
-        >
-          <div className={styles.logoImage}>
-            <Img
-              fluid={props.images.casgemLogo}
-              imgStyle={{ objectFit: 'cover' }}
-            />
-          </div>
-          <div className={styles.columnContainer}>
-            <Typography variant='h1' className={styles.cardHeader}>
-              CASGEM
-            </Typography>
-            <Typography variant='h2' className={styles.cardText}>
-              CASGEM monitoring network has XXXX wells at Ball Ranch and nearby.
-              Data spans XXXX-XX-XX though YYYY-YY-YY
-            </Typography>
-          </div>
-        </div>
-        <div className={`${styles.greenBox} ${styles.rowContainer}`}>
-          <div className={styles.logoImage}>
-            <Img
-              fluid={props.images.csuFresnoLogo}
-              imgStyle={{ objectFit: 'cover' }}
-            />
-          </div>
-          <div className={styles.columnContainer}>
-            <Typography variant='h1' className={styles.cardHeader}>
-              Fresno State Piezometers
-            </Typography>
-            <Typography variant='h2' className={styles.cardText}>
-              Fresno State has installed XX monitoring wells at the Bal Ranch
-              site collecting data from XXXX-XX-XX to YYYY-YY-YY
-            </Typography>
-          </div>
+        <div className={styles.columnContainer}>
+          <a
+            href='https://water.ca.gov/programs/groundwater-management/groundwater-elevation-monitoring--casgem'
+            target='_blank'
+            rel='noopener noreferrer'
+            className={styles.link}
+          >
+            <div
+              className={`${styles.greenBox} ${styles.rowContainer} ${styles.marginBottom3}`}
+            >
+              <div className={styles.logoImage}>
+                <Img
+                  fluid={props.images.casgemLogo}
+                  imgStyle={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className={styles.columnContainer}>
+                <Typography variant='subtitle1' className={styles.cardHeader}>
+                  CASGEM
+                </Typography>
+                <Typography variant='body1' className={styles.cardText}>
+                  CASGEM monitoring network has XXXX wells at Ball Ranch and
+                  nearby. Data spans XXXX-XX-XX though YYYY-YY-YY
+                </Typography>
+              </div>
+            </div>
+          </a>
+
+          <a
+            href='https://water.ca.gov/programs/groundwater-management/groundwater-elevation-monitoring--casgem'
+            target='_blank'
+            rel='noopener noreferrer'
+            className={styles.link}
+          >
+            <div className={`${styles.greenBox} ${styles.rowContainer}`}>
+              <div className={styles.logoImage}>
+                <Img
+                  fluid={props.images.csuFresnoLogo}
+                  imgStyle={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className={styles.columnContainer}>
+                <Typography variant='subtitle1' className={styles.cardHeader}>
+                  Fresno State Piezometers
+                </Typography>
+                <Typography variant='body1' className={styles.cardText}>
+                  Fresno State has installed XX monitoring wells at the Bal
+                  Ranch site collecting data from XXXX-XX-XX to YYYY-YY-YY
+                </Typography>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>

@@ -26,6 +26,7 @@ const useStyles = makeStyles(() => ({
     '&:hover': {
       color: '#0B2901',
       borderBottom: '2px solid #0B2901',
+      cursor: 'pointer'
     },
   },
 }))
