@@ -81,7 +81,6 @@ const useStyles = makeStyles(() => ({
   },
   text: {
     fontWeight: 400,
-    lineHeight: '2rem',
   },
 }))
 
@@ -99,7 +98,7 @@ const EcologyContent = (props: EcologyContentProps) => {
           <Typography variant='h1' className={styles.header}>
             Ecology
           </Typography>
-          <Typography variant='h2' className={styles.text}>
+          <Typography variant='body1' className={styles.text}>
             The entire San Joaquin River corridor was historically an extremely
             rich ecosystem supporting a wide variety of aquatic and terrestrial
             vegetation and wildlife species. Significant changes to the
@@ -132,7 +131,7 @@ const EcologyContent = (props: EcologyContentProps) => {
             imgStyle={{ objectFit: 'cover' }}
           />
         </div>
-        <Typography variant='h2' className={styles.text}>
+        <Typography variant='body1' className={styles.text}>
           Slide bar to see how landscape changes between 19XX and Present Day
         </Typography>
       </div>

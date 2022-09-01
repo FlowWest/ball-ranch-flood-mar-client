@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Divider, Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
@@ -7,10 +7,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
     width: '100%',
-    height: '564px',
+    // height: '450px',
     backgroundColor: '#8A9155',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     padding: '3rem 6rem',
     color: '#FFF',
   },
@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   footerLink: {
     display: 'flex',
   },
+  link: {
+    textDecoration: 'none',
+    color: '#FFF'
+  },
   footerText: {
     fontFamily: 'Lato',
     fontWeight: 400,
@@ -50,7 +54,7 @@ const Footer = () => {
         <Typography variant='h1' className={styles.footerHeader}>
           About Ball Ranch
         </Typography>
-        <Typography variant='h2' className={styles.footerParagraph}>
+        <Typography variant='body1' className={styles.footerParagraph}>
           The Ball Ranch Managed Aquifer Recharge (MAR) Planning and Analysis
           Project is assessing the feasibility and potential benefits of
           recharging groundwater on Ball Ranch. The first phase of the project
@@ -59,6 +63,16 @@ const Footer = () => {
           (from wet season flows), and assessing stakeholder support.
         </Typography>
       </div>
+
+      <Divider
+        orientation='vertical'
+        flexItem={true}
+        sx={{
+          border: '1px solid rgba(0, 0, 0, 0.15)',
+          margin: '0 5rem',
+        }}
+      />
+
       <div>
         <Typography variant='h1' className={styles.footerHeader}>
           Our Partners
@@ -66,44 +80,56 @@ const Footer = () => {
         <div className={styles.columnContainer}>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography variant='h2' className={styles.footerText}>
-              FlowWest
+            <Typography variant='body1' className={styles.footerText}>
+              <a
+                href='https://www.flowwest.com/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.link}
+              >
+                FlowWest
+              </a>
             </Typography>
           </div>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography variant='h2' className={styles.footerText}>
-              River Partners
+            <Typography variant='body1' className={styles.footerText}>
+              <a
+                href='https://riverpartners.org/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.link}
+              >
+                River Partners
+              </a>
             </Typography>
           </div>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography variant='h2' className={styles.footerText}>
-              San Joaquin River Conservency
+            <Typography variant='body1' className={styles.footerText}>
+              <a
+                href='http://sjrc.ca.gov/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.link}
+              >
+                San Joaquin River Conservency
+              </a>
             </Typography>
           </div>
           <div className={styles.footerLink}>
             <ChevronLeftIcon htmlColor='#FDFBFB8A' />
-            <Typography variant='h2' className={styles.footerText}>
-              California Department of Water Resources
+            <Typography variant='body1' className={styles.footerText}>
+              <a
+                href='https://water.ca.gov/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.link}
+              >
+                California Department of Water Resources
+              </a>
             </Typography>
           </div>
-        </div>
-      </div>
-      <div>
-        <Typography variant='h1' className={styles.footerHeader}>
-          Contact
-        </Typography>
-        <div className={styles.columnContainer}>
-          <Typography variant='h2' className={styles.footerText}>
-            1234 Ball Ranch Drive
-          </Typography>
-          <Typography variant='h2' className={styles.footerText}>
-            San Jose, California 12345-6789
-          </Typography>
-          <Typography variant='h2' className={styles.footerText}>
-            555-555-5555
-          </Typography>
         </div>
       </div>
     </div>

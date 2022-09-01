@@ -22,11 +22,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     backgroundSize: 'cover',
     marginBottom: ({ marginBottom }) => marginBottom ?? '8rem',
   },
-  headerOne: {
+  header: {
     fontFamily: 'Oswald',
     fontStyle: 'normal',
     fontWeight: 600,
-    lineHeight: '100%',
     marginBottom: '1rem !important',
     color: '#FFF',
     textAlign: 'center',
@@ -49,9 +48,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     fontWeight: 400,
     textAlign: 'center',
     color: '#FFF',
-    maxWidth: '80%',
+    maxWidth: '70%',
     [mediaQueries.below992]: {
-      maxWidth: '90%',
+      maxWidth: '80%',
     },
   },
 }))
@@ -76,10 +75,10 @@ const Hero = (props: HeroProps) => {
     return (
       <div className={styles.landingCard}>
         <div className={styles.lowOpacityContainer}>
-          <Typography variant='h1' className={styles.headerOne}>
+          <Typography variant='h1' className={styles.header}>
             {props.header}
           </Typography>
-          <Typography variant='h2' className={styles.subheader}>
+          <Typography variant='body1' className={styles.subheader}>
             {props.subheader}
           </Typography>
         </div>
@@ -88,12 +87,12 @@ const Hero = (props: HeroProps) => {
   } else {
     return (
       <div className={styles.landingCard}>
-        <Typography variant='h1' className={styles.headerOne}>
+        <Typography variant='h1' className={styles.header}>
           {props.header}
         </Typography>
         <div className={styles.lowOpacityContainer}>
           {props.subheader ? (
-            <Typography variant='h2' className={styles.subheader}>
+            <Typography variant='body1' className={styles.subheader}>
               {props.subheader}
             </Typography>
           ): <></>}
