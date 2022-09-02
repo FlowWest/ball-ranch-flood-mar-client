@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import makeStyles from '@mui/styles/makeStyles'
-import { Typography } from '@mui/material'
+import { Slider, Theme, Typography } from '@mui/material'
+import CodeIcon from '@mui/icons-material/Code'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import catImage from '../../../images/cat.jpeg'
+import dogImage from '../../../images/dog.jpeg'
 
-const useStyles = makeStyles(() => ({
+interface StyleProps {
+  sliderImageOne: any
+  sliderImageTwo: any
+}
+
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   contentContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -17,6 +25,12 @@ const useStyles = makeStyles(() => ({
     [mediaQueries.below992]: {
       height: '700px',
     },
+  },
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   overlayTextContent: {
     maxWidth: '630px',
@@ -48,10 +62,32 @@ const useStyles = makeStyles(() => ({
     margin: '9rem 0',
   },
   imageSliderContainer: {
-    width: '900px',
+    position: 'relative',
     marginBottom: '2rem',
-    [mediaQueries.below992]: {
-      width: '100%',
+  },
+  sliderContainer: {
+    position: 'absolute',
+    width: '90%',
+  },
+  slider: {
+    '& > .MuiSlider-thumb': {
+      clipPath:
+        'polygon(30% 20%, 0 50%, 30% 81%, 30% 58%, 70% 58%, 70% 81%, 100% 50%, 70% 20%, 70% 43%, 30% 43%)',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      width: '40px',
+      height: '40px',
+      '&:hover': {
+        backgroundColor: 'rgba(0,0,0,1)',
+      },
+      '&:active': {
+        backgroundColor: 'rgba(0,0,0,1)',
+      },
+    },
+    '& > .MuiSlider-rail': {
+      display: 'none',
+    },
+    '& > .MuiSlider-track': {
+      display: 'none',
     },
   },
   chartsSection: {
@@ -63,7 +99,7 @@ const useStyles = makeStyles(() => ({
     width: '450px',
     [mediaQueries.below992]: {
       width: '300px',
-      marginRight: '1rem'
+      marginRight: '1rem',
     },
   },
   chartsSectionTextContainer: {
@@ -89,7 +125,26 @@ interface EcologyContentProps {
 }
 
 const EcologyContent = (props: EcologyContentProps) => {
-  const styles = useStyles()
+  const [sliderValue, setSliderValue] = useState(50)
+
+  const styles = useStyles({
+    sliderImageOne: catImage,
+    sliderImageTwo: dogImage,
+  })
+
+  const onSliderChange = (value: number | number[]) => {
+    if (typeof value == 'number') {
+      setSliderValue(value)
+    }
+  }
+
+  const getLeftImageWidth = (sliderValue: number) => {
+    return `${sliderValue}%`
+  }
+
+  const getRightImageWidth = (sliderValue: number) => {
+    return `${100 - sliderValue}%`
+  }
 
   return (
     <div className={styles.contentContainer}>
@@ -125,11 +180,37 @@ const EcologyContent = (props: EcologyContentProps) => {
         <Typography variant='h1' className={styles.header}>
           Historical and Current Views of Ball Ranch
         </Typography>
-        <div className={styles.imageSliderContainer}>
-          <Img
-            fluid={props.images.mockImageSlider}
-            imgStyle={{ objectFit: 'cover' }}
+        <div
+          className={`${styles.imageSliderContainer} ${styles.rowContainer}`}
+        >
+          <img
+            src={catImage}
+            width='50%'
+            height='300px'
+            style={{
+              width: getLeftImageWidth(sliderValue),
+              height: '300px',
+              objectFit: 'cover',
+            }}
           />
+          <img
+            src={dogImage}
+            width='50%'
+            height='300px'
+            style={{
+              width: getRightImageWidth(sliderValue),
+              height: '300px',
+              objectFit: 'cover',
+            }}
+          />
+          <div className={styles.sliderContainer}>
+            <Slider
+              aria-label='Historical and Current Views of Ball Ranch'
+              defaultValue={50}
+              onChange={(event, value) => onSliderChange(value)}
+              className={styles.slider}
+            />
+          </div>
         </div>
         <Typography variant='body1' className={styles.text}>
           Slide bar to see how landscape changes between 19XX and Present Day
