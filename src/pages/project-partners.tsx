@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [mediaQueries.above1200]: {
       margin: '0 5rem',
     },
+    paddingBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginRight: '0',
       marginBottom: '5rem',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
     },
   },
   presentorsCard: {
@@ -112,7 +113,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: '2rem',
   },
   marginBottom1: {
-    marginBottom: '1rem'
+    marginBottom: '1rem',
   },
   marginBottom5: {
     marginBottom: '5rem',
@@ -121,7 +122,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   alignSelf: {
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   marginRight1: {
     marginRight: '1rem',

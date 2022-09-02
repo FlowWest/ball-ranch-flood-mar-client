@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     padding: '0 5rem',
+    paddingBottom: '5rem',
     [mediaQueries.below992]: {
       padding: '0 1rem',
     },

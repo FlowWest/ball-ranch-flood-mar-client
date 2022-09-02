@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [mediaQueries.above1200]: {
       margin: '0 15rem',
     },
+    paddingBottom: '3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollableContainer: {
     overflow: 'scroll',
-    maxHeight: '80vh',
+    maxHeight: '85vh',
     paddingTop: '5rem',
 
     '&::-webkit-scrollbar': {

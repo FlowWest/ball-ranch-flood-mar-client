@@ -21,19 +21,19 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Lato',
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: '3rem'
+    paddingBottom: '3rem',
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
     marginBottom: '1rem',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   text: {
     fontWeight: 400,
     maxWidth: '90%',
     marginBottom: '1.5rem',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   map: {
     margin: '0 30px',
