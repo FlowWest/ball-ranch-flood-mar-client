@@ -3,6 +3,20 @@ import makeStyles from '@mui/styles/makeStyles'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import {
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+  Legend,
+  Bar,
+  Label,
+  Rectangle,
+} from 'recharts'
+
+import mdkScenariosDataFormatted from '../../../data/mdk_scenarios_dta_formatted.json'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -58,14 +72,14 @@ const useStyles = makeStyles(() => ({
     fontWeight: 400,
   },
   chartSection: {
-    width: '80%',
-    justifyContent: 'space-between',
+    width: '100%',
+    justifyContent: 'space-evenly',
     [mediaQueries.below992]: {
       width: '100%',
     },
   },
   chart: {
-    width: '550px',
+    width: '50%',
     [mediaQueries.below992]: {
       width: '350px',
     },
@@ -74,6 +88,25 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Lato',
     fontWeight: 300,
     textTransform: 'uppercase',
+  },
+  chartTooltipContent: {
+    backgroundColor: '#FFF',
+    padding: '0.5rem 1rem',
+    border: '0.5px solid #000',
+  },
+  chartLegendContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  legendBlock: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: '0 0.5rem'
+  },
+  legendSquare: {
+    width: '20px',
+    height: '20px',
+    marginRight: '0.25rem'
   },
   scenariosContainer: {
     maxWidth: '300px',
@@ -94,6 +127,102 @@ interface SurfaceWaterContentProps {
 
 const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
   const styles = useStyles()
+
+  function customizedTick(props: any) {
+    const { x, y, index, payload, width } = props
+    console.log(props, payload)
+
+    return (
+      <g>
+        <line x1={x - 1.5 * width} y1={y} x2={x - 1.5 * width} y2={y + 10} />
+        <text
+          x={x}
+          y={y}
+          textAnchor='middle'
+          dominantBaseline='hanging'
+          style={{ fontSize: '0.5rem' }}
+        >
+          {payload.value}
+        </text>
+      </g>
+    )
+  }
+
+  const CustomBar = (props: any) => {
+    let fill = props.fill
+    const scenario = props.scenario
+
+    if (scenario === 1) {
+      fill = 'rgb(177, 219, 196)'
+    } else if (scenario === 2) {
+      fill = 'rgb(242, 196,	161)'
+    } else if (scenario === 3) {
+      fill = 'rgb(194, 203, 224)'
+    }
+
+    return <Rectangle {...props} fill={fill} />
+  }
+
+  const CustomTooltip = (props: any) => {
+    const { active, payload } = props
+    if (!active || !payload) return null
+    let scenario
+    let color = (scenario: any) => {
+      if (scenario === 1) {
+        return 'rgb(177, 219, 196)'
+      } else if (scenario === 2) {
+        return 'rgb(242, 196,	161)'
+      } else if (scenario === 3) {
+        return 'rgb(194, 203, 224)'
+      }
+    }
+
+    for (const bar of payload) {
+      scenario = bar.payload.scenario
+      return (
+        <div className={styles.chartTooltipContent}>
+          <div style={{ color: color(scenario) }}>Scenario {scenario}</div>
+          <div>{bar.payload.water_year_type}</div>
+          <div>Water Available: {bar.payload.water_available_TAF}</div>
+        </div>
+      )
+    }
+    return null
+  }
+
+  const RenderLegend = (props: any) => {
+    const { payload } = props
+
+    return (
+      <div className={styles.chartLegendContainer}>
+        <Typography>Scenario:</Typography>
+
+        <div className={`${styles.legendBlock} ${styles.rowContainer}`}>
+          <div
+            className={styles.legendSquare}
+            style={{ backgroundColor: 'rgb(177, 219, 196)' }}
+          ></div>
+          <Typography>1</Typography>
+        </div>
+
+        <div className={`${styles.legendBlock} ${styles.rowContainer}`}>
+          <div
+            className={styles.legendSquare}
+            style={{ backgroundColor: 'rgb(242, 196, 161)' }}
+          ></div>
+          <Typography>2</Typography>
+        </div>
+
+        <div className={`${styles.legendBlock} ${styles.rowContainer}`}>
+          <div
+            className={styles.legendSquare}
+            style={{ backgroundColor: 'rgb(194, 203, 224)' }}
+          ></div>
+          <Typography>3</Typography>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className={styles.contentContainer}>
@@ -147,10 +276,41 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
           className={`${styles.chartSection} ${styles.rowContainer} ${styles.marginTop3}`}
         >
           <div className={styles.chart}>
-            <Img
-              fluid={props.images.mockChartImage}
-              imgStyle={{ objectFit: 'cover' }}
-            />
+            <ResponsiveContainer>
+              <BarChart
+                data={mdkScenariosDataFormatted}
+                margin={{
+                  top: 0,
+                  right: 0,
+                  left: 20,
+                  bottom: 15,
+                }}
+              >
+                <CartesianGrid strokeDasharray='3 3' />
+                <XAxis
+                  dataKey='water_year_type'
+                  tick={customizedTick}
+                  interval={2}
+                  type='category'
+                />
+                <YAxis>
+                  <Label
+                    angle={270}
+                    position='left'
+                    style={{ textAnchor: 'middle', opacity: 0.75 }}
+                  >
+                    Water Available
+                  </Label>
+                </YAxis>
+                <Tooltip content={CustomTooltip} />
+                <Legend content={RenderLegend} />
+                <Bar
+                  dataKey='water_available_TAF'
+                  fill='#8884d8'
+                  shape={CustomBar}
+                />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
           <div
             className={`${styles.scenariosContainer} ${styles.columnContainer}`}
