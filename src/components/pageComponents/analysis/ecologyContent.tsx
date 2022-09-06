@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import makeStyles from '@mui/styles/makeStyles'
-import { Slider, Theme, Typography } from '@mui/material'
-import CodeIcon from '@mui/icons-material/Code'
+import { Theme, Typography } from '@mui/material'
+import {
+  ReactCompareSlider,
+  ReactCompareSliderHandle,
+  ReactCompareSliderImage,
+} from 'react-compare-slider'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
 import catImage from '../../../images/cat.jpeg'
@@ -62,33 +66,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     margin: '9rem 0',
   },
   imageSliderContainer: {
+    width: '100%',
     position: 'relative',
     marginBottom: '2rem',
-  },
-  sliderContainer: {
-    position: 'absolute',
-    width: '90%',
-  },
-  slider: {
-    '& > .MuiSlider-thumb': {
-      clipPath:
-        'polygon(30% 20%, 0 50%, 30% 81%, 30% 58%, 70% 58%, 70% 81%, 100% 50%, 70% 20%, 70% 43%, 30% 43%)',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      width: '40px',
-      height: '40px',
-      '&:hover': {
-        backgroundColor: 'rgba(0,0,0,1)',
-      },
-      '&:active': {
-        backgroundColor: 'rgba(0,0,0,1)',
-      },
-    },
-    '& > .MuiSlider-rail': {
-      display: 'none',
-    },
-    '& > .MuiSlider-track': {
-      display: 'none',
-    },
   },
   chartsSection: {
     width: '100%',
@@ -132,19 +112,10 @@ const EcologyContent = (props: EcologyContentProps) => {
     sliderImageTwo: dogImage,
   })
 
-  const onSliderChange = (value: number | number[]) => {
-    if (typeof value == 'number') {
-      setSliderValue(value)
-    }
-  }
-
-  const getLeftImageWidth = (sliderValue: number) => {
-    return `${sliderValue}%`
-  }
-
-  const getRightImageWidth = (sliderValue: number) => {
-    return `${100 - sliderValue}%`
-  }
+  const handlePositionChange = useCallback(
+    (position) => console.log('[Portrait]', position),
+    []
+  )
 
   return (
     <div className={styles.contentContainer}>
@@ -183,34 +154,38 @@ const EcologyContent = (props: EcologyContentProps) => {
         <div
           className={`${styles.imageSliderContainer} ${styles.rowContainer}`}
         >
-          <img
-            src={catImage}
-            width='50%'
-            height='300px'
+          <ReactCompareSlider
+            {...props}
+            handle={
+              <ReactCompareSliderHandle
+                buttonStyle={{
+                  backdropFilter: undefined,
+                  background: 'white',
+                  border: 0,
+                  color: '#333',
+                }}
+              />
+            }
+            itemOne={
+              <ReactCompareSliderImage
+                src='https://images.unsplash.com/photo-1580458148391-8c4951dc1465?auto=format&fit=crop&w=1280&q=80'
+                style={{ filter: 'grayscale(1)' }}
+                alt='one'
+              />
+            }
+            itemTwo={
+              <ReactCompareSliderImage
+                src='https://images.unsplash.com/photo-1580458148391-8c4951dc1465?auto=format&fit=crop&w=1280&q=80'
+                alt='two'
+              />
+            }
+            onPositionChange={handlePositionChange}
             style={{
-              width: getLeftImageWidth(sliderValue),
-              height: '300px',
-              objectFit: 'cover',
+              display: 'flex',
+              width: '100%',
+              height: '60vh',
             }}
           />
-          <img
-            src={dogImage}
-            width='50%'
-            height='300px'
-            style={{
-              width: getRightImageWidth(sliderValue),
-              height: '300px',
-              objectFit: 'cover',
-            }}
-          />
-          <div className={styles.sliderContainer}>
-            <Slider
-              aria-label='Historical and Current Views of Ball Ranch'
-              defaultValue={50}
-              onChange={(event, value) => onSliderChange(value)}
-              className={styles.slider}
-            />
-          </div>
         </div>
         <Typography variant='body1' className={styles.text}>
           Slide bar to see how landscape changes between 19XX and Present Day
