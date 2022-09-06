@@ -66,12 +66,21 @@ const useStyles = makeStyles((theme) => ({
       opacity: 0.9,
     },
   },
+  legendText: {
+    fontSize: '1rem'
+  },
+  legendBlock: {
+    height: '15px',
+    width: '15px',
+    marginRight: '0.5rem',
+    borderRadius: '10px'
+  },
   legendButton: {
     position: 'absolute',
     bottom: 10,
     right: 10,
-    width: '30px',
-    height: '30px',
+    width: '25px',
+    height: '25px',
     backgroundColor: 'rgba(255,255,255,1)',
     borderRadius: '3px',
     display: 'flex',
@@ -82,37 +91,114 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
   },
+  fontWeight400: {
+    fontWeight: 200,
+  },
+  alignCenter: {
+    alignItems: 'center'
+  },
+  alignStart: {
+    alignItems: 'start'
+  }
 }))
 
-const Map = (props) => {
+const projectBoundaryString = 'Project Boundary'
+const casgemWellPointsString = 'CASGEM Well Points'
+const fresnoStateWellPointsString = 'Fresno State Well Points'
+const cdecGagePointsString = 'CDEC Gage Points'
+
+const nameDictionary = {
+  sjrc_project_boundary: projectBoundaryString,
+  casgem_well_pts: casgemWellPointsString,
+  fresno_state_wells_pts: fresnoStateWellPointsString,
+  cdec_gages_pts: cdecGagePointsString,
+}
+
+export const nameToChartUnitsDictionary = {
+  [projectBoundaryString]: { xAxis: 'date_time', yAxis: 'ensemble_et' }, // date format = XXXX-XX-XX
+  [casgemWellPointsString]: { xAxis: 'date', yAxis: 'gse_gwe' }, // date format = XXXX-XX-XX 00:00:00
+  [fresnoStateWellPointsString]: {
+    xAxis: 'date',
+    yAxis: 'water_table_elevation_ft',
+  }, // date format = XXXX-XX-XX
+  [cdecGagePointsString]: { xAxis: 'obs_date', yAxis: 'value' }, // date format = XXXX-XX-XX
+}
+
+export const Map = (props) => {
   const styles = useStyles()
   const mapDiv = useRef(null)
 
   let [map, setMap] = useState(null)
   let [panelOpen, setPanelOpen] = useState(false)
-  let [panelData, setPanelData] = useState([])
+  let [panelData, setPanelData] = useState({})
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false,
   })
 
+  const darkGreenFill = '#5C9933'
+  const greenFill = '#21D19F'
+  const blueFill = '#645DD7'
+  const redFill = '#F40000'
+
   const LegendCmpt = () => {
     return (
       <div className={styles.legendContainer}>
         <div className={styles.columnContainer}>
-          <Typography>Legend</Typography>
+          <Typography className={styles.fontWeight400}>Legend</Typography>
           <Divider
             flexItem={true}
             sx={{
               border: '1px solid rgb(0, 0, 0,)',
-              margin: '0.25rem 2rem 1rem 2rem',
+              margin: '0.25rem 2rem 0rem 2rem',
             }}
           />
-          <div className={styles.columnContainer}>
-            <div className={styles.rowContainer}></div>
-            <div className={styles.rowContainer}></div>
-            <div className={styles.rowContainer}></div>
+          <div className={`${styles.columnContainer} ${styles.alignStart}`}>
+            <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
+              <div
+                className={styles.legendBlock}
+                style={{ backgroundColor: darkGreenFill }}
+              />
+              <Typography
+                className={`${styles.legendText} ${styles.fontWeight400}`}
+              >
+                Project Boundary
+              </Typography>
+            </div>
+            <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
+              <div
+                className={styles.legendBlock}
+                style={{ backgroundColor: greenFill }}
+              />
+              <Typography
+                className={`${styles.legendText} ${styles.fontWeight400}`}
+              >
+                Fresno Well Points
+              </Typography>
+            </div>
+            <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
+              <div
+                className={styles.legendBlock}
+                style={{ backgroundColor: blueFill }}
+              />
+              <Typography
+                className={`${styles.legendText} ${styles.fontWeight400}`}
+              >
+                CASGEM Well Points
+              </Typography>
+            </div>
+            <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
+              <div
+                className={styles.legendBlock}
+                style={{ backgroundColor: redFill }}
+              />
+              <Typography
+                className={`${styles.legendText} ${styles.fontWeight400}`}
+              >
+                CDEC Gage Points
+              </Typography>
+            </div>
           </div>
           <div className={styles.legendButton}>
             <IconButton
@@ -134,7 +220,6 @@ const Map = (props) => {
         <Paper
           elevation={3}
           style={{
-            // margin: 5,
             display: 'flex',
             justifyContent: 'center',
             padding: '2rem 2rem 2rem 2.5rem',
@@ -144,11 +229,12 @@ const Map = (props) => {
         >
           <div className={styles.paperContent}>
             <div className={styles.paperToolBar}>
-              <p>Title of layer viewed</p>
+              <div></div>
+              <p>{panelData.name}</p>
               <IconButton
                 onClick={() => {
                   setPanelOpen(false)
-                  setPanelData([])
+                  setPanelData({})
                 }}
                 style={{ borderRadius: 0 }}
               >
@@ -168,11 +254,11 @@ const Map = (props) => {
     const attachMap = (setMap, mapDiv) => {
       const map = new mapboxgl.Map({
         container: mapDiv.current || '',
-        style: 'mapbox://styles/mapbox/satellite-v9',
+        style: 'mapbox://styles/mapbox/outdoors-v11',
         center: props.data
           ? props.data.spatial[0].features[0].geometry.coordinates[0][0][0]
           : undefined,
-        zoom: 11.5,
+        zoom: 11,
         attributionControl: false,
       })
       setMap(map)
@@ -182,12 +268,12 @@ const Map = (props) => {
 
     if (map && props.data.spatial) {
       map.on('load', () => {
-        const colorFillMap = ['#85D6FF', '#7209B7', '#FF6F59', '#43AA8B']
+        const colorFillMap = [darkGreenFill, blueFill, greenFill, redFill]
         const circlePaint = (idx) => ({
           'circle-radius': 4,
-          // 'circle-stroke-width': 2,
+          'circle-stroke-width': 1.5,
           'circle-color': colorFillMap[idx],
-          // 'circle-stroke-color': 'white',
+          'circle-stroke-color': 'white',
         })
         const polygonPaint = (idx) => ({
           'fill-color': colorFillMap[idx],
@@ -223,7 +309,10 @@ const Map = (props) => {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
           }
 
-          popup.setLngLat(coordinates).setHTML(dataSrc.name).addTo(map)
+          popup
+            .setLngLat(coordinates)
+            .setHTML(nameDictionary[dataSrc.name])
+            .addTo(map)
         })
 
         // Change back to a pointer and hide popup when it leaves.
@@ -236,7 +325,7 @@ const Map = (props) => {
         map.on('click', dataSrc.name, (e) => {
           setPanelOpen(true)
           setPanelData({
-            name: dataSrc.name,
+            name: nameDictionary[dataSrc.name],
             tabular: props.data.tabular[dataSrc.name],
           })
         })
@@ -248,7 +337,7 @@ const Map = (props) => {
           center:
             props.data.spatial[0].features[0].geometry.coordinates[0][0][0],
           essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-          zoom: 11.5,
+          zoom: 11,
         })
       })
     }
@@ -262,5 +351,3 @@ const Map = (props) => {
     </div>
   )
 }
-
-export default Map

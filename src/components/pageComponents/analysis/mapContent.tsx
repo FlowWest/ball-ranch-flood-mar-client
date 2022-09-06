@@ -1,7 +1,7 @@
 import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Typography } from '@mui/material'
-import Map from '../../uiComponents/map'
+import { Map } from '../../uiComponents/map'
 
 //spatial data
 import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
