@@ -6,15 +6,16 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   Label,
 } from 'recharts'
 import { dateFormatter } from '../../util/helpers'
-import { nameToChartUnitsDictionary } from './map'
+import { nameToChartDataKeysDictionary } from './map'
+import { nameToChartLabelsDictionary } from './map'
 
 interface ChartData {
   name: string
+  site: string
   tabular: any[]
 }
 
@@ -35,7 +36,7 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
           <LineChart
             width={500}
             height={300}
-            data={this.props.data?.tabular[0]} //TODO: Currently only picks cdecH41 in CDEC Gafe Pts scenario
+            data={this.props.data?.tabular}
             margin={{
               top: 5,
               right: 30,
@@ -46,20 +47,23 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
             <CartesianGrid strokeDasharray='3 3' />
             <XAxis
               dataKey={
-                nameToChartUnitsDictionary[
+                nameToChartDataKeysDictionary[
                   this.props.data
-                    .name as keyof typeof nameToChartUnitsDictionary
+                    .name as keyof typeof nameToChartDataKeysDictionary
                 ].xAxis
               }
               tickFormatter={dateFormatter}
               style={{ fontSize: '1rem' }}
             >
-              <Label position='bottom' style={{ opacity: 0.5, textTransform: 'capitalize' }}>
+              <Label
+                position='bottom'
+                style={{ opacity: 0.5, textTransform: 'capitalize' }}
+              >
                 {
-                  nameToChartUnitsDictionary[
+                  nameToChartLabelsDictionary[
                     this.props.data
-                      .name as keyof typeof nameToChartUnitsDictionary
-                  ].xAxis.split('_')[0]
+                      .name as keyof typeof nameToChartLabelsDictionary
+                  ].xAxis
                 }
               </Label>
             </XAxis>
@@ -67,13 +71,17 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
               <Label
                 angle={270}
                 position='left'
-                style={{ textAnchor: 'middle', opacity: 0.5, textTransform: 'capitalize' }}
+                style={{
+                  textAnchor: 'middle',
+                  opacity: 0.5,
+                  textTransform: 'capitalize',
+                }}
               >
                 {
-                  nameToChartUnitsDictionary[
+                  nameToChartLabelsDictionary[
                     this.props.data
-                      .name as keyof typeof nameToChartUnitsDictionary
-                  ].yAxis.split('_')[0]
+                      .name as keyof typeof nameToChartLabelsDictionary
+                  ].yAxis
                 }
               </Label>
             </YAxis>
@@ -81,9 +89,9 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
             <Line
               type='monotone'
               dataKey={
-                nameToChartUnitsDictionary[
+                nameToChartDataKeysDictionary[
                   this.props.data
-                    .name as keyof typeof nameToChartUnitsDictionary
+                    .name as keyof typeof nameToChartDataKeysDictionary
                 ].yAxis
               }
               stroke='#8884d8'
