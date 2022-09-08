@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
-import heroBanner from '../images/data-exploration-hero.jpg'
+import heroBanner from '../images/index-page-banner.jpg'
 import Hero from '../components/uiComponents/hero'
 import LinksRow from '../components/uiComponents/linksRow'
 import MapContent from '../components/pageComponents/analysis/mapContent'
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [mediaQueries.above1200]: {
       margin: '0 15rem',
     },
+    paddingBottom: '3rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   scrollableContainer: {
     overflow: 'scroll',
-    maxHeight: '80vh',
+    maxHeight: '85vh',
     paddingTop: '5rem',
 
     '&::-webkit-scrollbar': {
@@ -71,7 +72,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <SurfaceWaterContent
         images={{
           surfaceWaterImage: props.data.surfaceWaterImage.childImageSharp.fluid,
-          mockChartImage: props.data.mockChartImage.childImageSharp.fluid,
         }}
       />
     ),
@@ -79,7 +79,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <EcologyContent
         images={{
           ecologyImage: props.data.ecologyImage.childImageSharp.fluid,
-          mockImageSlider: props.data.mockImageSlider.childImageSharp.fluid,
           ecologyChartsImage:
             props.data.ecologyChartsImage.childImageSharp.fluid,
         }}
@@ -89,7 +88,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <EvapoContent
         images={{
           evapoImage: props.data.evapoImage.childImageSharp.fluid,
-          evapoChart: props.data.evapoChart.childImageSharp.fluid,
         }}
       />
     ),
@@ -183,22 +181,13 @@ export const pageQuery = graphql`
     surfaceWaterImage: file(relativePath: { eq: "surface-water-image.jpg" }) {
       ...fluidImage
     }
-    mockChartImage: file(relativePath: { eq: "mock-chart-image.jpg" }) {
-      ...fluidImage
-    }
     ecologyImage: file(relativePath: { eq: "ecology-image.jpg" }) {
-      ...fluidImage
-    }
-    mockImageSlider: file(relativePath: { eq: "mock-image-slider.jpg" }) {
       ...fluidImage
     }
     ecologyChartsImage: file(relativePath: { eq: "ecology-charts-image.jpg" }) {
       ...fluidImage
     }
     evapoImage: file(relativePath: { eq: "evapo-image.jpg" }) {
-      ...fluidImage
-    }
-    evapoChart: file(relativePath: { eq: "evapo-chart.jpg" }) {
       ...fluidImage
     }
     soilsImage: file(relativePath: { eq: "soils-image.jpg" }) {

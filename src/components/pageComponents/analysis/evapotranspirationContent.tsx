@@ -3,6 +3,22 @@ import makeStyles from '@mui/styles/makeStyles'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import {
+  CartesianGrid,
+  Label,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
+import evapoWaterYearDry from '../../../data/evapo/evapo_water_year_dry.json'
+import evapoWaterYearWet from '../../../data/evapo/evapo_water_year_wet.json'
+import evapoWaterYearBelowNormal from '../../../data/evapo/evapo_water_year_below_normal.json'
+import evapoWaterYearCritical from '../../../data/evapo/evapo_water_year_critical.json'
+import { dateFormatter } from '../../../util/helpers'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -31,10 +47,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   evapoChart: {
-    width: '900px',
-    [mediaQueries.below992]: {
-      width: '100%',
-    },
+    height: '450px',
+    width: '90%',
   },
   chartSubHeader: {
     maxWidth: '750px',
@@ -107,10 +121,71 @@ const EvapoContent = (props: EvapoContentProps) => {
           by water year type.
         </Typography>
         <div className={styles.evapoChart}>
-          <Img
-            fluid={props.images.evapoChart}
-            imgStyle={{ objectFit: 'cover' }}
-          />
+          <ResponsiveContainer>
+            <LineChart
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 15,
+              }}
+            >
+              <Legend wrapperStyle={{ position: 'relative' }} />
+              <CartesianGrid strokeDasharray='3 3' />
+              <XAxis
+                dataKey='date_time'
+                tickFormatter={dateFormatter}
+                style={{ fontSize: '1rem' }}
+                allowDataOverflow={false}
+              >
+                <Label position='bottom' style={{ marginTop: '5rem' }}>
+                  Date
+                </Label>
+              </XAxis>
+              <YAxis>
+                <Label
+                  angle={270}
+                  position='left'
+                  style={{ textAnchor: 'middle', opacity: 0.75 }}
+                >
+                  Ensemble
+                </Label>
+              </YAxis>
+              <Tooltip />
+              <Line
+                name='Dry'
+                type='monotone'
+                dataKey='ensemble_et'
+                stroke='#8884d8'
+                activeDot={{ r: 8 }}
+                data={evapoWaterYearDry}
+              />
+              <Line
+                name='Wet'
+                type='monotone'
+                dataKey='ensemble_et'
+                stroke='#558468'
+                activeDot={{ r: 8 }}
+                data={evapoWaterYearWet}
+              />
+              <Line
+                name='Below Normal'
+                type='monotone'
+                dataKey='ensemble_et'
+                stroke='#7C0B2B'
+                activeDot={{ r: 8 }}
+                data={evapoWaterYearBelowNormal}
+              />
+              <Line
+                name='Critical'
+                type='monotone'
+                dataKey='ensemble_et'
+                stroke='#7C0B2B'
+                activeDot={{ r: 8 }}
+                data={evapoWaterYearCritical}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
