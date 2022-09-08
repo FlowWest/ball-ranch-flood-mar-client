@@ -566,7 +566,8 @@ export const Map = (props) => {
           <div className={styles.paperToolBar}>
             <div></div>
             <p>
-              {panelData.showDescriptionPanel ? panelData.name : panelData.site}
+              {panelData.site}
+              {/* {panelData.showDescriptionPanel ? panelData.name : panelData.site} */}
             </p>
             <IconButton
               onClick={() => {
