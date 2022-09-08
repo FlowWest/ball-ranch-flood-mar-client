@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import {
   LineChart,
   Line,
@@ -6,13 +6,16 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
+  Label,
 } from 'recharts'
-import { flatten } from 'lodash'
+import { dateFormatter } from '../../util/helpers'
+import { nameToChartDataKeysDictionary } from './map'
+import { nameToChartLabelsDictionary } from './map'
 
 interface ChartData {
   name: string
+  site: string
   tabular: any[]
 }
 
@@ -20,13 +23,6 @@ interface ChartProps {
   data: ChartData
 }
 interface ChartState {}
-
-const dataToChartDictionary = {
-  sjrc_project_boundary: { xAxis: 'date_time', yAxis: 'ensemble_et' },
-  casgem_well_pts: { xAxis: 'date', yAxis: 'gse_gwe' },
-  fresno_state_wells_pts: { xAxis: 'date', yAxis: 'water_table_elevation_ft' },
-  cdec_gages_pts: { xAxis: 'obs_date', yAxis: 'value' },
-}
 
 export default class Chart extends React.Component<ChartProps, ChartState> {
   constructor(props: any) {
@@ -40,31 +36,62 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
           <LineChart
             width={500}
             height={300}
-            data={this.props.data?.tabular[0]}
-            // data={flatten(this.props.data?.tabular)}
+            data={this.props.data?.tabular}
             margin={{
               top: 5,
               right: 30,
               left: 20,
-              bottom: 5,
+              bottom: 25,
             }}
           >
             <CartesianGrid strokeDasharray='3 3' />
             <XAxis
               dataKey={
-                dataToChartDictionary[
-                  this.props.data.name as keyof typeof dataToChartDictionary
+                nameToChartDataKeysDictionary[
+                  this.props.data
+                    .name as keyof typeof nameToChartDataKeysDictionary
                 ].xAxis
               }
-            />
-            <YAxis />
+              tickFormatter={dateFormatter}
+              style={{ fontSize: '1rem' }}
+            >
+              <Label
+                position='bottom'
+                style={{ opacity: 0.5, textTransform: 'capitalize' }}
+              >
+                {
+                  nameToChartLabelsDictionary[
+                    this.props.data
+                      .name as keyof typeof nameToChartLabelsDictionary
+                  ].xAxis
+                }
+              </Label>
+            </XAxis>
+            <YAxis>
+              <Label
+                angle={270}
+                position='left'
+                style={{
+                  textAnchor: 'middle',
+                  opacity: 0.5,
+                  textTransform: 'capitalize',
+                }}
+              >
+                {
+                  nameToChartLabelsDictionary[
+                    this.props.data
+                      .name as keyof typeof nameToChartLabelsDictionary
+                  ].yAxis
+                }
+              </Label>
+            </YAxis>
             <Tooltip />
-            <Legend />
             <Line
               type='monotone'
               dataKey={
-                dataToChartDictionary[
-                  this.props.data.name as keyof typeof dataToChartDictionary
+                nameToChartDataKeysDictionary[
+                  this.props.data
+                    .name as keyof typeof nameToChartDataKeysDictionary
                 ].yAxis
               }
               stroke='#8884d8'

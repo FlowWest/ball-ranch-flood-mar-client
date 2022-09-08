@@ -1,0 +1,159 @@
+[
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1961-07-02 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1961-07-01 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1961-02-20 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1961-02-16 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1960-10-17 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1960-03-03 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1959-10-07 00:00:00",
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1958-02-27 00:00:00",
+    "gwe": 291.18,
+    "gse_gwe": 19.3,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1957-10-09 00:00:00",
+    "gwe": 287.48,
+    "gse_gwe": 23,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1957-02-18 00:00:00",
+    "gwe": 289.88,
+    "gse_gwe": 20.6,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1956-10-17 00:00:00",
+    "gwe": 294.78,
+    "gse_gwe": 15.7,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1956-02-17 00:00:00",
+    "gwe": 293.88,
+    "gse_gwe": 16.6,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1955-09-29 00:00:00",
+    "gwe": 284.08,
+    "gse_gwe": 26.4,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1955-01-24 00:00:00",
+    "gwe": 290.88,
+    "gse_gwe": 19.6,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1954-10-06 00:00:00",
+    "gwe": 285.98,
+    "gse_gwe": 24.5,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1954-01-12 00:00:00",
+    "gwe": 290.18,
+    "gse_gwe": 20.3,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1953-09-21 00:00:00",
+    "gwe": 288.78,
+    "gse_gwe": 21.7,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1952-10-16 00:00:00",
+    "gwe": 291.38,
+    "gse_gwe": 19.1,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  },
+  {
+    "site_code": "369363N1197299W001",
+    "date": "1952-02-19 00:00:00",
+    "gwe": 291.68,
+    "gse_gwe": 18.8,
+    "wlm_org_name": "Department of Water Resources",
+    "monitoring_program": "VOLUNTARY",
+    "coop_org_name": "Bureau of Reclamation"
+  }
+]

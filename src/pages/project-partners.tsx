@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [mediaQueries.above1200]: {
       margin: '0 5rem',
     },
+    paddingBottom: '5rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginRight: '0',
       marginBottom: '5rem',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
     },
   },
   presentorsCard: {
@@ -71,8 +72,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   presentorLogo: {
     height: '100px',
     width: '100px',
-    backgroundColor: '#FFF',
-    overflow: 'hidden',
+    marginRight: '0.5rem'
+    // backgroundColor: '#FFF',
+    // overflow: 'hidden',
   },
   presentorInfo: {
     maxWidth: '160px',
@@ -112,7 +114,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: '2rem',
   },
   marginBottom1: {
-    marginBottom: '1rem'
+    marginBottom: '1rem',
   },
   marginBottom5: {
     marginBottom: '5rem',
@@ -121,7 +123,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
   },
   alignSelf: {
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   marginRight1: {
     marginRight: '1rem',
@@ -153,12 +155,16 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
       <div
         className={
           props.className
-            ? `${props.className} ${styles.rowContainer}`
-            : styles.rowContainer
+            ? `${props.className} ${styles.rowContainer} ${styles.alignCenter}`
+            : `${styles.rowContainer} ${styles.alignCenter}`
         }
       >
         <div className={styles.presentorLogo}>
-          <Img fluid={props.fluidImage} imgStyle={{ objectFit: 'none' }} />
+          <Img
+            fluid={props.fluidImage}
+            style={{ height: '100%', width: '100%' }}
+            imgStyle={{ objectFit: 'contain' }}
+          />
         </div>
         <div className={`${styles.presentorInfo} ${styles.columnContainer}`}>
           <Typography variant='body1' className={styles.presentorName}>
@@ -339,13 +345,13 @@ export const fluidImage = graphql`
 `
 export const pageQuery = graphql`
   query {
-    cdwrLogo: file(relativePath: { eq: "cdwr-logo.jpg" }) {
+    cdwrLogo: file(relativePath: { eq: "cdwr-logo.jpeg" }) {
       ...fluidImage
     }
-    sjrcLogo: file(relativePath: { eq: "sjrc-logo.jpg" }) {
+    sjrcLogo: file(relativePath: { eq: "sjrc-logo.jpeg" }) {
       ...fluidImage
     }
-    stanfordLogo: file(relativePath: { eq: "stanford-logo.jpg" }) {
+    stanfordLogo: file(relativePath: { eq: "stanford-logo.png" }) {
       ...fluidImage
     }
     northKingsLogo: file(relativePath: { eq: "north-kings-logo.jpg" }) {

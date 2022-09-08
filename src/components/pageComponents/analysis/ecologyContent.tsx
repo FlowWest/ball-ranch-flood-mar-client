@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import makeStyles from '@mui/styles/makeStyles'
-import { Typography } from '@mui/material'
+import { Theme, Typography } from '@mui/material'
+import {
+  ReactCompareSlider,
+  ReactCompareSliderHandle,
+  ReactCompareSliderImage,
+} from 'react-compare-slider'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import catImage from '../../../images/cat.jpeg'
+import dogImage from '../../../images/dog.jpeg'
 
-const useStyles = makeStyles(() => ({
+interface StyleProps {
+  sliderImageOne: any
+  sliderImageTwo: any
+}
+
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   contentContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -17,6 +29,12 @@ const useStyles = makeStyles(() => ({
     [mediaQueries.below992]: {
       height: '700px',
     },
+  },
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   overlayTextContent: {
     maxWidth: '630px',
@@ -48,11 +66,9 @@ const useStyles = makeStyles(() => ({
     margin: '9rem 0',
   },
   imageSliderContainer: {
-    width: '900px',
+    width: '100%',
+    position: 'relative',
     marginBottom: '2rem',
-    [mediaQueries.below992]: {
-      width: '100%',
-    },
   },
   chartsSection: {
     width: '100%',
@@ -63,7 +79,7 @@ const useStyles = makeStyles(() => ({
     width: '450px',
     [mediaQueries.below992]: {
       width: '300px',
-      marginRight: '1rem'
+      marginRight: '1rem',
     },
   },
   chartsSectionTextContainer: {
@@ -89,7 +105,17 @@ interface EcologyContentProps {
 }
 
 const EcologyContent = (props: EcologyContentProps) => {
-  const styles = useStyles()
+  const [sliderValue, setSliderValue] = useState(50)
+
+  const styles = useStyles({
+    sliderImageOne: catImage,
+    sliderImageTwo: dogImage,
+  })
+
+  const handlePositionChange = useCallback(
+    (position) => console.log('[Portrait]', position),
+    []
+  )
 
   return (
     <div className={styles.contentContainer}>
@@ -125,10 +151,40 @@ const EcologyContent = (props: EcologyContentProps) => {
         <Typography variant='h1' className={styles.header}>
           Historical and Current Views of Ball Ranch
         </Typography>
-        <div className={styles.imageSliderContainer}>
-          <Img
-            fluid={props.images.mockImageSlider}
-            imgStyle={{ objectFit: 'cover' }}
+        <div
+          className={`${styles.imageSliderContainer} ${styles.rowContainer}`}
+        >
+          <ReactCompareSlider
+            {...props}
+            handle={
+              <ReactCompareSliderHandle
+                buttonStyle={{
+                  backdropFilter: undefined,
+                  background: 'white',
+                  border: 0,
+                  color: '#333',
+                }}
+              />
+            }
+            itemOne={
+              <ReactCompareSliderImage
+                src='https://images.unsplash.com/photo-1580458148391-8c4951dc1465?auto=format&fit=crop&w=1280&q=80'
+                style={{ filter: 'grayscale(1)' }}
+                alt='one'
+              />
+            }
+            itemTwo={
+              <ReactCompareSliderImage
+                src='https://images.unsplash.com/photo-1580458148391-8c4951dc1465?auto=format&fit=crop&w=1280&q=80'
+                alt='two'
+              />
+            }
+            onPositionChange={handlePositionChange}
+            style={{
+              display: 'flex',
+              width: '100%',
+              height: '60vh',
+            }}
           />
         </div>
         <Typography variant='body1' className={styles.text}>
