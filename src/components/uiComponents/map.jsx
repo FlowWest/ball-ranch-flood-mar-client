@@ -531,6 +531,8 @@ export const Map = (props) => {
                     },
                     essential: true, // this animation is considered essential with respect to prefers-reduced-motion
                     zoom: 9,
+                    pitch: 0,
+                    bearing: 0
                   })
                 }}
                 className={styles.legendButtonIcon}
@@ -630,6 +632,7 @@ export const Map = (props) => {
             },
           })
         })
+        map.addControl(new mapboxgl.NavigationControl(), 'bottom-left')
         map.moveLayer('nhd_lines')
         map.moveLayer('sjrc_project_boundary')
         map.moveLayer('fresno_state_wells_pts')
