@@ -8,13 +8,12 @@ import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.
 import casgemWellPts from '../../../data/geospatial/casgem_well_pts.json'
 import fresnoStateWellsPts from '../../../data/geospatial/fresno_state_wells_pts.json'
 import cdecGagesPoints from '../../../data/geospatial/cdec_gages_pts.json'
-//tabular data
-import evapotranspirationData from '../../../data/evapotranspiration_data.json'
-import casgemWellsDta from '../../../data/well/casgem_wells_dta.json'
-import fresnoWellsDta from '../../../data/well/fresno_wells_dta.json'
-import cdecH41 from '../../../data/gage/cdec_h41.json'
-import cdecLDC from '../../../data/gage/cdec_ldc.json'
-import cdecSJF from '../../../data/gage/cdec_sjf.json'
+import bigDryCreekReservoir from "../../../data/geospatial/big_dry_creek_reservoir.json"
+import bigDryCreek from "../../../data/geospatial/big_dry_creek.json"
+import mcmullinGsaBoundary from "../../../data/geospatial/mcmullin_gsa_boundary.json"
+import nhdLines from "../../../data/geospatial/nhd_lines.json"
+import northKingsGSABoundary from "../../../data/geospatial/north_kings_gsa_boundary.json"
+import soilCharacteristics from "../../../data/geospatial/soil_characteristics.json"
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -62,13 +61,13 @@ const MapContent = () => {
               casgemWellPts,
               fresnoStateWellsPts,
               cdecGagesPoints,
+              bigDryCreekReservoir,
+              bigDryCreek,
+              mcmullinGsaBoundary,
+              nhdLines,
+              northKingsGSABoundary,
+              soilCharacteristics,
             ],
-            tabular: {
-              sjrc_project_boundary: [evapotranspirationData],
-              casgem_well_pts: [casgemWellsDta],
-              fresno_state_wells_pts: [fresnoWellsDta],
-              cdec_gages_pts: [cdecH41, cdecLDC, cdecSJF],
-            },
           }}
         />
       </div>

@@ -14,10 +14,10 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import evapoWaterYearDry from '../../../data/evapo_water_year_dry.json'
-import evapoWaterYearWet from '../../../data/evapo_water_year_wet.json'
-import evapoWaterYearBelowNormal from '../../../data/evapo_water_year_below_normal.json'
-import evapoWaterYearCritical from '../../../data/evapo_water_year_critical.json'
+import evapoWaterYearDry from '../../../data/evapo/evapo_water_year_dry.json'
+import evapoWaterYearWet from '../../../data/evapo/evapo_water_year_wet.json'
+import evapoWaterYearBelowNormal from '../../../data/evapo/evapo_water_year_below_normal.json'
+import evapoWaterYearCritical from '../../../data/evapo/evapo_water_year_critical.json'
 import { dateFormatter } from '../../../util/helpers'
 
 const useStyles = makeStyles(() => ({

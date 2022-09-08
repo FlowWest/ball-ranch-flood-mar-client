@@ -16,7 +16,7 @@ import {
   Rectangle,
 } from 'recharts'
 
-import mdkScenariosDataFormatted from '../../../data/mdk_scenarios_dta_formatted.json'
+import mdkScenariosDataFormatted from '../../../data/mdkScenarios/mdk_scenarios_dta_formatted.json'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {

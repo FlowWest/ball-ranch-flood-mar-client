@@ -1,0 +1,542 @@
+[
+  {
+    "well_number": 7,
+    "date": "2012-01-17",
+    "water_table_elevation_ft": 288.0547
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-18",
+    "water_table_elevation_ft": 288.1085
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-19",
+    "water_table_elevation_ft": 288.1624
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-20",
+    "water_table_elevation_ft": 288.1801
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-21",
+    "water_table_elevation_ft": 288.1799
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-22",
+    "water_table_elevation_ft": 288.1797
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-23",
+    "water_table_elevation_ft": 288.1795
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-24",
+    "water_table_elevation_ft": 288.1793
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-25",
+    "water_table_elevation_ft": 288.179
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-26",
+    "water_table_elevation_ft": 288.1788
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-27",
+    "water_table_elevation_ft": 288.1786
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-28",
+    "water_table_elevation_ft": 288.1604
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-29",
+    "water_table_elevation_ft": 288.1061
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-30",
+    "water_table_elevation_ft": 288.1059
+  },
+  {
+    "well_number": 7,
+    "date": "2012-01-31",
+    "water_table_elevation_ft": 288.0517
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-01",
+    "water_table_elevation_ft": 288.0334
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-02",
+    "water_table_elevation_ft": 288.0332
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-03",
+    "water_table_elevation_ft": 288.033
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-04",
+    "water_table_elevation_ft": 288.0328
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-05",
+    "water_table_elevation_ft": 288.0325
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-06",
+    "water_table_elevation_ft": 288.0323
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-07",
+    "water_table_elevation_ft": 288.0321
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-08",
+    "water_table_elevation_ft": 288.0319
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-09",
+    "water_table_elevation_ft": 288.0317
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-10",
+    "water_table_elevation_ft": 288.0314
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-11",
+    "water_table_elevation_ft": 288.0312
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-12",
+    "water_table_elevation_ft": 288.031
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-13",
+    "water_table_elevation_ft": 288.0308
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-14",
+    "water_table_elevation_ft": 288.0306
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-15",
+    "water_table_elevation_ft": 288.0303
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-16",
+    "water_table_elevation_ft": 288.0121
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-17",
+    "water_table_elevation_ft": 287.9579
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-18",
+    "water_table_elevation_ft": 287.9577
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-19",
+    "water_table_elevation_ft": 287.9574
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-20",
+    "water_table_elevation_ft": 287.9212
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-21",
+    "water_table_elevation_ft": 287.885
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-22",
+    "water_table_elevation_ft": 287.8847
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-23",
+    "water_table_elevation_ft": 287.8845
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-24",
+    "water_table_elevation_ft": 287.8843
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-25",
+    "water_table_elevation_ft": 287.8841
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-26",
+    "water_table_elevation_ft": 287.8839
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-27",
+    "water_table_elevation_ft": 287.8836
+  },
+  {
+    "well_number": 7,
+    "date": "2012-02-28",
+    "water_table_elevation_ft": 287.8834
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-01",
+    "water_table_elevation_ft": 287.8832
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-02",
+    "water_table_elevation_ft": 287.883
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-03",
+    "water_table_elevation_ft": 287.8647
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-04",
+    "water_table_elevation_ft": 287.8285
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-05",
+    "water_table_elevation_ft": 287.8103
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-06",
+    "water_table_elevation_ft": 287.756
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-07",
+    "water_table_elevation_ft": 287.7378
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-08",
+    "water_table_elevation_ft": 287.7376
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-09",
+    "water_table_elevation_ft": 287.7374
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-10",
+    "water_table_elevation_ft": 287.7371
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-11",
+    "water_table_elevation_ft": 287.7369
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-12",
+    "water_table_elevation_ft": 287.7547
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-13",
+    "water_table_elevation_ft": 287.8085
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-14",
+    "water_table_elevation_ft": 287.8263
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-15",
+    "water_table_elevation_ft": 287.8801
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-16",
+    "water_table_elevation_ft": 287.8799
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-17",
+    "water_table_elevation_ft": 287.9517
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-18",
+    "water_table_elevation_ft": 287.9515
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-19",
+    "water_table_elevation_ft": 288.0233
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-20",
+    "water_table_elevation_ft": 288.0951
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-21",
+    "water_table_elevation_ft": 288.1309
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-22",
+    "water_table_elevation_ft": 288.1847
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-23",
+    "water_table_elevation_ft": 288.2385
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-24",
+    "water_table_elevation_ft": 288.2383
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-25",
+    "water_table_elevation_ft": 288.2561
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-26",
+    "water_table_elevation_ft": 288.37
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-27",
+    "water_table_elevation_ft": 288.622
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-28",
+    "water_table_elevation_ft": 288.898
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-29",
+    "water_table_elevation_ft": 289.4262
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-30",
+    "water_table_elevation_ft": 289.162
+  },
+  {
+    "well_number": 7,
+    "date": "2012-03-31",
+    "water_table_elevation_ft": 288.6338
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-01",
+    "water_table_elevation_ft": 289.5941
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-02",
+    "water_table_elevation_ft": 289.8101
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-03",
+    "water_table_elevation_ft": 290.0982
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-04",
+    "water_table_elevation_ft": 290.3621
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-05",
+    "water_table_elevation_ft": 290.1821
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-06",
+    "water_table_elevation_ft": 290.542
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-07",
+    "water_table_elevation_ft": 290.6318
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-08",
+    "water_table_elevation_ft": 290.6856
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-09",
+    "water_table_elevation_ft": 290.6854
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-10",
+    "water_table_elevation_ft": 290.6852
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-11",
+    "water_table_elevation_ft": 290.685
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-12",
+    "water_table_elevation_ft": 290.6848
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-13",
+    "water_table_elevation_ft": 290.6845
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-14",
+    "water_table_elevation_ft": 290.6843
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-15",
+    "water_table_elevation_ft": 290.6841
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-16",
+    "water_table_elevation_ft": 290.6839
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-17",
+    "water_table_elevation_ft": 290.7377
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-18",
+    "water_table_elevation_ft": 290.7555
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-19",
+    "water_table_elevation_ft": 290.7553
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-20",
+    "water_table_elevation_ft": 290.755
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-21",
+    "water_table_elevation_ft": 290.7548
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-22",
+    "water_table_elevation_ft": 290.7546
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-23",
+    "water_table_elevation_ft": 290.7544
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-24",
+    "water_table_elevation_ft": 290.7542
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-25",
+    "water_table_elevation_ft": 290.6819
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-26",
+    "water_table_elevation_ft": 290.6817
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-27",
+    "water_table_elevation_ft": 290.6815
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-28",
+    "water_table_elevation_ft": 290.6812
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-29",
+    "water_table_elevation_ft": 290.681
+  },
+  {
+    "well_number": 7,
+    "date": "2012-04-30",
+    "water_table_elevation_ft": 290.6808
+  },
+  {
+    "well_number": 7,
+    "date": "2012-05-01",
+    "water_table_elevation_ft": 290.7166
+  },
+  {
+    "well_number": 7,
+    "date": "2012-05-02",
+    "water_table_elevation_ft": 290.8244
+  },
+  {
+    "well_number": 7,
+    "date": "2012-05-03",
+    "water_table_elevation_ft": 290.8963
+  },
+  {
+    "well_number": 7,
+    "date": "2012-05-04",
+    "water_table_elevation_ft": 291.0221
+  }
+]

@@ -54,11 +54,11 @@ const LinksRow = (props: LinksRowProps) => {
     >
       {props.links.map((link) =>
         link.onClick ? (
-          <div className={styles.link} onClick={() => link.onClick?.()}>
+          <div className={styles.link} onClick={() => link.onClick?.()} key={`${link.text}-${link.route}`}>
             {link.text}
           </div>
         ) : (
-          <Box component={GatsbyLink} className={styles.link} to={link.route}>
+          <Box component={GatsbyLink} className={styles.link} to={link.route} key={`${link.text}-${link.route}`}>
             {link.text}
           </Box>
         )
