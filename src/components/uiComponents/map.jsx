@@ -371,7 +371,7 @@ const polygonPaint = (dataSrcName, color) => {
     dataSrcName === 'north_kings_gsa_boundary' ||
     dataSrcName === 'soil_characteristics'
   ) {
-    opacity = 0.4
+    opacity = 0.7
     return {
       'fill-outline-color': 'black',
       'fill-color': color,
