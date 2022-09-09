@@ -9,7 +9,6 @@ import MapContent from '../components/pageComponents/analysis/mapContent'
 import GroundWaterContent from '../components/pageComponents/analysis/groundWaterContent'
 import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWaterContent'
 import EcologyContent from '../components/pageComponents/analysis/ecologyContent'
-import EvapoContent from '../components/pageComponents/analysis/evapotranspirationContent'
 import SoilsContent from '../components/pageComponents/analysis/soilsContent'
 import { mediaQueries } from '../components/layout/theme'
 

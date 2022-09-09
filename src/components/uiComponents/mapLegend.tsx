@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import _ from 'lodash'
 import { makeStyles } from '@mui/styles'
 import {
@@ -25,23 +25,6 @@ const useStyles = makeStyles((theme) => ({
   rowContainer: {
     display: 'flex',
     justifyContent: 'space-evenly',
-  },
-  legendDrawerButton: {
-    position: 'absolute',
-    top: 105,
-    right: 10,
-    backgroundColor: '#FFF',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: '3px',
-    padding: '0.16rem',
-    '&:hover': {
-      backgroundColor: 'rgb(240, 240, 240)',
-    },
-  },
-  legendDrawerButtonIcon: {
-    fontSize: '1.5rem',
   },
   legendContainer: {
     position: 'absolute',
@@ -184,25 +167,6 @@ const MapLegend = (props: MapLegendProps) => {
   }
 
   // COMPONENTS
-  const LegendDrawerButton = () => {
-    return (
-      <div
-        className={styles.legendDrawerButton}
-        onClick={() => props.setLegendOpen(!props.legendOpen)}
-      >
-        {props.legendOpen ? (
-          <Tooltip arrow title='Close Legend' placement='bottom'>
-            <CloseIcon className={styles.legendDrawerButtonIcon} />
-          </Tooltip>
-        ) : (
-          <Tooltip arrow title='Open Legend' placement='bottom'>
-            <MenuIcon className={styles.legendDrawerButtonIcon} />
-          </Tooltip>
-        )}
-      </div>
-    )
-  }
-
   const LegendItemCmpt = ({ layerID }: { layerID: string }) => {
     return (
       <div className={`${styles.rowContainer} ${styles.alignCenter}`}>
@@ -263,7 +227,6 @@ const MapLegend = (props: MapLegendProps) => {
 
   const LegendCmpt = () => {
     return (
-      // <Slide in={props.legendOpen} direction='left'>
       <div className={styles.legendContainer}>
         <div className={styles.columnContainer}>
           <Typography className={styles.fontWeight400}>Legend</Typography>
@@ -325,13 +288,11 @@ const MapLegend = (props: MapLegendProps) => {
           </div>
         </div>
       </div>
-      // </Slide>
     )
   }
 
   return (
     <>
-      {/* <LegendDrawerButton /> */}
       <LegendCmpt />
     </>
   )
