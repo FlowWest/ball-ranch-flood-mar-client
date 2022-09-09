@@ -1,3 +1,4 @@
+import { makeStyles } from '@mui/styles'
 import React from 'react'
 import {
   LineChart,
@@ -13,6 +14,15 @@ import { dateFormatter } from '../../util/helpers'
 import { nameToChartDataKeysDictionary } from './map'
 import { nameToChartLabelsDictionary } from './map'
 
+const useStyles = makeStyles(() => ({
+  chartTooltipContent: {
+    backgroundColor: '#FFF',
+    padding: '0.5rem 1rem',
+    border: '0.5px solid rgba(0,0,0,0.25)',
+    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+  },
+}))
+
 interface ChartData {
   name: string
   site: string
@@ -27,6 +37,27 @@ interface ChartState {}
 export default class Chart extends React.Component<ChartProps, ChartState> {
   constructor(props: any) {
     super(props)
+  }
+
+  CustomTooltip = (props: any) => {
+    const styles = useStyles()
+    const { active, payload, label } = props
+    if (!active || !payload) return null
+
+    console.log(this.props.data.name)
+
+    const value = payload[0] ? payload[0].value : 'N/A'
+
+    return (
+      <div className={styles.chartTooltipContent}>
+        <div>{dateFormatter(label)}</div>
+        <div>{`${
+          nameToChartLabelsDictionary[
+            this.props.data.name as keyof typeof nameToChartLabelsDictionary
+          ].yAxis
+        }: ${value}`}</div>
+      </div>
+    )
   }
 
   render() {
@@ -85,7 +116,11 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
                 }
               </Label>
             </YAxis>
-            <Tooltip />
+            <Tooltip
+              //
+              content={this.CustomTooltip}
+              //
+            />
             <Line
               type='monotone'
               dataKey={

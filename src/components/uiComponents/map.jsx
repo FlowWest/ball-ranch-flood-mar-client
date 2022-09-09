@@ -102,24 +102,23 @@ export const sourceNameToFillColorDictionary = {
 const sourceNamesToShowDescription = [
   'sjrc_project_boundary',
   'big_dry_creek_reservoir',
-  'big_dry_creek',
   'mcmullin_gsa_boundary',
-  'nhd_lines',
   'north_kings_gsa_boundary',
   'soil_characteristics',
 ]
+
+const sourceNamesToNotShowPanel = ['big_dry_creek', 'nhd_lines']
+
+const sourceNameHasDynamicDescription = ['soil_characteristics']
 
 const nameToDescriptionDictionary = {
   [projectBoundaryString]: 'Ball Ranch Boundary wtihin SJRC',
   [bigDryCreekReservoirString]:
     'Big Dry Creek Dam and Reservoir are flood control facilities located on Dry Creek in Fresno County, near the community of Clovis, about 15 miles northeast of Fresno. The facilities are operated by the Fresno Metropolitan Flood Control District (FMFCD), which makes controlled releases of flood runoff to downstream infiltration basins. A zoned earthfill embankment, the dam creates a reservoir with a storage capacity of approximately 30 thousand TAF (TAF). An ungated, 500-foot wide concrete ogee spillway directs uncontrolled flood flows to the San Joaquin River via the Little Dry Creek Diversion Channel.',
-  [bigDryCreekString]: '',
   [mcmullinGsaBoundary]:
     'The McMullin Area Groundwater Sustainability Agency (GSA) was formed on January 31, 2017 when Fresno County, Raisin City Water District, and Mid-Valley Water District executed the McMullin Area Groundwater Sustainability Agency Joint Powers Agreement. The McMullin Area GSA is authorized under SGMA to develop, adopt, and implement a Groundwater Sustainability Plan for the sustainable management of groundwater in a portion of the Kings Subbasin.',
-  [nhdLines]: '',
   [northKingsGSABoundary]:
     'North Kings GSA - The North Kings Groundwater Sustainability Agency (GSA) is a Joint Powers Authority formed in December 2016 through adoption of a Joint Powers Agreement by the following public agencies: Fresno Irrigation District, the County of Fresno, the City of Fresno, the City of Clovis, the City of Kerman, Biola Community Services District, Garfield Water District, and International Water District. The North Kings GSA’s jurisdiction includes a portion of the Kings Subbasin that includes the service areas of member agencies.',
-  [soilCharacteristics]: '',
 }
 
 const identifierToChartDataDictionary = {
@@ -184,7 +183,12 @@ const getIdentifier = (event) => {
   } else if (event.features[0].source === 'north_kings_gsa_boundary') {
     return toTitleCase(event.features[0].source.replaceAll('_', ' '))
   } else if (event.features[0].source === 'soil_characteristics') {
-    return event.features[0].properties.ksat_r
+    return 'Soil Characteristics'
+  }
+}
+const getDynamicDescription = (event) => {
+  if (event.features[0].source === 'soil_characteristics') {
+    return `Hydraulic conductivity: ${event.features[0].properties.ksat_r} micrometers/second`
   }
 }
 const getMapBoxGeoType = (dataSrcType) => {
@@ -256,14 +260,14 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1000,
     top: 0,
     right: 10,
-    width: '60%',
+    width: '65%',
     height: '90%',
   },
   decriptionSlide: {
     width: 'auto !important',
     height: 'auto !important',
     minWidth: '30%',
-    maxWidth: '60%',
+    maxWidth: '65%',
     maxHeight: '90%',
     overflow: 'scroll',
   },
@@ -289,6 +293,9 @@ const useStyles = makeStyles((theme) => ({
   },
   decriptionContainer: {
     paddingBottom: '2rem !important',
+  },
+  removePadding: {
+    padding: '0 !important',
   },
   fontWeight400: {
     fontWeight: 200,
@@ -330,10 +337,7 @@ export const Map = (props) => {
         >
           <div className={styles.paperToolBar}>
             <div></div>
-            <p>
-              {panelData.site}
-              {/* {panelData.showDescriptionPanel ? panelData.name : panelData.site} */}
-            </p>
+            <p>{panelData.site}</p>
             <IconButton
               onClick={() => {
                 setPanelOpen(false)
@@ -346,10 +350,17 @@ export const Map = (props) => {
           </div>
           <div
             className={`${styles.chartContainer} ${
-              panelData.showDescriptionPanel ? styles.decriptionContainer : ''
+              panelData.showDescriptionPanel
+                ? // !panelData.dyanmicDescription &&
+                  //   !nameToDescriptionDictionary[panelData.name]
+                  //   ? styles.removePadding
+                  //   :
+                  styles.decriptionContainer
+                : ''
             }`}
           >
             {panelData.showDescriptionPanel ? (
+              panelData.dyanmicDescription ??
               nameToDescriptionDictionary[panelData.name]
             ) : (
               <Chart data={panelData} />
@@ -433,7 +444,9 @@ export const Map = (props) => {
 
         // Trigger modal when layer is clicked
         map.on('click', dataSrc.name, (e) => {
-          console.log('this thing on click', e.features)
+          if (sourceNamesToNotShowPanel.includes(dataSrc.name)) return
+          console.log(e.features)
+
           const identifier = getIdentifier(e)
           setPanelOpen(true)
           setPanelData({
@@ -443,6 +456,11 @@ export const Map = (props) => {
             showDescriptionPanel: sourceNamesToShowDescription.includes(
               dataSrc.name
             ),
+            dyanmicDescription: sourceNameHasDynamicDescription.includes(
+              dataSrc.name
+            )
+              ? getDynamicDescription(e)
+              : null,
           })
         })
       }

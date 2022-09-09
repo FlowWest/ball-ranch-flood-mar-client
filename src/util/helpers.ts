@@ -1,4 +1,4 @@
-export const dateFormatter = (value: string, idx: number) => {
+export const dateFormatter = (value: string) => {
   let date = new Date(value)
   let dateString = date.toLocaleDateString()
   return dateString
