@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Box, Grid } from '@mui/material'
 import GatsbyLink from 'gatsby-link'

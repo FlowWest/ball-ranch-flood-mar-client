@@ -8,15 +8,8 @@ import {
 } from 'react-compare-slider'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
-import catImage from '../../../images/cat.jpeg'
-import dogImage from '../../../images/dog.jpeg'
 
-interface StyleProps {
-  sliderImageOne: any
-  sliderImageTwo: any
-}
-
-const useStyles = makeStyles<Theme, StyleProps>(() => ({
+const useStyles = makeStyles<Theme>(() => ({
   contentContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -107,10 +100,7 @@ interface EcologyContentProps {
 const EcologyContent = (props: EcologyContentProps) => {
   const [sliderValue, setSliderValue] = useState(50)
 
-  const styles = useStyles({
-    sliderImageOne: catImage,
-    sliderImageTwo: dogImage,
-  })
+  const styles = useStyles()
 
   const handlePositionChange = useCallback(
     (position) => console.log('[Portrait]', position),
@@ -179,7 +169,7 @@ const EcologyContent = (props: EcologyContentProps) => {
                 alt='two'
               />
             }
-            onPositionChange={handlePositionChange}
+            // onPositionChange={handlePositionChange}
             style={{
               display: 'flex',
               width: '100%',

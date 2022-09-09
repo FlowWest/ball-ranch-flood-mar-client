@@ -130,7 +130,6 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
 
   function customizedTick(props: any) {
     const { x, y, index, payload, width } = props
-    console.log(props, payload)
 
     return (
       <g>

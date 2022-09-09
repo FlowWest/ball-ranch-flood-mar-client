@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Container, Grid, Typography } from '@mui/material'
+import React from 'react'
+import {  Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
@@ -73,8 +73,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100px',
     width: '100px',
     marginRight: '0.5rem'
-    // backgroundColor: '#FFF',
-    // overflow: 'hidden',
   },
   presentorInfo: {
     maxWidth: '160px',
