@@ -20,9 +20,9 @@ module.exports = {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
       options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
     // Custom Gatsby Layout Plugin
