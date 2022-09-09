@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '5rem',
+    marginBottom: '8rem',
   },
   sectionHeader: {
     fontFamily: 'Oswald',
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     padding: '0 5rem',
-    paddingBottom: '5rem',
+    paddingBottom: '8rem',
     [mediaQueries.below992]: {
       padding: '0 1rem',
     },
