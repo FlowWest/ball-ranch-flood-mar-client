@@ -1,12 +1,12 @@
 import React from 'react'
 import { FCR } from '../../util'
-import { StylesProvider } from '@mui/styles'
+import { StyledEngineProvider } from '@mui/material/styles'
 import { AppThemeProvider } from './theme'
 import { CssBaseline } from '@mui/material'
 import MetaLayout from './metaLayout'
 
 const Layout: FCR = (props) => (
-  <StylesProvider injectFirst>
+  <StyledEngineProvider injectFirst>
     <AppThemeProvider>
       <CssBaseline />
       <link
@@ -15,7 +15,7 @@ const Layout: FCR = (props) => (
       />
       <MetaLayout>{props.children}</MetaLayout>
     </AppThemeProvider>
-  </StylesProvider>
+  </StyledEngineProvider>
 )
 
 export default Layout
