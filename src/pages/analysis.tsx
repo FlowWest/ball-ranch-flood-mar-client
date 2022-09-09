@@ -11,6 +11,8 @@ import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWa
 import EcologyContent from '../components/pageComponents/analysis/ecologyContent'
 import SoilsContent from '../components/pageComponents/analysis/soilsContent'
 import { mediaQueries } from '../components/layout/theme'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -104,6 +106,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
 
   return (
     <main>
+      <Header />
       <title>Analysis</title>
       <Hero
         imageObj={heroBanner}
@@ -145,6 +148,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
           {activePageCmptDict[activePage]}
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

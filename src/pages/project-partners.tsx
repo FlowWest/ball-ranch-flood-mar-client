@@ -7,6 +7,8 @@ import Hero from '../components/uiComponents/hero'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../components/layout/theme'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -209,6 +211,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
 
   return (
     <main>
+      <Header />
       <title>Project Partners</title>
       <Hero
         imageObj={projectPartnersHero}
@@ -323,6 +326,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
           />
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

@@ -8,6 +8,8 @@ import indexPageBanner from '../images/index-page-banner.jpg'
 import ImageRow from '../components/pageComponents/index/imageRow'
 import DataSectionCard from '../components/pageComponents/index/dataSectionCard'
 import { mediaQueries } from '../components/layout/theme'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -101,6 +103,7 @@ const IndexPage = (props: IndexPageProps) => {
 
   return (
     <main>
+      <Header />
       <title>Home Page</title>
       <Hero
         imageObj={indexPageBanner}
@@ -232,6 +235,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react'
-import mapboxgl from 'mapbox-gl'
+import React, { useRef, useEffect, useState } from 'react'
+import mapboxgl from '!mapbox-gl'
 import makeStyles from '@mui/styles/makeStyles'
 import { Slide, Paper, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
