@@ -15,14 +15,20 @@ module.exports = {
   plugins: [
     // Typescript Plugin
     'gatsby-plugin-typescript',
-    // MUI Plugin
+    // MUI Plugins
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
       options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
       },
     },
     // Custom Gatsby Layout Plugin
