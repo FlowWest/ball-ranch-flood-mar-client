@@ -16,13 +16,13 @@ import { mediaQueries } from '../components/layout/theme'
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
     [mediaQueries.below992]: {
-      margin: '0 3rem',
+      margin: '0 1.5rem',
     },
     [mediaQueries.below1200]: {
-      margin: '0 5rem',
+      margin: '0 2.5rem',
     },
     [mediaQueries.above1200]: {
-      margin: '0 15rem',
+      margin: '0 7.5rem',
     },
     paddingBottom: '3rem',
     display: 'flex',
@@ -37,6 +37,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'scroll',
     maxHeight: '85vh',
     paddingTop: '5rem',
+    [mediaQueries.below992]: {
+      margin: '0 1.5rem',
+    },
+    [mediaQueries.below1200]: {
+      margin: '0 2.5rem',
+    },
+    [mediaQueries.above1200]: {
+      margin: '0 7.5rem',
+    },
 
     '&::-webkit-scrollbar': {
       '-webkit-appearance': 'none',
@@ -84,13 +93,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
         }}
       />
     ),
-    Evapotranspiration: (
-      <EvapoContent
-        images={{
-          evapoImage: props.data.evapoImage.childImageSharp.fluid,
-        }}
-      />
-    ),
     Soils: (
       <SoilsContent
         images={{
@@ -132,11 +134,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
               route: '',
             },
             {
-              text: 'Evapotranspiration',
-              onClick: () => setActivePage('Evapotranspiration'),
-              route: '',
-            },
-            {
               text: 'Soils',
               onClick: () => setActivePage('Soils'),
               route: '',
@@ -144,10 +141,10 @@ const AnalysisPage = (props: AnalysisPageProps) => {
           ]}
         />
       </div>
-      <div
-        className={`${styles.marginedContainer} ${styles.scrollableContainer}`}
-      >
-        {activePageCmptDict[activePage]}
+      <div className={styles.scrollableContainer}>
+        <div className={styles.marginedContainer}>
+          {activePageCmptDict[activePage]}
+        </div>
       </div>
     </main>
   )

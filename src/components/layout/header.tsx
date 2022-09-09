@@ -67,11 +67,10 @@ const Header = () => {
 
           <LinksRow
             flex={2}
-            maxWidth='491px'
+            maxWidth='350px'
             links={[
               { text: 'Analysis', route: '/analysis' },
               { text: 'Project Partners', route: '/project-partners' },
-              { text: 'Contact', route: '/404' },
             ]}
           />
         </Container>

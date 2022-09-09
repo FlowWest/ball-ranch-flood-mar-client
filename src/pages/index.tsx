@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '7.5rem',
+    marginBottom: '5rem',
   },
   sectionHeader: {
     fontFamily: 'Oswald',
