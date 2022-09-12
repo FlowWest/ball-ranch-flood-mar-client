@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface AnalysisPageProps {
   data: any
+  location?: any
 }
 
 const AnalysisPage = (props: AnalysisPageProps) => {
@@ -103,6 +104,13 @@ const AnalysisPage = (props: AnalysisPageProps) => {
     ),
   }
   const styles = useStyles()
+
+  useEffect(() => {
+    if (props.location.state.activePage) {
+      const pageFromLink = props.location.state.activePage
+      setActivePage(pageFromLink)
+    }
+  }, [])
 
   return (
     <main>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'
@@ -109,13 +109,7 @@ const IndexPage = (props: IndexPageProps) => {
         imageObj={indexPageBanner}
         imageHeight='85vh'
         header='Assessing the feasibility of recharging groundwater on Ball Ranch'
-        subheader='The first phase of the project is quantifying site groundwater
-          conditions, cataloging groundwater dependent ecosystem
-          characteristics, analyzing surface water supplies (from wet season
-          flows), and assessing stakeholder support. This site summarizes
-          information on each of these topics acquired by this project, and
-          presents an initial assessment of the feasibility of Flood-MAR at Ball
-          Ranch.'
+        subheader='The first phase of the Ball Ranch MAR project is using existing data to quantify site groundwater conditions, catalog groundwater dependent ecosystem characteristics, analyze potential surface water supplies (from wet season flows), and assess stakeholder support. This website summarizes information on each of these topics and presents an initial assessment of the feasibility of Flood-MAR at Ball Ranch.'
       />
 
       <div className={styles.marginedContainer}>
@@ -130,7 +124,7 @@ const IndexPage = (props: IndexPageProps) => {
           image={props.data.imageTwo.childImageSharp.fluid}
           reverse={true}
           header='Why Ball Ranch?'
-          content='Ball Ranch is a 360 acre property acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and the Little Dry Creek watersheds, and has numerous depressions created by historical aggregate mining that can temporarily store surface water. Implementing Flood-MAR at Ball Ranch could take advantage of potential surface water supplies and topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
+          content='Ball Ranch is a 360 acre riparian and floodplain property acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and Little Dry Creek watersheds, and has diverse topography that includes perennial surface water features. A Flood-MAR project at Ball Ranch could take advantage of wet season surface water supplies and existing topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
           alt='Image of river'
         />
       </div>
@@ -144,24 +138,28 @@ const IndexPage = (props: IndexPageProps) => {
             image={props.data.dataCardImageOne.childImageSharp.fluid}
             header='Soils and Geology'
             paragraph='Drainage of Ball Ranch soils were assessed using publicly available data'
+            analysisLink='Soils'
             alt='Image of flowers'
           />
           <DataSectionCard
             image={props.data.dataCardImageTwo.childImageSharp.fluid}
             header='Ecology'
             paragraph='An assessment of species that historically populated Ball Ranch, what currently exists, and what could be re-introduced with the establishment of Flood-MAR.'
+            analysisLink='Ecology'
             alt='Image of a perched bird'
           />
           <DataSectionCard
             image={props.data.dataCardImageThree.childImageSharp.fluid}
             header='Water Balance'
             paragraph='Using existing data, gain an understanding of where water enters/leaves Ball Ranch and identify potential for surface water increases to enable Flood-MAR'
+            analysisLink='Surface Water'
             alt='Image of soil'
           />
           <DataSectionCard
             image={props.data.dataCardImageFour.childImageSharp.fluid}
             header='Groundwater Monitoring'
-            paragraph='Data collected from CASGEM and Fresno State piezometers were assessed to show groundwater level trends over time. '
+            paragraph='Data collected from CASGEM and Fresno State piezometers were assessed to show groundwater level trends over time.'
+            analysisLink='Ground Water'
           />
         </div>
       </div>
