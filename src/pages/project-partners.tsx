@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
@@ -7,6 +7,8 @@ import Hero from '../components/uiComponents/hero'
 import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../components/layout/theme'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -73,8 +75,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100px',
     width: '100px',
     marginRight: '0.5rem'
-    // backgroundColor: '#FFF',
-    // overflow: 'hidden',
   },
   presentorInfo: {
     maxWidth: '160px',
@@ -211,6 +211,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
 
   return (
     <main>
+      <Header />
       <title>Project Partners</title>
       <Hero
         imageObj={projectPartnersHero}
@@ -325,6 +326,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
           />
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

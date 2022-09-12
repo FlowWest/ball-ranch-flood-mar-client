@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles'
 import React from 'react'
+import _ from 'lodash'
 import {
   LineChart,
   Line,
@@ -44,8 +45,6 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
     const { active, payload, label } = props
     if (!active || !payload) return null
 
-    console.log(this.props.data.name)
-
     const value = payload[0] ? payload[0].value : 'N/A'
 
     return (
@@ -55,7 +54,7 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
           nameToChartLabelsDictionary[
             this.props.data.name as keyof typeof nameToChartLabelsDictionary
           ].yAxis
-        }: ${value}`}</div>
+        }: ${_.round(value, 2)}`}</div>
       </div>
     )
   }
@@ -116,11 +115,7 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
                 }
               </Label>
             </YAxis>
-            <Tooltip
-              //
-              content={this.CustomTooltip}
-              //
-            />
+            <Tooltip content={this.CustomTooltip} />
             <Line
               type='monotone'
               dataKey={
