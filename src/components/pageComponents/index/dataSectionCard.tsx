@@ -3,6 +3,7 @@ import { Typography } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import { Link } from 'gatsby'
 
 const useStyles = makeStyles(() => ({
   dataCard: {
@@ -16,6 +17,10 @@ const useStyles = makeStyles(() => ({
     [mediaQueries.below992]: {
       width: '100%',
       marginBottom: '3rem',
+    },
+    '&:hover': {
+      boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+      cursor: 'pointer',
     },
   },
   dataCardImage: {
@@ -54,6 +59,7 @@ interface DataSectionCardProps {
   image: any
   header: string
   paragraph: string
+  analysisLink: string
   alt?: string
 }
 
@@ -62,21 +68,27 @@ const DataSectionCard = (props: DataSectionCardProps) => {
 
   return (
     <div className={styles.dataCard}>
-      <div className={styles.dataCardImage}>
-        <Img
-          fluid={props.image}
-          imgStyle={{ objectFit: 'cover' }}
-          alt={props.alt}
-        />
-      </div>
-      <div className={styles.dataCardContent}>
-        <Typography variant='body1' className={styles.dataCardHeader}>
-          {props.header}
-        </Typography>
-        <Typography variant='body1' className={styles.dataCardParagraph}>
-          {props.paragraph}
-        </Typography>
-      </div>
+      <Link
+        to='/analysis'
+        style={{ textDecoration: 'none' }}
+        state={{ activePage: props.analysisLink }}
+      >
+        <div className={styles.dataCardImage}>
+          <Img
+            fluid={props.image}
+            imgStyle={{ objectFit: 'cover' }}
+            alt={props.alt}
+          />
+        </div>
+        <div className={styles.dataCardContent}>
+          <Typography variant='body1' className={styles.dataCardHeader}>
+            {props.header}
+          </Typography>
+          <Typography variant='body1' className={styles.dataCardParagraph}>
+            {props.paragraph}
+          </Typography>
+        </div>
+      </Link>
     </div>
   )
 }
