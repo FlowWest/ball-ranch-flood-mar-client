@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react'
-import mapboxgl from 'mapbox-gl'
+import React, { useRef, useEffect, useState } from 'react'
+import mapboxgl from '!mapbox-gl'
 import makeStyles from '@mui/styles/makeStyles'
 import { Slide, Paper, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
@@ -242,15 +242,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
   },
-  columnContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  rowContainer: {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-  },
   map: {
     width: '100%',
     height: '600px',
@@ -275,13 +266,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  paperContent: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#000',
-    padding: '1rem',
-    margin: '5rem',
-  },
   paperToolBar: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -293,18 +277,6 @@ const useStyles = makeStyles((theme) => ({
   },
   decriptionContainer: {
     paddingBottom: '2rem !important',
-  },
-  removePadding: {
-    padding: '0 !important',
-  },
-  fontWeight400: {
-    fontWeight: 200,
-  },
-  alignCenter: {
-    alignItems: 'center',
-  },
-  alignStart: {
-    alignItems: 'start',
   },
 }))
 
@@ -350,13 +322,7 @@ export const Map = (props) => {
           </div>
           <div
             className={`${styles.chartContainer} ${
-              panelData.showDescriptionPanel
-                ? // !panelData.dyanmicDescription &&
-                  //   !nameToDescriptionDictionary[panelData.name]
-                  //   ? styles.removePadding
-                  //   :
-                  styles.decriptionContainer
-                : ''
+              panelData.showDescriptionPanel ? styles.decriptionContainer : ''
             }`}
           >
             {panelData.showDescriptionPanel ? (
@@ -396,7 +362,6 @@ export const Map = (props) => {
     if (map && props.data.spatial) {
       map.on('load', () => {
         props.data.spatial.forEach((dataSrc) => {
-          console.log(dataSrc.name)
           map?.addSource(dataSrc.name, {
             type: 'geojson',
             data: dataSrc,
@@ -429,10 +394,9 @@ export const Map = (props) => {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
           }
           const identifier = getIdentifier(e)
-          // console.log('this thing on hover', e.features)
           popup
             .setLngLat(coordinates)
-            .setHTML(identifier) // Use identifier var
+            .setHTML(identifier)
             .addTo(map)
         })
 
@@ -445,7 +409,6 @@ export const Map = (props) => {
         // Trigger modal when layer is clicked
         map.on('click', dataSrc.name, (e) => {
           if (sourceNamesToNotShowPanel.includes(dataSrc.name)) return
-          console.log(e.features)
 
           const identifier = getIdentifier(e)
           setPanelOpen(true)

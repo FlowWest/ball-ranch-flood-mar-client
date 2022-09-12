@@ -9,9 +9,10 @@ import MapContent from '../components/pageComponents/analysis/mapContent'
 import GroundWaterContent from '../components/pageComponents/analysis/groundWaterContent'
 import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWaterContent'
 import EcologyContent from '../components/pageComponents/analysis/ecologyContent'
-import EvapoContent from '../components/pageComponents/analysis/evapotranspirationContent'
 import SoilsContent from '../components/pageComponents/analysis/soilsContent'
 import { mediaQueries } from '../components/layout/theme'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -105,6 +106,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
 
   return (
     <main>
+      <Header />
       <title>Analysis</title>
       <Hero
         imageObj={heroBanner}
@@ -146,6 +148,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
           {activePageCmptDict[activePage]}
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

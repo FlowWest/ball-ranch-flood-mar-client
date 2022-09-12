@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Container, Grid, Typography } from '@mui/material'
+import React from 'react'
+import {  Typography } from '@mui/material'
 import { Theme } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 import { graphql } from 'gatsby'
@@ -8,6 +8,8 @@ import indexPageBanner from '../images/index-page-banner.jpg'
 import ImageRow from '../components/pageComponents/index/imageRow'
 import DataSectionCard from '../components/pageComponents/index/dataSectionCard'
 import { mediaQueries } from '../components/layout/theme'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '5rem',
+    marginBottom: '8rem',
   },
   sectionHeader: {
     fontFamily: 'Oswald',
@@ -57,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Lato',
     fontWeight: 400,
     padding: '0 5rem',
-    paddingBottom: '5rem',
+    paddingBottom: '8rem',
     [mediaQueries.below992]: {
       padding: '0 1rem',
     },
@@ -101,6 +103,7 @@ const IndexPage = (props: IndexPageProps) => {
 
   return (
     <main>
+      <Header />
       <title>Home Page</title>
       <Hero
         imageObj={indexPageBanner}
@@ -232,6 +235,7 @@ const IndexPage = (props: IndexPageProps) => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

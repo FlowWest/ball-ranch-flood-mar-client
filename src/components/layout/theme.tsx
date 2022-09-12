@@ -94,26 +94,5 @@ export const AppThemeProvider: FCR<AppThemeProviderProps> = ({ children }) => {
     },
   })
 
-  Object.assign(theme, {
-    props: {
-      // MuiTooltip: {
-      //   arrow: true,
-      // },
-    },
-    overrides: {
-      // Name of the component
-      // MuiTooltip: {
-      //   // Name of the slot
-      //   tooltip: {
-      //     fontSize: '14px',
-      //     backgroundColor: 'rgba(97, 97, 97, 1)',
-      //   },
-      //   arrow: {
-      //     color: 'rgba(97, 97, 97, 1)',
-      //   },
-      // },
-    },
-  })
-
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }

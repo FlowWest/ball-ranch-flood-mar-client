@@ -7,7 +7,6 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
     width: '100%',
-    // height: '450px',
     backgroundColor: '#8A9155',
     display: 'flex',
     justifyContent: 'center',
