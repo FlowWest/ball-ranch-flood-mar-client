@@ -2,6 +2,7 @@ import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import { Box, Grid } from '@mui/material'
 import GatsbyLink from 'gatsby-link'
+import { mediaQueries } from '../layout/theme'
 
 const useStyles = makeStyles(() => ({
   linksContainer: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     fontFamily: 'Lato',
     textTransform: 'uppercase',
+    textAlign: 'center',
     fontSize: '14px',
     fontWeight: 500,
     letterSpacing: '1.25px',
@@ -26,7 +28,10 @@ const useStyles = makeStyles(() => ({
     '&:hover': {
       color: '#0B2901',
       borderBottom: '2px solid #0B2901',
-      cursor: 'pointer'
+      cursor: 'pointer',
+    },
+    [mediaQueries.below768]: {
+      fontSize: '10px',
     },
   },
 }))

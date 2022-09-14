@@ -69,7 +69,7 @@ const DataSectionCard = (props: DataSectionCardProps) => {
   return (
     <div className={styles.dataCard}>
       <Link
-        to='/analysis'
+        to='/feasibility-assessment'
         style={{ textDecoration: 'none' }}
         state={{ activePage: props.analysisLink }}
       >
