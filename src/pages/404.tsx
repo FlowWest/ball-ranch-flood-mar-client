@@ -1,55 +1,49 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import Header from "../components/layout/header"
-import Footer from "../components/layout/footer"
+import * as React from 'react'
+import Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
+import Hero from '../components/uiComponents/hero'
+import indexPageBanner from '../images/index-page-banner.jpg'
+import { Theme } from '@mui/material/styles'
+import { makeStyles } from '@mui/styles'
+import { Typography } from '@mui/material'
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const useStyles = makeStyles((theme: Theme) => ({
+  contentContainer: {
+    height: '250px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '8rem'
+  },
+  textContainer: {
+    textAlign: 'center'
+  },
+}))
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-// markup
 const NotFoundPage = () => {
+  const styles = useStyles()
+
   return (
-    <main style={pageStyles}>
+    <main>
       <Header />
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
+      <Hero
+        imageObj={indexPageBanner}
+        imageHeight='295px'
+        header='Page Not Found'
+        subheader=''
+        fitInLowOpacityContainer={true}
+      />
+      <div className={styles.contentContainer}>
+        <div className={styles.textContainer}>
+          <Typography variant='h1'>
+            The page you're looking for does not exist.
+          </Typography>
+          <br />
+          <Typography variant='h1'>
+            Try clicking one of the links at the top or re-entering the url.
+          </Typography>
+        </div>
+      </div>
       <Footer />
     </main>
   )
