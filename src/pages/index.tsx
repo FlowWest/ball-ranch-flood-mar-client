@@ -29,12 +29,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   dataSection: {
     width: '100%',
     backgroundColor: '#8A9155A6',
-    padding: '3rem 3rem 4rem 3rem',
+    padding: '5rem 3rem 6rem 3rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '8rem',
   },
   sectionHeader: {
     fontFamily: 'Oswald',
@@ -50,47 +49,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       flexDirection: 'column',
       alignItems: 'center',
     },
-  },
-  nextStepsSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    fontFamily: 'Lato',
-    fontWeight: 400,
-    padding: '0 5rem',
-    paddingBottom: '8rem',
-    [mediaQueries.below992]: {
-      padding: '0 1rem',
-    },
-  },
-  nextStepsRow: {
-    display: 'flex',
-  },
-  nextStepsColumn: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '3rem 2.5rem 0 2.5rem',
-    padding: '1rem 1.5rem',
-  },
-  boldFont: {
-    fontWeight: 900,
-  },
-  greenBackdrop: {
-    backgroundColor: '#B6AF6226',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
-  },
-  orderedList: {
-    marginTop: '0',
-    paddingLeft: '1.5rem',
-    '& li:not(:last-child)': {
-      marginBottom: '1.5rem',
-    },
-  },
-  orderedListHeader: {
-    alignSelf: 'center',
-    marginBottom: '2rem',
   },
 }))
 
@@ -131,106 +89,36 @@ const IndexPage = (props: IndexPageProps) => {
 
       <div className={styles.dataSection}>
         <Typography variant='h1' className={styles.sectionHeader}>
-          Data
+          Feasibility Assessment Data
         </Typography>
         <div className={styles.dataSectionRow}>
           <DataSectionCard
             image={props.data.dataCardImageOne.childImageSharp.fluid}
             header='Soils and Geology'
-            paragraph='Drainage of Ball Ranch soils were assessed using publicly available data'
+            paragraph='Surface and subsurface conditions affecting groundwater recharge potential at and around Ball Ranch.'
             analysisLink='Soils'
             alt='Image of flowers'
           />
           <DataSectionCard
             image={props.data.dataCardImageTwo.childImageSharp.fluid}
             header='Ecology'
-            paragraph='An assessment of species that historically populated Ball Ranch, what currently exists, and what could be re-introduced with the establishment of Flood-MAR.'
+            paragraph='Historical, current, and potential future species presence at Ball Ranch.'
             analysisLink='Ecology'
             alt='Image of a perched bird'
           />
           <DataSectionCard
             image={props.data.dataCardImageThree.childImageSharp.fluid}
-            header='Water Balance'
-            paragraph='Using existing data, gain an understanding of where water enters/leaves Ball Ranch and identify potential for surface water increases to enable Flood-MAR'
+            header='Surface Water Supply'
+            paragraph='Quantification of potential surface water supply sources for MAR at Ball Ranch.'
             analysisLink='Surface Water'
             alt='Image of soil'
           />
           <DataSectionCard
             image={props.data.dataCardImageFour.childImageSharp.fluid}
-            header='Groundwater Monitoring'
-            paragraph='Data collected from CASGEM and Fresno State piezometers were assessed to show groundwater level trends over time.'
+            header='Groundwater'
+            paragraph='Regional and site specific groundwater elevations showing seasonal and long-term trends.'
             analysisLink='Ground Water'
           />
-        </div>
-      </div>
-
-      <div className={styles.nextStepsSection}>
-        <Typography variant='h1' className={styles.sectionHeader}>
-          Next Steps
-        </Typography>
-        <div className={styles.nextStepsRow}>
-          <div className={styles.nextStepsColumn}>
-            <Typography variant='subtitle1' className={styles.boldFont}>
-              The feasibility analysis identified remaining data gaps and next
-              steps including the following.
-            </Typography>
-            <br />
-            <span className={styles.boldFont}>Flow Regimes.</span>
-            <Typography>
-              Identify what flow regimes could impact species both negatively
-              and beneficially.
-            </Typography>
-            <br />
-            <span className={styles.boldFont}>Subsurface Resistivity.</span>
-            <Typography>
-              Map Ball Ranch subsurface resistivity using TowTEM.
-            </Typography>
-            <br />
-            <span className={styles.boldFont}>Flooding Impact.</span>
-            <Typography>
-              Identify if there is any flooding impact from recharging the
-              aquifer at Ball Ranch.
-            </Typography>
-            <br />
-            <span className={styles.boldFont}>Quantifying benefits.</span>
-            <Typography>
-              Develop framework for characterizing where water goes and if it
-              has recharge benefit, SJR habitat benefit, or SJR temperature
-              benefit and confirm if flood benefit can be characterized or
-              quantified.
-            </Typography>
-          </div>
-          <div className={`${styles.nextStepsColumn} ${styles.greenBackdrop}`}>
-            <Typography
-              variant='subtitle1'
-              className={styles.orderedListHeader}
-            >
-              Cohesive strategy for implementation
-            </Typography>
-            <ol className={styles.orderedList}>
-              <li>
-                Identification and quantification of groundwater recharge
-                limitations;
-              </li>
-              <li>
-                Identification of and recommendations for addressing data gaps
-                and information needs;
-              </li>
-              <li>
-                Identification of revisions required to long-term management
-                protocols for the site resulting from implementation;
-              </li>
-              <li>Data collection and data management plans;</li>
-              <li>
-                Conceptual alternatives for the Phase II Implementation Project;
-              </li>
-              <li>
-                A preferred alternative to carry forward to the Phase II
-                Implementation Project;
-              </li>
-              <li>A final design of the preferred alternative.</li>
-            </ol>
-          </div>
         </div>
       </div>
       <Footer />
