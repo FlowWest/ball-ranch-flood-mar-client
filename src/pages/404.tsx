@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: '8rem'
   },
   textContainer: {
     textAlign: 'center'
