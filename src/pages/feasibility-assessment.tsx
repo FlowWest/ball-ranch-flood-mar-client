@@ -5,11 +5,11 @@ import makeStyles from '@mui/styles/makeStyles'
 import heroBanner from '../images/index-page-banner.jpg'
 import Hero from '../components/uiComponents/hero'
 import LinksRow from '../components/uiComponents/linksRow'
-import MapContent from '../components/pageComponents/analysis/mapContent'
-import GroundWaterContent from '../components/pageComponents/analysis/groundWaterContent'
-import SurfaceWaterContent from '../components/pageComponents/analysis/surfaceWaterContent'
-import EcologyContent from '../components/pageComponents/analysis/ecologyContent'
-import SoilsContent from '../components/pageComponents/analysis/soilsContent'
+import MapContent from '../components/pageComponents/feasibility-assessment/mapContent'
+import GroundWaterContent from '../components/pageComponents/feasibility-assessment/groundWaterContent'
+import SurfaceWaterContent from '../components/pageComponents/feasibility-assessment/surfaceWaterContent'
+import EcologyContent from '../components/pageComponents/feasibility-assessment/ecologyContent'
+import SoilsContent from '../components/pageComponents/feasibility-assessment/soilsContent'
 import { mediaQueries } from '../components/layout/theme'
 import Header from '../components/layout/header'
 import Footer from '../components/layout/footer'
@@ -106,7 +106,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
   const styles = useStyles()
 
   useEffect(() => {
-    if (props.location.state.activePage) {
+    if (props.location.state?.activePage) {
       const pageFromLink = props.location.state.activePage
       setActivePage(pageFromLink)
     }
@@ -119,7 +119,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <Hero
         imageObj={heroBanner}
         imageHeight='295px'
-        header='Analysis'
+        header='Feasibility Assessment'
         subheader='Select the tabs below to explore analyses of Ball Ranch.'
         marginBottom='0rem'
         fitInLowOpacityContainer={true}
