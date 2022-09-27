@@ -58,6 +58,7 @@ export const sourceNameToNameDictionary = {
 }
 
 export const sourceNameToCoordinatesDictionary = {
+  entire_map: { lat: 36.80217613741628, lng: -119.82633286515124 },
   sjrc_project_boundary: { lng: -119.74019820044907, lat: 36.936375816905255 },
   casgem_well_pts: { lng: -119.74019820044907, lat: 36.936375816905255 },
   fresno_state_wells_pts: { lng: -119.74019820044907, lat: 36.936375816905255 },
@@ -74,6 +75,7 @@ export const sourceNameToCoordinatesDictionary = {
 }
 
 export const sourceNameToZoomValueDictionary = {
+  entire_map: 9,
   sjrc_project_boundary: 13,
   casgem_well_pts: 13,
   fresno_state_wells_pts: 13,
@@ -183,7 +185,7 @@ const getIdentifier = (event) => {
   } else if (event.features[0].source === 'north_kings_gsa_boundary') {
     return toTitleCase(event.features[0].source.replaceAll('_', ' '))
   } else if (event.features[0].source === 'soil_characteristics') {
-    return 'Soil Characteristics'
+    return `Soil Characteristics: ${event.features[0].properties.ksat_r}`
   }
 }
 const getDynamicDescription = (event) => {
@@ -244,7 +246,7 @@ const useStyles = makeStyles((theme) => ({
   },
   map: {
     width: '100%',
-    height: '600px',
+    height: '500px',
   },
   slide: {
     position: 'absolute',
@@ -338,10 +340,6 @@ export const Map = (props) => {
   }
 
   useEffect(() => {
-    setLegendOpen(!panelOpen)
-  }, [panelOpen])
-
-  useEffect(() => {
     const popup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false,
@@ -350,8 +348,8 @@ export const Map = (props) => {
       const mapUpdated = new mapboxgl.Map({
         container: mapDiv.current || '',
         style: 'mapbox://styles/mapbox/satellite-v9',
-        center: { lat: 36.80217613741628, lng: -119.82633286515124 },
-        zoom: 9,
+        center: props.startingCoordinates,
+        zoom: props.startingZoomValue,
         attributionControl: false,
       })
       setMap(mapUpdated)
@@ -438,6 +436,9 @@ export const Map = (props) => {
         map={map}
         legendOpen={legendOpen}
         setLegendOpen={setLegendOpen}
+        spatialData={props.data.spatial}
+        startingCoordinates={props.startingCoordinates}
+        startingZoomValue={props.startingZoomValue}
       />
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import makeStyles from '@mui/styles/makeStyles'
-import { Theme, Typography } from '@mui/material'
+import { Divider, Theme, Typography } from '@mui/material'
 import {
   ReactCompareSlider,
   ReactCompareSliderHandle,
@@ -8,6 +8,19 @@ import {
 } from 'react-compare-slider'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import { Map, sourceNameToCoordinatesDictionary, sourceNameToZoomValueDictionary } from '../../uiComponents/map'
+
+//spatial data
+import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
+import casgemWellPts from '../../../data/geospatial/casgem_well_pts.json'
+import fresnoStateWellsPts from '../../../data/geospatial/fresno_state_wells_pts.json'
+import cdecGagesPoints from '../../../data/geospatial/cdec_gages_pts.json'
+import bigDryCreekReservoir from '../../../data/geospatial/big_dry_creek_reservoir.json'
+import bigDryCreek from '../../../data/geospatial/big_dry_creek.json'
+import mcmullinGsaBoundary from '../../../data/geospatial/mcmullin_gsa_boundary.json'
+import nhdLines from '../../../data/geospatial/nhd_lines.json'
+import northKingsGSABoundary from '../../../data/geospatial/north_kings_gsa_boundary.json'
+import soilCharacteristics from '../../../data/geospatial/soil_characteristics.json'
 
 const useStyles = makeStyles<Theme>(() => ({
   contentContainer: {
@@ -49,6 +62,11 @@ const useStyles = makeStyles<Theme>(() => ({
       width: '400px',
     },
   },
+  mapContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   greenContainer: {
     backgroundColor: '#8A9155A6',
     width: '100%',
@@ -56,7 +74,6 @@ const useStyles = makeStyles<Theme>(() => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    margin: '9rem 0',
   },
   imageSliderContainer: {
     width: '100%',
@@ -137,6 +154,39 @@ const EcologyContent = (props: EcologyContentProps) => {
           />
         </div>
       </div>
+
+      <Divider
+        sx={{
+          border: '1px solid rgba(0, 0, 0, 0.25)',
+          margin: '2rem 6rem 5rem 6rem',
+        }}
+      />
+
+      <div className={styles.mapContainer}>
+        <Map
+          data={{
+            spatial: [
+              sjrcProjectBoundary,
+              casgemWellPts,
+              fresnoStateWellsPts,
+              cdecGagesPoints,
+              bigDryCreekReservoir,
+              bigDryCreek,
+              mcmullinGsaBoundary,
+              nhdLines,
+              northKingsGSABoundary,
+              soilCharacteristics,
+            ],
+          }}
+          startingCoordinates={sourceNameToCoordinatesDictionary.entire_map}
+          startingZoomValue={sourceNameToZoomValueDictionary.entire_map}
+        />
+      </div>
+
+      <Divider
+        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
+      />
+
       <div className={styles.greenContainer}>
         <Typography variant='h1' className={styles.header}>
           Historical and Current Views of Ball Ranch
@@ -181,6 +231,11 @@ const EcologyContent = (props: EcologyContentProps) => {
           Slide bar to see how landscape changes between 19XX and Present Day
         </Typography>
       </div>
+
+      <Divider
+        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
+      />
+
       <div className={styles.chartsSection}>
         <div className={styles.chartsImage}>
           <Img

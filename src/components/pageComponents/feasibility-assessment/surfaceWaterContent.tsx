@@ -15,6 +15,23 @@ import {
   Label,
   Rectangle,
 } from 'recharts'
+import {
+  Map,
+  sourceNameToCoordinatesDictionary,
+  sourceNameToZoomValueDictionary,
+} from '../../uiComponents/map'
+
+//spatial data
+import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
+import casgemWellPts from '../../../data/geospatial/casgem_well_pts.json'
+import fresnoStateWellsPts from '../../../data/geospatial/fresno_state_wells_pts.json'
+import cdecGagesPoints from '../../../data/geospatial/cdec_gages_pts.json'
+import bigDryCreekReservoir from '../../../data/geospatial/big_dry_creek_reservoir.json'
+import bigDryCreek from '../../../data/geospatial/big_dry_creek.json'
+import mcmullinGsaBoundary from '../../../data/geospatial/mcmullin_gsa_boundary.json'
+import nhdLines from '../../../data/geospatial/nhd_lines.json'
+import northKingsGSABoundary from '../../../data/geospatial/north_kings_gsa_boundary.json'
+import soilCharacteristics from '../../../data/geospatial/soil_characteristics.json'
 
 import mdkScenariosDataFormatted from '../../../data/mdkScenarios/mdk_scenarios_dta_formatted.json'
 
@@ -24,6 +41,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
+    paddingBottom: '5rem',
   },
   overlayContainer: {
     width: '100%',
@@ -32,6 +50,9 @@ const useStyles = makeStyles(() => ({
     [mediaQueries.below992]: {
       height: '700px',
     },
+  },
+  marginedToOverlayContainer: {
+    margin: '0 3rem',
   },
   columnContainer: {
     display: 'flex',
@@ -55,7 +76,7 @@ const useStyles = makeStyles(() => ({
     },
   },
   overlayImageContent: {
-    width: '648px',
+    width: '600px',
     position: 'absolute',
     top: 0,
     right: 50,
@@ -70,6 +91,11 @@ const useStyles = makeStyles(() => ({
   },
   text: {
     fontWeight: 400,
+  },
+  mapContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   chartSection: {
     width: '100%',
@@ -96,17 +122,17 @@ const useStyles = makeStyles(() => ({
   },
   chartLegendContainer: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   legendBlock: {
     display: 'flex',
     alignItems: 'center',
-    margin: '0 0.5rem'
+    margin: '0 0.5rem',
   },
   legendSquare: {
     width: '20px',
     height: '20px',
-    marginRight: '0.25rem'
+    marginRight: '0.25rem',
   },
   scenariosContainer: {
     maxWidth: '300px',
@@ -231,20 +257,21 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             Surface Water
           </Typography>
           <Typography variant='body1' className={styles.text}>
-            The California Department of Water Resources (DWR) conducted a
-            preliminary analysis of potential surface water supply to Ball Ranch
-            from Little Dry Creek, Big Dry Creek, and the Fresno stormwater
-            detention basin. This analysis showed that surface water could be
-            available for recharge in Above Normal and Wet water year types,
-            even after accounting for existing regulatory constraints on
-            diversions in the San Joaquin watershed.
+            This project identified at least three surface water sources that
+            could potentially provide water for MAR at Ball Ranch during wet
+            season, flood flow conditions: 1. Little Dry Creek; 2. Big Dry Creek
+            (including the Fresno stormwater detention Basin); and 3.San Joaquin
+            River. Click on the map to see historical surface flows from all of
+            these sources.
             <br />
-            <br />
-            Phase 1 of this project also explored potential use of flood
-            releases through the Friant Kern canal and Little Dry Creek and
-            determined that additional surface water delivery to Ball Ranch
-            could be feasible with careful planning, water rights coordination,
-            and infrastructure improvements.
+            <br />A preliminary analysis of potential surface water supply from
+            Little Dry Creek, Big Dry Creek, and the Fresno stormwater detention
+            basin completed in Phase 1 of this project showed that surface water
+            could be available for recharge in Above Normal and Wet water year
+            types, even after accounting for existing regulatory constraints on
+            diversions in the San Joaquin watershed. The following bar chart
+            shows that as much as 3.8 to 11.6 thousand acre feet could be
+            available for recharge in Above Normal and Wet years.
           </Typography>
         </div>
         <div className={styles.overlayImageContent}>
@@ -254,9 +281,49 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
           />
         </div>
       </div>
+      <div className={styles.marginedToOverlayContainer}>
+        <Typography variant='body1' className={styles.text}>
+          <br />
+          <br />
+          Phase 1 of this project also explored potential surface water supply
+          from San Joaquin River flood releases through the Friant Kern canal
+          and Little Dry Creek. This would only be possible if the resulting
+          flow management provided benefits to Reclamation’s San Joaquin River
+          Restoration Program and satisfied existing water rights conditions.
+          <br />
+          <br />
+          The next phase of this project will determine water rights
+          coordination and water management infrastructure improvements needed
+          to enable surface water deliveries to Ball Ranch in Above Normal and
+          Wet Years, and quantify potential surface water supply from the San
+          Joaquin River.
+        </Typography>
+      </div>
+
       <Divider
         sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
       />
+
+      <div className={styles.mapContainer}>
+        <Map
+          data={{
+            spatial: [
+              sjrcProjectBoundary,
+              cdecGagesPoints,
+              bigDryCreekReservoir,
+              bigDryCreek,
+              nhdLines,
+            ],
+          }}
+          startingCoordinates={sourceNameToCoordinatesDictionary.nhd_lines}
+          startingZoomValue={sourceNameToZoomValueDictionary.nhd_lines}
+        />
+      </div>
+
+      <Divider
+        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
+      />
+
       <div className={`${styles.columnContainer} ${styles.centerColumn}`}>
         <Typography variant='h1' className={styles.header}>
           Scenario Planning - Surface Water Avalibilty
