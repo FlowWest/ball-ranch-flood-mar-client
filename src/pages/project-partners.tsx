@@ -215,7 +215,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
       <title>Project Partners</title>
       <Hero
         imageObj={projectPartnersHero}
-        imageHeight='525px'
+        imageHeight='450px'
         header='Project Partners and Outreach'
         subheader=''
         marginBottom='5rem'

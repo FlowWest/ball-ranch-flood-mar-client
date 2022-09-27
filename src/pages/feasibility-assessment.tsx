@@ -5,7 +5,7 @@ import makeStyles from '@mui/styles/makeStyles'
 import heroBanner from '../images/index-page-banner.jpg'
 import Hero from '../components/uiComponents/hero'
 import LinksRow from '../components/uiComponents/linksRow'
-import MapContent from '../components/pageComponents/feasibility-assessment/mapContent'
+import OverviewContent from '../components/pageComponents/feasibility-assessment/overviewContent'
 import GroundWaterContent from '../components/pageComponents/feasibility-assessment/groundWaterContent'
 import SurfaceWaterContent from '../components/pageComponents/feasibility-assessment/surfaceWaterContent'
 import EcologyContent from '../components/pageComponents/feasibility-assessment/ecologyContent'
@@ -67,9 +67,16 @@ interface AnalysisPageProps {
 }
 
 const AnalysisPage = (props: AnalysisPageProps) => {
-  const [activePage, setActivePage] = useState('Map')
+  const [activePage, setActivePage] = useState('Overview')
   const activePageCmptDict: any = {
-    Map: <MapContent />,
+    Overview: (
+      <OverviewContent
+        images={{
+          feasibilityAssesmentChart:
+            props.data.feasibilityAssesmentChart.childImageSharp.fluid,
+        }}
+      />
+    ),
     'Ground Water': (
       <GroundWaterContent
         images={{
@@ -118,7 +125,7 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <title>Analysis</title>
       <Hero
         imageObj={heroBanner}
-        imageHeight='295px'
+        imageHeight='250px'
         header='Feasibility Assessment'
         subheader='Select the tabs below to explore analyses of Ball Ranch.'
         marginBottom='0rem'
@@ -127,25 +134,25 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <div className={styles.linksRowContainer}>
         <LinksRow
           links={[
-            { text: 'Map', onClick: () => setActivePage('Map'), route: '' },
-            {
-              text: 'Ground Water',
-              onClick: () => setActivePage('Ground Water'),
-              route: '',
-            },
+            { text: 'Overview', onClick: () => setActivePage('Overview'), route: '' },
             {
               text: 'Surface Water',
               onClick: () => setActivePage('Surface Water'),
               route: '',
             },
             {
-              text: 'Ecology',
-              onClick: () => setActivePage('Ecology'),
+              text: 'Soils & Geology',
+              onClick: () => setActivePage('Soils'),
               route: '',
             },
             {
-              text: 'Soils',
-              onClick: () => setActivePage('Soils'),
+              text: 'Groundwater',
+              onClick: () => setActivePage('Ground Water'),
+              route: '',
+            },
+            {
+              text: 'Ecology',
+              onClick: () => setActivePage('Ecology'),
               route: '',
             },
           ]}
@@ -156,7 +163,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
           {activePageCmptDict[activePage]}
         </div>
       </div>
-      <Footer />
     </main>
   )
 }
@@ -177,6 +183,11 @@ export const fluidImage = graphql`
 `
 export const pageQuery = graphql`
   query {
+    feasibilityAssesmentChart: file(
+      relativePath: { eq: "feasibility-assesment-chart.jpg" }
+    ) {
+      ...fluidImage
+    }
     groundWaterImage: file(relativePath: { eq: "ground-water-image.jpg" }) {
       ...fluidImage
     }

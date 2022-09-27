@@ -3,8 +3,13 @@ import { Typography } from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import { Theme } from '@mui/system'
 
-const useStyles = makeStyles(() => ({
+interface StyleProps {
+  imageWidth?: string
+}
+
+const useStyles = makeStyles<Theme, StyleProps>(() => ({
   rowContainer: {
     display: 'flex',
     width: '100%',
@@ -12,7 +17,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: '8rem',
   },
   image: {
-    minWidth: '600px',
+    minWidth: ({imageWidth}) => imageWidth ?? '600px',
     maxHeight: '100%',
   },
   paragraphContainer: {
@@ -70,10 +75,13 @@ interface ImageRowProps {
   header: string
   content: string
   alt?: string
+  imageWidth?: string
 }
 
 const ImageRow = (props: ImageRowProps) => {
-  const styles = useStyles()
+  const styles = useStyles({
+    imageWidth: props.imageWidth
+  })
 
   return (
     <div
