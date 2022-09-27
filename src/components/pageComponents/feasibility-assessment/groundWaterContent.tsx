@@ -1,8 +1,21 @@
 import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import Img from 'gatsby-image'
-import { Typography } from '@mui/material'
+import { Divider, Typography } from '@mui/material'
 import { mediaQueries } from '../../layout/theme'
+import { Map, sourceNameToCoordinatesDictionary, sourceNameToZoomValueDictionary } from '../../uiComponents/map'
+
+//spatial data
+import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
+import casgemWellPts from '../../../data/geospatial/casgem_well_pts.json'
+import fresnoStateWellsPts from '../../../data/geospatial/fresno_state_wells_pts.json'
+import cdecGagesPoints from '../../../data/geospatial/cdec_gages_pts.json'
+import bigDryCreekReservoir from '../../../data/geospatial/big_dry_creek_reservoir.json'
+import bigDryCreek from '../../../data/geospatial/big_dry_creek.json'
+import mcmullinGsaBoundary from '../../../data/geospatial/mcmullin_gsa_boundary.json'
+import nhdLines from '../../../data/geospatial/nhd_lines.json'
+import northKingsGSABoundary from '../../../data/geospatial/north_kings_gsa_boundary.json'
+import soilCharacteristics from '../../../data/geospatial/soil_characteristics.json'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
@@ -10,6 +23,7 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Lato',
     display: 'flex',
     flexDirection: 'column',
+    paddingBottom: '3rem',
   },
   rowContainer: {
     display: 'flex',
@@ -65,6 +79,11 @@ const useStyles = makeStyles(() => ({
       marginRight: '2rem',
     },
   },
+  mapContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   link: {
     textDecoration: 'none',
     color: '#000',
@@ -89,7 +108,7 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
       <div className={`${styles.rowContainer} ${styles.spaceEvenly}`}>
         <div className={styles.textContainer}>
           <Typography variant='h1' className={styles.header}>
-            Ground Water
+            Groundwater
           </Typography>
           <Typography variant='body1' className={styles.text}>
             Analysis of soils, topography, and groundwater levels at and in the
@@ -154,6 +173,31 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             </div>
           </a>
         </div>
+      </div>
+
+      <Divider
+        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
+      />
+
+      <div className={styles.mapContainer}>
+        <Map
+          data={{
+            spatial: [
+              sjrcProjectBoundary,
+              casgemWellPts,
+              fresnoStateWellsPts,
+              cdecGagesPoints,
+              bigDryCreekReservoir,
+              bigDryCreek,
+              mcmullinGsaBoundary,
+              nhdLines,
+              northKingsGSABoundary,
+              soilCharacteristics,
+            ],
+          }}
+          startingCoordinates={sourceNameToCoordinatesDictionary.entire_map}
+          startingZoomValue={sourceNameToZoomValueDictionary.entire_map}
+        />
       </div>
     </div>
   )

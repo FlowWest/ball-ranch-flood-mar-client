@@ -1,13 +1,24 @@
 import React from 'react'
 import makeStyles from '@mui/styles/makeStyles'
-import { Typography } from '@mui/material'
+import { Divider, Typography } from '@mui/material'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
+import {
+  Map,
+  sourceNameToCoordinatesDictionary,
+  sourceNameToZoomValueDictionary,
+} from '../../uiComponents/map'
+
+//spatial data
+import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
+import northKingsGSABoundary from '../../../data/geospatial/north_kings_gsa_boundary.json'
+import soilCharacteristics from '../../../data/geospatial/soil_characteristics.json'
 
 const useStyles = makeStyles(() => ({
   contentContainer: {
     display: 'flex',
     flexDirection: 'column',
+    paddingBottom: '3rem',
   },
   rowContainer: {
     display: 'flex',
@@ -32,6 +43,11 @@ const useStyles = makeStyles(() => ({
       marginRight: '0',
       width: '300px',
     },
+  },
+  mapContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
     fontFamily: 'Oswald',
@@ -65,25 +81,52 @@ const SoilsContent = (props: SoilsContentProps) => {
         </div>
         <div className={styles.columnContainer}>
           <Typography variant='h1' className={styles.header}>
-            Soils
+            Soils &#38; Geology
           </Typography>
           <Typography variant='body1' className={styles.text}>
-            Saturated hydraulic conductivity (Ksat) is the measure of how easily
-            water moves through the soil, expressed in micrometers per second.
-            Saturated hydraulic conductivity data for Ball Ranch was downloaded
-            from SSURGO database. Values are based on typical soil
-            characteristics observed in the field. The SSURGO database contains
-            information about soil collected over the past century, and Ksat
-            values can be grouped into classes from Very Low (0.0-0.01) to Very
-            High (100-705). The average saturated hydraulic conductivity of
-            soils at Ball Ranch is 42.9 micrometers per second, indicating high
-            hydraulic conductivity. This suggests that percolating surface water
-            deliver to Ball Ranch into the subsurface aquifer should be
-            feasible. The next phase of this project will include monitoring
-            that will improve the accuracy and site specificity of hydraulic
-            conductivity conditions in potential recharge areas on Ball Ranch.
+            Surface soil characteristics and subsurface geologic conditions at
+            Ball Ranch will govern the rate at which surface water can be used
+            to recharge groundwater. Phase 1 of this project investigated both
+            soils and geology at the site. Explore the map for a better
+            understanding of surface and subsurface conditions at Ball Ranch.
+            <br />
+            <br />
+            The subsurface geologic conditions at Ball Ranch are dominated by
+            alluvium (that is, deposits created by flowing rivers) with
+            relatively high porosity and capacity to store water. Surface soils
+            at Ball Ranch are also conducive to recharge, with high average
+            saturated hydraulic conductivity (Ksat - a measure of how easily
+            water moves through the soil) of approximately 43 micrometers per
+            second. This combination of soils and geology indicates that
+            percolating surface water delivered to Ball Ranch into the
+            subsurface aquifer is feasible. The next phase of this project will
+            include monitoring to improve the accuracy and site specificity of
+            soil and geologic conditions in potential recharge areas on Ball
+            Ranch.
           </Typography>
         </div>
+      </div>
+
+      <Divider
+        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
+      />
+
+      <div className={styles.mapContainer}>
+        <Map
+          data={{
+            spatial: [
+              sjrcProjectBoundary,
+              northKingsGSABoundary,
+              soilCharacteristics,
+            ],
+          }}
+          startingCoordinates={
+            sourceNameToCoordinatesDictionary.north_kings_gsa_boundary
+          }
+          startingZoomValue={
+            sourceNameToZoomValueDictionary.north_kings_gsa_boundary
+          }
+        />
       </div>
     </div>
   )

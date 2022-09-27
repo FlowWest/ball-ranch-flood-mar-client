@@ -64,7 +64,7 @@ const ImplementationStrategy = () => {
       <Header />
       <Hero
         imageObj={indexPageBanner}
-        imageHeight='295px'
+        imageHeight='250px'
         header='Implementation Strategy'
         subheader=''
         fitInLowOpacityContainer={true}
