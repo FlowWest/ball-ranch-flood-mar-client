@@ -93,20 +93,6 @@ const IndexPage = (props: IndexPageProps) => {
         </Typography>
         <div className={styles.dataSectionRow}>
           <DataSectionCard
-            image={props.data.dataCardImageOne.childImageSharp.fluid}
-            header='Soils and Geology'
-            paragraph='Surface and subsurface conditions affecting groundwater recharge potential at and around Ball Ranch.'
-            analysisLink='Soils'
-            alt='Image of flowers'
-          />
-          <DataSectionCard
-            image={props.data.dataCardImageTwo.childImageSharp.fluid}
-            header='Ecology'
-            paragraph='Historical, current, and potential future species presence at Ball Ranch.'
-            analysisLink='Ecology'
-            alt='Image of a perched bird'
-          />
-          <DataSectionCard
             image={props.data.dataCardImageThree.childImageSharp.fluid}
             header='Surface Water Supply'
             paragraph='Quantification of potential surface water supply sources for MAR at Ball Ranch.'
@@ -114,10 +100,24 @@ const IndexPage = (props: IndexPageProps) => {
             alt='Image of soil'
           />
           <DataSectionCard
+            image={props.data.dataCardImageOne.childImageSharp.fluid}
+            header='Soils and Geology'
+            paragraph='Surface and subsurface conditions affecting groundwater recharge potential at and around Ball Ranch.'
+            analysisLink='Soils'
+            alt='Image of flowers'
+          />
+          <DataSectionCard
             image={props.data.dataCardImageFour.childImageSharp.fluid}
             header='Groundwater'
             paragraph='Regional and site specific groundwater elevations showing seasonal and long-term trends.'
             analysisLink='Ground Water'
+          />
+          <DataSectionCard
+            image={props.data.dataCardImageTwo.childImageSharp.fluid}
+            header='Ecology'
+            paragraph='Historical, current, and potential future species presence at Ball Ranch.'
+            analysisLink='Ecology'
+            alt='Image of a perched bird'
           />
         </div>
       </div>
@@ -145,7 +145,7 @@ export const pageQuery = graphql`
     imageOne: file(relativePath: { eq: "imageOne.jpg" }) {
       ...fluidImage
     }
-    imageTwo: file(relativePath: { eq: "imageTwo.jpg" }) {
+    imageTwo: file(relativePath: { eq: "ball-ranch-aerial.jpg" }) {
       ...fluidImage
     }
     dataCardImageOne: file(relativePath: { eq: "data-card-image-one.jpg" }) {
