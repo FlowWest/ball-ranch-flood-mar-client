@@ -34,16 +34,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FFF',
     opacity: 0.9,
     width: '25%',
-    height: '50%',
+    minHeight: '30%',
+    maxHeight: '50%',
     borderRadius: '15px',
+    overflow: 'none',
     '&:hover': {
       opacity: 1,
     },
   },
   legendScrollableList: {
     overflow: 'scroll',
-    maxHeight: '15rem',
+    maxHeight: '11.5rem',
     backgroundColor: 'transparent',
+    marginBottom: '2.5rem',
 
     '&::-webkit-scrollbar': {
       '-webkit-appearance': 'none',
@@ -119,6 +122,9 @@ interface MapLegendProps {
   map: any
   legendOpen: boolean
   setLegendOpen: any
+  spatialData: any
+  startingCoordinates: any
+  startingZoomValue: number
 }
 
 const MapLegend = (props: MapLegendProps) => {
@@ -240,16 +246,9 @@ const MapLegend = (props: MapLegendProps) => {
           <div
             className={`${styles.columnContainer} ${styles.alignStart} ${styles.legendScrollableList}`}
           >
-            <LegendItemCmpt layerID='sjrc_project_boundary' />
-            <LegendItemCmpt layerID='fresno_state_wells_pts' />
-            <LegendItemCmpt layerID='casgem_well_pts' />
-            <LegendItemCmpt layerID='cdec_gages_pts' />
-            <LegendItemCmpt layerID='soil_characteristics' />
-            <LegendItemCmpt layerID='north_kings_gsa_boundary' />
-            <LegendItemCmpt layerID='mcmullin_gsa_boundary' />
-            <LegendItemCmpt layerID='nhd_lines' />
-            <LegendItemCmpt layerID='big_dry_creek_reservoir' />
-            <LegendItemCmpt layerID='big_dry_creek' />
+            {props.spatialData.map((item: any) => (
+              <LegendItemCmpt layerID={item.name} key={item.name}/>
+            ))}
           </div>
           <div className={styles.legendToggleAllButton}>
             <Tooltip
@@ -270,12 +269,9 @@ const MapLegend = (props: MapLegendProps) => {
               <IconButton
                 onClick={() => {
                   props.map.flyTo({
-                    center: {
-                      lat: 36.80217613741628,
-                      lng: -119.82633286515124,
-                    },
+                    center: props.startingCoordinates,
                     essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-                    zoom: 9,
+                    zoom: props.startingZoomValue,
                     pitch: 0,
                     bearing: 0,
                   })
