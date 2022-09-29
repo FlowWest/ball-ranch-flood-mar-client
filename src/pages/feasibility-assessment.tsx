@@ -134,7 +134,11 @@ const AnalysisPage = (props: AnalysisPageProps) => {
       <div className={styles.linksRowContainer}>
         <LinksRow
           links={[
-            { text: 'Overview', onClick: () => setActivePage('Overview'), route: '' },
+            {
+              text: 'Overview',
+              onClick: () => setActivePage('Overview'),
+              route: '',
+            },
             {
               text: 'Surface Water',
               onClick: () => setActivePage('Surface Water'),
