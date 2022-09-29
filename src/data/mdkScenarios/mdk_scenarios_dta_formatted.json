@@ -15,17 +15,32 @@
     "scenario": 3
   },
   {
-    "water_year_type": "Above Normal (Dec - Marc)",
+    "water_year_type": "Wet (Dec - Mar)",
+    "water_available_TAF": 7.4,
+    "scenario": 1
+  },
+  {
+    "water_year_type": "Wet (Dec - Mar)",
+    "water_available_TAF": 6.6,
+    "scenario": 2
+  },
+  {
+    "water_year_type": "Wet (Dec - Mar)",
+    "water_available_TAF": 2,
+    "scenario": 3
+  },
+  {
+    "water_year_type": "Above Normal (Dec - Apr)",
     "water_available_TAF": 4,
     "scenario": 1
   },
   {
-    "water_year_type": "Above Normal (Dec - Marc)",
+    "water_year_type": "Above Normal (Dec - Apr)",
     "water_available_TAF": 1.6,
     "scenario": 2
   },
   {
-    "water_year_type": "Above Normal (Dec - Marc)",
+    "water_year_type": "Above Normal (Dec - Apr)",
     "water_available_TAF": 0,
     "scenario": 3
   },
@@ -42,21 +57,6 @@
   {
     "water_year_type": "Wet (Dec - Apr)",
     "water_available_TAF": 5.8,
-    "scenario": 3
-  },
-  {
-    "water_year_type": "Wet (Dec - Mar)",
-    "water_available_TAF": 7.4,
-    "scenario": 1
-  },
-  {
-    "water_year_type": "Wet (Dec - Mar)",
-    "water_available_TAF": 6.6,
-    "scenario": 2
-  },
-  {
-    "water_year_type": "Wet (Dec - Mar)",
-    "water_available_TAF": 2,
     "scenario": 3
   }
 ]
