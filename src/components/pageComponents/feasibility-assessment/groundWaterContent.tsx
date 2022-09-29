@@ -52,9 +52,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '1rem 2rem',
-    '&:hover': {
-      cursor: 'pointer',
-    },
     [mediaQueries.below992]: {
       width: '100%',
       padding: '0 3rem',
@@ -87,6 +84,9 @@ const useStyles = makeStyles(() => ({
   link: {
     textDecoration: 'none',
     color: '#000',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   spaceEvenly: {
     justifyContent: 'space-evenly',
@@ -148,12 +148,12 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
             </div>
           </a>
 
-          <a
+          {/* <a
             href='https://water.ca.gov/programs/groundwater-management/groundwater-elevation-monitoring--casgem'
             target='_blank'
             rel='noopener noreferrer'
             className={styles.link}
-          >
+          > */}
             <div className={`${styles.greenBox} ${styles.rowContainer}`}>
               <div className={styles.logoImage}>
                 <Img
@@ -171,7 +171,7 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
                 </Typography>
               </div>
             </div>
-          </a>
+          {/* </a> */}
         </div>
       </div>
 
