@@ -72,34 +72,51 @@ const ImplementationStrategy = () => {
       <div className={styles.nextStepsSection}>
         <div className={styles.nextStepsRow}>
           <div className={styles.nextStepsColumn}>
-            <Typography variant='subtitle1' className={styles.boldFont}>
-              The feasibility analysis identified remaining data gaps and next
-              steps including the following.
+            <Typography variant='subtitle1' className={styles.boldFont} style={{fontSize: '1.2rem'}}>
+              The feasibility analysis using the existing data presented on this
+              web application indicates potential feasibility of Flood-MAR at
+              Ball Ranch that would be highly beneficial to groundwater
+              dependent ecosystems. However, significant administrative hurdles
+              and data gaps remain that must be addressed prior to implementing
+              Flood-MAR. The following issues and data gaps will be addressed in
+              the Implementation Strategy deliverable for this project.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Flow Regimes.</span>
+            <span className={styles.boldFont}>Water Rights.</span>
             <Typography>
-              Identify what flow regimes could impact species both negatively
-              and beneficially.
+              Surface water delivery from any of the sources identified on this
+              web application will require water rights agreements to
+              incorporate a Flood-MAR beneficial use.
+            </Typography>
+            <br />
+            <span className={styles.boldFont}>Surface Water Flows.</span>
+            <Typography>
+              Further analysis of surface flow magnitudes, frequencies,
+              duration, and timing is required to more accurately quantify
+              potential impacts and benefits of Flood-MAR at Ball Ranch.
             </Typography>
             <br />
             <span className={styles.boldFont}>Subsurface Resistivity.</span>
             <Typography>
-              Map Ball Ranch subsurface resistivity using TowTEM.
+              Subsurface resistivity data collected at Ball Ranch using TowTEM
+              must be analyzed and correlated with subsurface site conditions to
+              provide precise, site-specific understanding of recharge
+              potential.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Flooding Impact.</span>
+            <span className={styles.boldFont}>Flood Management.</span>
             <Typography>
-              Identify if there is any flooding impact from recharging the
-              aquifer at Ball Ranch.
+              While the impact of additional surface water storage on Ball Ranch
+              is not expected to significantly affect flood management in the
+              region, further analysis is required to quantify any changes to
+              flood flow routing associated with Flood-MAR at Ball Ranch.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Quantifying benefits.</span>
+            <span className={styles.boldFont}>Benefit Quantification.</span>
             <Typography>
-              Develop framework for characterizing where water goes and if it
-              has recharge benefit, SJR habitat benefit, or SJR temperature
-              benefit and confirm if flood benefit can be characterized or
-              quantified.
+              A framework for quantifying groundwater recharge benefits to
+              ecosystem and water management conditions is required to assess
+              the relative value of different scales of Flood-MAR at Ball Ranch.
             </Typography>
           </div>
           <div className={`${styles.nextStepsColumn} ${styles.greenBackdrop}`}>

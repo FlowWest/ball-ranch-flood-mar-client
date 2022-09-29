@@ -82,7 +82,7 @@ const IndexPage = (props: IndexPageProps) => {
           image={props.data.imageTwo.childImageSharp.fluid}
           reverse={true}
           header='Why Ball Ranch?'
-          content='Ball Ranch is a 360 acre riparian and floodplain property acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and Little Dry Creek watersheds, and has diverse topography that includes perennial surface water features. A Flood-MAR project at Ball Ranch could take advantage of wet season surface water supplies and existing topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
+          content='Ball Ranch was acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and Little Dry Creek watersheds, and has diverse topography that includes perennial surface water features. A Flood-MAR project at Ball Ranch could take advantage of wet season surface water supplies and existing topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
           alt='Image of river'
         />
       </div>
