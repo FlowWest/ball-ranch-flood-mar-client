@@ -99,10 +99,6 @@ const AnalysisPage = (props: AnalysisPageProps) => {
           ecologyImage: props.data.ecologyImage.childImageSharp.fluid,
           ecologyChartsImage:
             props.data.ecologyChartsImage.childImageSharp.fluid,
-          ballRanchAerialPast:
-            props.data.ballRanchAerialPast.childImageSharp.fluid,
-          ballRanchAerialCurrent:
-            props.data.ballRanchAerialCurrent.childImageSharp.fluid,
         }}
       />
     ),
@@ -197,14 +193,6 @@ export const pageQuery = graphql`
       ...fluidImage
     }
     groundWaterImage: file(relativePath: { eq: "ground-water-image.jpg" }) {
-      ...fluidImage
-    }
-    ballRanchAerialPast: file(relativePath: { eq: "ball-ranch-aerial.jpg" }) {
-      ...fluidImage
-    }
-    ballRanchAerialCurrent: file(
-      relativePath: { eq: "ball-ranch-current.jpg" }
-    ) {
       ...fluidImage
     }
     casgemLogo: file(relativePath: { eq: "casgem-logo.jpg" }) {
