@@ -141,8 +141,8 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
                   CASGEM
                 </Typography>
                 <Typography variant='body1' className={styles.cardText}>
-                  CASGEM monitoring network has XXXX wells at Ball Ranch and
-                  nearby. Data spans XXXX-XX-XX though YYYY-YY-YY
+                  CASGEM monitoring network has four wells at Ball Ranch and
+                  nearby. Data spans from 1936 through 2019
                 </Typography>
               </div>
             </div>
@@ -166,8 +166,8 @@ const GroundWaterContent = (props: GroundWaterContentProps) => {
                   Fresno State Piezometers
                 </Typography>
                 <Typography variant='body1' className={styles.cardText}>
-                  Fresno State has installed XX monitoring wells at the Bal
-                  Ranch site collecting data from XXXX-XX-XX to YYYY-YY-YY
+                  Fresno State has installed ten monitoring wells at the Ball
+                  Ranch site with data collected in 2012
                 </Typography>
               </div>
             </div>

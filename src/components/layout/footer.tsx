@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     textDecoration: 'none',
-    color: '#FFF'
+    color: '#FFF',
   },
   footerText: {
     fontFamily: 'Lato',
@@ -54,12 +54,11 @@ const Footer = () => {
           About Ball Ranch
         </Typography>
         <Typography variant='body1' className={styles.footerParagraph}>
-          The Ball Ranch Managed Aquifer Recharge (MAR) Planning and Analysis
-          Project is assessing the feasibility and potential benefits of
-          recharging groundwater on Ball Ranch. The first phase of the project
-          is quantifying site groundwater conditions, cataloging groundwater
-          dependent ecosystem characteristics, analyzing surface water supplies
-          (from wet season flows), and assessing stakeholder support.
+          Ball Ranch covers approximately 360 acres of riparian land along the
+          San Joaquin River downstream of Friant Dam. The first phase of the
+          project is quantifying site groundwater conditions, cataloging
+          groundwater dependent ecosystem characteristics, analyzing potential
+          wet-season surface water supplies, and assessing stakeholder support.
         </Typography>
       </div>
 
