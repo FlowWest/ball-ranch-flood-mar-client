@@ -87,25 +87,11 @@ const useStyles = makeStyles<Theme>(() => ({
     position: 'relative',
     marginBottom: '2rem',
   },
-  chartsSection: {
+  textSection: {
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-evenly',
-  },
-  chartsImage: {
-    width: '450px',
-    [mediaQueries.below992]: {
-      width: '300px',
-      marginRight: '1rem',
-    },
-  },
-  chartsSectionTextContainer: {
-    display: 'flex',
     flexDirection: 'column',
-    maxWidth: '454px',
-    [mediaQueries.below992]: {
-      maxWidth: '375px',
-    },
+    justifyContent: 'space-evenly',
   },
   header: {
     fontFamily: 'Oswald',
@@ -114,6 +100,9 @@ const useStyles = makeStyles<Theme>(() => ({
   },
   text: {
     fontWeight: 400,
+  },
+  alignSelfCenter: {
+    alignSelf: 'center',
   },
 }))
 
@@ -229,7 +218,7 @@ const EcologyContent = (props: EcologyContentProps) => {
           />
         </div>
         <Typography variant='body1' className={styles.text}>
-          Slide bar to see how landscape changes between 19XX and Present Day
+          Slide bar to see how landscape changes between 1940 and Present Day
         </Typography>
       </div>
 
@@ -237,33 +226,30 @@ const EcologyContent = (props: EcologyContentProps) => {
         sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
       />
 
-      <div className={styles.chartsSection}>
-        <div className={styles.chartsImage}>
-          <Img
-            fluid={props.images.ecologyChartsImage}
-            imgStyle={{ objectFit: 'cover' }}
-          />
-        </div>
-        <div className={styles.chartsSectionTextContainer}>
-          <Typography variant='h1' className={styles.header}>
-            Species composition change over time
-          </Typography>
+      <div className={styles.textSection}>
+        <Typography
+          variant='h1'
+          className={`${styles.header} ${styles.alignSelfCenter}`}
+        >
+          Species composition change over time
+        </Typography>
+        <div>
           <Typography>
             Prior to completion of Friant dam upstream of Ball Ranch, this
             portion of the San Joaquin River was a dynamic floodplain
             environment that was regularly inundated by high flows.
             <br />
             <br />
-            This created a diverse mosaic of aquatic, riparian, and floodplain
-            habitats throughout the Ball Ranch property. Hydrology, landuse
-            change, and expanding water needs have increased the dry and
+            This created a diverse mosaic of aquatic, riparian, and
+            floodplain habitats throughout the Ball Ranch property. Hydrology,
+            landuse change, and expanding water needs have increased the dry and
             disconnected conditions at Ball Ranch have reduced vegetation
             diversity and density, and impacted the fish and wildlife species
             dependent on these habitats.
             <br />
             <br />
-            It is likely that Flood-MAR at Ball Ranch could restore some of
-            these lost habitats and species, and enhance conditions for the
+            It is likely that Flood-MAR at Ball Ranch could restore some
+            of these lost habitats and species, and enhance conditions for the
             species that have persisted.
           </Typography>
         </div>

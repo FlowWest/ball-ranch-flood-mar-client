@@ -346,10 +346,10 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
               <BarChart
                 data={mdkScenariosDataFormatted}
                 margin={{
-                  top: 0,
+                  top: 50,
                   right: 0,
                   left: 20,
-                  bottom: 15,
+                  bottom: -30,
                 }}
               >
                 <CartesianGrid strokeDasharray='3 3' />
@@ -363,9 +363,13 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
                   <Label
                     angle={270}
                     position='left'
-                    style={{ textAnchor: 'middle', opacity: 0.75 }}
+                    style={{
+                      textAnchor: 'middle',
+                      opacity: 0.75,
+                      fontSize: '0.8rem',
+                    }}
                   >
-                    Water Available
+                    Potential Surface Water Supply (1000 Acre Feet)
                   </Label>
                 </YAxis>
                 <Tooltip content={CustomTooltip} />
@@ -384,15 +388,16 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             <Typography className={styles.chartHeader}>SCENARIOS:</Typography>
             <Typography>
               <span className={styles.bold}>Scenario 1 |</span> Divert all flow
-              from Big Dry Creek Dam to Little Dry Creek
+              from Big Dry Creek stormwater detention system to Little Dry
+              Creek.
             </Typography>
             <Typography>
-              <span className={styles.bold}>Scenario 2 |</span> Scenario 1 plus
-              diverting onky when flow exists in Chowchilla Bypass
+              <span className={styles.bold}>Scenario 2 |</span> Diversions only
+              when Chowchilla Bypass is flowing.
             </Typography>
             <Typography>
-              <span className={styles.bold}>Scenario 3 |</span> Scenario 2 and
-              the Delta is in excess without restrictions
+              <span className={styles.bold}>Scenario 3 |</span> Diversions only
+              when Chowchilla Bypass is flowing and the Delta is in excess.
             </Typography>
           </div>
         </div>
