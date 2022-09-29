@@ -44,15 +44,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
   },
   orderedList: {
+    fontSize: '1.25rem',
     marginTop: '0',
     paddingLeft: '1.5rem',
     '& li:not(:last-child)': {
-      marginBottom: '1.5rem',
+      marginBottom: '3rem',
     },
   },
   orderedListHeader: {
     alignSelf: 'center',
-    marginBottom: '2rem',
+    margin: '3rem 0',
   },
 }))
 
