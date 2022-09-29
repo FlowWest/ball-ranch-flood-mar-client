@@ -8,7 +8,14 @@ import {
 } from 'react-compare-slider'
 import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
-import { Map, sourceNameToCoordinatesDictionary, sourceNameToZoomValueDictionary } from '../../uiComponents/map'
+import {
+  Map,
+  sourceNameToCoordinatesDictionary,
+  sourceNameToZoomValueDictionary,
+} from '../../uiComponents/map'
+
+import aerialPast from '../../../images/ball-ranch-aerial.jpg'
+import aerialCurrent from '../../../images/ball-ranch-current.jpg'
 
 //spatial data
 import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
@@ -208,18 +215,12 @@ const EcologyContent = (props: EcologyContentProps) => {
             }
             itemOne={
               <ReactCompareSliderImage
-                src='https://images.unsplash.com/photo-1580458148391-8c4951dc1465?auto=format&fit=crop&w=1280&q=80'
+                src={aerialPast}
                 style={{ filter: 'grayscale(1)' }}
                 alt='one'
               />
             }
-            itemTwo={
-              <ReactCompareSliderImage
-                src='https://images.unsplash.com/photo-1580458148391-8c4951dc1465?auto=format&fit=crop&w=1280&q=80'
-                alt='two'
-              />
-            }
-            // onPositionChange={handlePositionChange}
+            itemTwo={<ReactCompareSliderImage src={aerialCurrent} alt='two' />}
             style={{
               display: 'flex',
               width: '100%',
@@ -254,10 +255,11 @@ const EcologyContent = (props: EcologyContentProps) => {
             <br />
             <br />
             This created a diverse mosaic of aquatic, riparian, and floodplain
-            habitats throughout the Ball Ranch property. As hydrology and
-            landuse changed, the increasingly dry and disconnected conditions at
-            Ball Ranch have reduced vegetation diversity and density, and
-            impacted the fish and wildlife species dependent on these habitats.
+            habitats throughout the Ball Ranch property. Hydrology, landuse
+            change, and expanding water needs have increased the dry and
+            disconnected conditions at Ball Ranch have reduced vegetation
+            diversity and density, and impacted the fish and wildlife species
+            dependent on these habitats.
             <br />
             <br />
             It is likely that Flood-MAR at Ball Ranch could restore some of
