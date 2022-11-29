@@ -16,9 +16,24 @@ const useStyles = makeStyles<Theme, StyleProps>(() => ({
     justifyContent: 'space-between',
     marginBottom: '8rem',
   },
+  columnContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   image: {
-    minWidth: ({imageWidth}) => imageWidth ?? '600px',
+    minWidth: ({ imageWidth }) => imageWidth ?? '600px',
     maxHeight: '100%',
+  },
+  imageCaptionContainer: {
+    maxWidth: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '0.5rem',
+  },
+  imageCaption: {
+    textAlign: 'center',
+    maxWidth: '70%',
   },
   paragraphContainer: {
     maxWidth: '50rem',
@@ -76,11 +91,12 @@ interface ImageRowProps {
   content: string
   alt?: string
   imageWidth?: string
+  imageCaption?: string
 }
 
 const ImageRow = (props: ImageRowProps) => {
   const styles = useStyles({
-    imageWidth: props.imageWidth
+    imageWidth: props.imageWidth,
   })
 
   return (
@@ -90,15 +106,31 @@ const ImageRow = (props: ImageRowProps) => {
       }`}
     >
       <div
-        className={`${styles.image} ${
-          props.reverse ? styles.marginLeft : styles.marginRight
-        }`}
+        className={
+          props.reverse
+            ? `${styles.columnContainer} ${styles.marginLeft}`
+            : `${styles.columnContainer} ${styles.marginRight}`
+        }
       >
-        <Img
-          fluid={props.image}
-          imgStyle={{ objectFit: 'cover' }}
-          alt={props.alt}
-        />
+        <div className={styles.image}>
+          <Img
+            fluid={props.image}
+            imgStyle={{ objectFit: 'cover' }}
+            alt={props.alt}
+          />
+        </div>
+        {props.imageCaption ? (
+          <div className={styles.imageCaptionContainer}>
+            <Typography
+              variant='body2'
+              className={`${styles.imageCaption} ${styles.paragraphContent}`}
+            >
+              {props.imageCaption}
+            </Typography>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles.paragraphContainer}>
         <Typography variant='h1' className={styles.paragraphHeader}>
