@@ -205,11 +205,17 @@ const EcologyContent = (props: EcologyContentProps) => {
             itemOne={
               <ReactCompareSliderImage
                 src={aerialPast}
-                style={{ filter: 'grayscale(1)' }}
+                style={{ filter: 'grayscale(1)', objectFit: 'contain' }}
                 alt='one'
               />
             }
-            itemTwo={<ReactCompareSliderImage src={aerialCurrent} alt='two' />}
+            itemTwo={
+              <ReactCompareSliderImage
+                src={aerialCurrent}
+                alt='two'
+                style={{ objectFit: 'contain' }}
+              />
+            }
             style={{
               display: 'flex',
               width: '100%',
@@ -240,16 +246,16 @@ const EcologyContent = (props: EcologyContentProps) => {
             environment that was regularly inundated by high flows.
             <br />
             <br />
-            This created a diverse mosaic of aquatic, riparian, and
-            floodplain habitats throughout the Ball Ranch property. Hydrology,
-            landuse change, and expanding water needs have increased the dry and
+            This created a diverse mosaic of aquatic, riparian, and floodplain
+            habitats throughout the Ball Ranch property. Hydrology, landuse
+            change, and expanding water needs have increased the dry and
             disconnected conditions at Ball Ranch have reduced vegetation
             diversity and density, and impacted the fish and wildlife species
             dependent on these habitats.
             <br />
             <br />
-            It is likely that Flood-MAR at Ball Ranch could restore some
-            of these lost habitats and species, and enhance conditions for the
+            It is likely that Flood-MAR at Ball Ranch could restore some of
+            these lost habitats and species, and enhance conditions for the
             species that have persisted.
           </Typography>
         </div>
