@@ -100,6 +100,7 @@ const useStyles = makeStyles(() => ({
   },
   chartSection: {
     width: '100%',
+    marginBottom: '5rem',
     justifyContent: 'space-evenly',
     [mediaQueries.below992]: {
       width: '100%',
@@ -261,9 +262,9 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             This project identified at least three surface water sources that
             could potentially provide water for MAR at Ball Ranch during wet
             season, flood flow conditions: 1. Little Dry Creek; 2. Big Dry Creek
-            (including the Fresno stormwater detention Basin); and 3.San Joaquin
-            River. Click on the map to see historical surface flows from all of
-            these sources.
+            (including the Fresno stormwater detention Basin); and 3. San
+            Joaquin River. Click on the map to see historical surface flows from
+            all of these sources.
             <br />
             <br />A preliminary analysis of potential surface water supply from
             Little Dry Creek, Big Dry Creek, and the Fresno stormwater detention
@@ -314,17 +315,20 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
 
       <div className={`${styles.columnContainer} ${styles.centerColumn}`}>
         <Typography variant='h1' className={styles.header}>
-          Scenario Planning - Surface Water Avalibilty
+          Surface Water Availability Analysis
         </Typography>
         <Typography
           variant='body1'
           className={styles.text}
-          sx={{ maxWidth: '900px' }}
         >
-          An analysis by MDK Consulting analyzed three potential scenarios for
-          diverting water to Ball Ranch (figure 1). During Above Normal and Wet
-          water years, there is water available for scenarios 1 and 2; scenario
-          3 has water available if assessing December - April.
+          A preliminary analysis of potential surface water supply from Little
+          Dry Creek, Big Dry Creek, and the Fresno stormwater detention basin
+          completed in Phase 1 of this project showed that surface water could
+          be available for recharge in Above Normal and Wet water year types,
+          even after accounting for existing regulatory constraints on
+          diversions in the San Joaquin watershed. The following bar chart shows
+          that as much as 3.8 to 11.6 thousand acre feet could be available for
+          recharge in Above Normal and Wet years.
         </Typography>
         <div
           className={`${styles.chartSection} ${styles.rowContainer} ${styles.marginTop3}`}
@@ -389,6 +393,23 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             </Typography>
           </div>
         </div>
+        <Typography
+          variant='body1'
+          className={styles.text}
+        >
+          Phase 1 of this project also explored potential surface water supply
+          from San Joaquin River flood releases through the Friant Kern canal
+          and Little Dry Creek. This would only be possible if the resulting
+          flow management provided benefits to Reclamation’s San Joaquin River
+          Restoration Program and satisfied existing water rights conditions.
+          <br />
+          <br />
+          The next phase of this project will determine water rights
+          coordination and water management infrastructure improvements needed
+          to enable surface water deliveries to Ball Ranch in Above Normal and
+          Wet Years, and quantify potential surface water supply from the San
+          Joaquin River.
+        </Typography>
       </div>
     </div>
   )
