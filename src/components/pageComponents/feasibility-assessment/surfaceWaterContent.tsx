@@ -43,16 +43,18 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     paddingBottom: '5rem',
   },
-  overlayContainer: {
+  landingContainer: {
     width: '100%',
-    height: '500px',
-    position: 'relative',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     [mediaQueries.below992]: {
-      height: '700px',
+      flexDirection: 'column',
+      justifyContent: 'space-evenly',
     },
   },
   marginedToOverlayContainer: {
-    margin: '0 3rem',
+    marginTop: '3rem',
   },
   columnContainer: {
     display: 'flex',
@@ -64,24 +66,28 @@ const useStyles = makeStyles(() => ({
   rowContainer: {
     display: 'flex',
   },
-  overlayTextContent: {
-    maxWidth: '630px',
-    position: 'absolute',
-    top: 0,
-    left: 50,
-    zIndex: 10,
+  landingTextContent: {
+    width: '70%',
+    minWidth: '300px',
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
     [mediaQueries.below992]: {
-      maxWidth: '400px',
+      width: '100%',
+      marginBottom: '3rem'
     },
   },
-  overlayImageContent: {
-    width: '600px',
-    position: 'absolute',
-    top: 0,
-    right: 50,
+  mapContainer: {
+    float: 'right',
+    flex: 1,
+    display: 'flex',
+    width: '30%',
+    height: '100%',
+    minWidth: '550px',
+    marginLeft: '3rem',
     [mediaQueries.below992]: {
-      width: '400px',
+      width: '100%',
+      minWidth: '300px',
+      marginLeft: '0rem',
+      height: '400px',
     },
   },
   header: {
@@ -91,11 +97,6 @@ const useStyles = makeStyles(() => ({
   },
   text: {
     fontWeight: 400,
-  },
-  mapContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   chartSection: {
     width: '100%',
@@ -251,8 +252,8 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
 
   return (
     <div className={styles.contentContainer}>
-      <div className={styles.overlayContainer}>
-        <div className={styles.overlayTextContent}>
+      <div className={styles.landingContainer}>
+        <div className={styles.landingTextContent}>
           <Typography variant='h1' className={styles.header}>
             Surface Water
           </Typography>
@@ -274,17 +275,24 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             available for recharge in Above Normal and Wet years.
           </Typography>
         </div>
-        <div className={styles.overlayImageContent}>
-          <Img
-            fluid={props.images.surfaceWaterImage}
-            imgStyle={{ objectFit: 'cover' }}
+        <div className={styles.mapContainer}>
+          <Map
+            data={{
+              spatial: [
+                sjrcProjectBoundary,
+                cdecGagesPoints,
+                bigDryCreekReservoir,
+                bigDryCreek,
+                nhdLines,
+              ],
+            }}
+            startingCoordinates={sourceNameToCoordinatesDictionary.nhd_lines}
+            startingZoomValue={sourceNameToZoomValueDictionary.nhd_lines}
           />
         </div>
       </div>
       <div className={styles.marginedToOverlayContainer}>
         <Typography variant='body1' className={styles.text}>
-          <br />
-          <br />
           Phase 1 of this project also explored potential surface water supply
           from San Joaquin River flood releases through the Friant Kern canal
           and Little Dry Creek. This would only be possible if the resulting
@@ -298,26 +306,6 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
           Wet Years, and quantify potential surface water supply from the San
           Joaquin River.
         </Typography>
-      </div>
-
-      <Divider
-        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
-      />
-
-      <div className={styles.mapContainer}>
-        <Map
-          data={{
-            spatial: [
-              sjrcProjectBoundary,
-              cdecGagesPoints,
-              bigDryCreekReservoir,
-              bigDryCreek,
-              nhdLines,
-            ],
-          }}
-          startingCoordinates={sourceNameToCoordinatesDictionary.nhd_lines}
-          startingZoomValue={sourceNameToZoomValueDictionary.nhd_lines}
-        />
       </div>
 
       <Divider
