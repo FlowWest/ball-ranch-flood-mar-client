@@ -36,12 +36,12 @@ const useStyles = makeStyles(() => ({
     },
   },
   soilsImage: {
-    width: '450px',
+    width: '950px',
     marginRight: '5rem',
     [mediaQueries.below992]: {
       marginBottom: '3rem',
       marginRight: '0',
-      width: '300px',
+      width: '800px',
     },
   },
   mapContainer: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: '3rem',
   },
   text: {
-    maxWidth: '500px',
+    maxWidth: '1000px',
     fontWeight: 400,
     [mediaQueries.below992]: {
       width: '100%',
@@ -74,10 +74,23 @@ const SoilsContent = (props: SoilsContentProps) => {
     <div className={styles.contentContainer}>
       <div className={styles.rowContainer}>
         <div className={styles.soilsImage}>
-          <Img
-            fluid={props.images.soilsImage}
-            imgStyle={{ objectFit: 'cover' }}
-          />
+          <div className={styles.mapContainer}>
+            <Map
+              data={{
+                spatial: [
+                  sjrcProjectBoundary,
+                  northKingsGSABoundary,
+                  soilCharacteristics,
+                ],
+              }}
+              startingCoordinates={
+                sourceNameToCoordinatesDictionary.north_kings_gsa_boundary
+              }
+              startingZoomValue={
+                sourceNameToZoomValueDictionary.north_kings_gsa_boundary
+              }
+            />
+          </div>
         </div>
         <div className={styles.columnContainer}>
           <Typography variant='h1' className={styles.header}>
@@ -105,28 +118,6 @@ const SoilsContent = (props: SoilsContentProps) => {
             Ranch.
           </Typography>
         </div>
-      </div>
-
-      <Divider
-        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
-      />
-
-      <div className={styles.mapContainer}>
-        <Map
-          data={{
-            spatial: [
-              sjrcProjectBoundary,
-              northKingsGSABoundary,
-              soilCharacteristics,
-            ],
-          }}
-          startingCoordinates={
-            sourceNameToCoordinatesDictionary.north_kings_gsa_boundary
-          }
-          startingZoomValue={
-            sourceNameToZoomValueDictionary.north_kings_gsa_boundary
-          }
-        />
       </div>
     </div>
   )
