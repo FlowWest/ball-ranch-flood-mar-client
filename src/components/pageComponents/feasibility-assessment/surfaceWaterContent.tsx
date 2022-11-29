@@ -335,7 +335,7 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
         >
           An analysis by MDK Consulting analyzed three potential scenarios for
           diverting water to Ball Ranch (figure 1). During Above Normal and Wet
-          water years, there is water available for scenarios 1 and 2; scneario
+          water years, there is water available for scenarios 1 and 2; scenario
           3 has water available if assessing December - April.
         </Typography>
         <div
