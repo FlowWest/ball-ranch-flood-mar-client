@@ -17,13 +17,13 @@ import Footer from '../components/layout/footer'
 const useStyles = makeStyles((theme: Theme) => ({
   marginedContainer: {
     [mediaQueries.below992]: {
-      margin: '0 1.5rem',
+      margin: '0 1rem',
     },
     [mediaQueries.below1200]: {
-      margin: '0 2.5rem',
+      margin: '0 2rem',
     },
     [mediaQueries.above1200]: {
-      margin: '0 7.5rem',
+      margin: '0 5rem',
     },
     paddingBottom: '3rem',
     display: 'flex',

@@ -27,13 +27,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-evenly',
   },
   legendContainer: {
+    scale: 0.8,
     position: 'absolute',
     margin: '1rem',
-    bottom: 20,
+    padding: '0 1rem',
+    bottom: 0,
     left: 0,
     backgroundColor: '#FFF',
     opacity: 0.9,
-    width: '25%',
+    minWidth: '25%',
     minHeight: '30%',
     maxHeight: '50%',
     borderRadius: '15px',
@@ -247,7 +249,7 @@ const MapLegend = (props: MapLegendProps) => {
             className={`${styles.columnContainer} ${styles.alignStart} ${styles.legendScrollableList}`}
           >
             {props.spatialData.map((item: any) => (
-              <LegendItemCmpt layerID={item.name} key={item.name}/>
+              <LegendItemCmpt layerID={item.name} key={item.name} />
             ))}
           </div>
           <div className={styles.legendToggleAllButton}>
