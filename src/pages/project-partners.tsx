@@ -261,7 +261,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
               >
                 <WorkshopPresentorCmpt
                   fluidImage={props.data.cdwrLogo.childImageSharp.fluid}
-                  name='Jenny Mar'
+                  name='Jenny Marr'
                   org='(California Department of Water Resources)'
                   className={styles.marginBottom3}
                 />
