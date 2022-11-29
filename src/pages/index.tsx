@@ -74,7 +74,7 @@ const IndexPage = (props: IndexPageProps) => {
         <ImageRow
           image={props.data.imageOne.childImageSharp.fluid}
           reverse={false}
-          header='What is Flood-Mar'
+          header='What is Flood-MAR'
           content='Flood-MAR is a water resource management strategy that uses wet season flows from rainfall or snowmelt to drive groundwater recharge on agricultural lands, working landscapes, and natural managed lands. Flood-MAR can be implemented at multiple scales, from individual landowner flood water diversions using existing infrastructure to regional floodplain inundation using new infrastructure or changes to existing infrastructure such as setting back levees.'
           alt='Image of diagram'
         />
