@@ -36,24 +36,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   boldFont: {
     fontWeight: 900,
   },
-  semiBoldFont: {
-    fontWeight: 500,
-  },
-  greenBackdrop: {
-    backgroundColor: '#B6AF6226',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
-  },
-  orderedList: {
-    fontSize: '1.25rem',
-    marginTop: '0',
-    paddingLeft: '1.5rem',
-    '& li:not(:last-child)': {
-      marginBottom: '3rem',
-    },
-  },
-  orderedListHeader: {
-    alignSelf: 'center',
-    margin: '3rem 0',
+  italic: {
+    fontStyle: 'italic',
   },
 }))
 
@@ -73,83 +57,76 @@ const ImplementationStrategy = () => {
       <div className={styles.nextStepsSection}>
         <div className={styles.nextStepsRow}>
           <div className={styles.nextStepsColumn}>
-            <Typography variant='subtitle1' className={styles.boldFont} style={{fontSize: '1.2rem'}}>
-              The feasibility analysis using the existing data presented on this
-              web application indicates potential feasibility of Flood-MAR at
-              Ball Ranch that would be highly beneficial to groundwater
+            <Typography>
+              The feasibility analyses presented on the pages of this web
+              application identified surface water, groundwater, and soils and
+              geology conditions potentially conducive to successful Flood-MAR
+              at Ball Ranch that would be highly beneficial to groundwater
               dependent ecosystems. However, significant administrative hurdles
-              and data gaps remain that must be addressed prior to implementing
-              Flood-MAR. The following issues and data gaps will be addressed in
-              the Implementation Strategy deliverable for this project.
+              and data gaps remain that must be addressed in Phase 2 of this
+              effort prior to implementing Flood-MAR at the Ball Ranch site. A
+              plan to address the following issues and data gaps will be
+              provided in the Implementation Strategy, which is the final
+              deliverable for Phase 1 of this project.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Water Rights.</span>
+            <span className={styles.boldFont}>Water Rights</span>
             <Typography>
-              Surface water delivery from any of the sources identified on this
-              web application will require water rights agreements to
-              incorporate a Flood-MAR beneficial use.
+              Surface water deliveries from any of the sources identified in
+              this web application will require water rights agreements to
+              incorporate a Flood-MAR beneficial use. Implementation will
+              include focused outreach to water rights holders to develop these
+              agreements.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Surface Water Flows.</span>
+            <span className={styles.boldFont}>Surface Water Flows</span>
             <Typography>
-              Further analysis of surface flow magnitudes, frequencies,
-              duration, and timing is required to more accurately quantify
-              potential impacts and benefits of Flood-MAR at Ball Ranch.
+              A more detailed quantification of the magnitude, frequency, and
+              timing of available surface water will be required to design
+              optimal Flood-MAR strategies for Ball Ranch. Implementation will
+              include additional hydrologic analyses to guide development of
+              Flood-MAR protocols for the site and more accurately quantify
+              potential impacts and benefits.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Subsurface Resistivity.</span>
+            <span className={styles.boldFont}>Subsurface Resistivity</span>
             <Typography>
-              Subsurface resistivity data collected at Ball Ranch using TowTEM
-              must be analyzed and correlated with subsurface site conditions to
-              provide precise, site-specific understanding of recharge
-              potential.
+              High resolution subsurface resistivity data collected at Ball
+              Ranch using TowTEM during Phase 1 of this project can provide a
+              highly resolved understanding of subsurface conditions that will
+              govern Flood-MAR at Ball Ranch. This data will be analyzed and
+              correlated with subsurface site conditions as part of the
+              implementation phase to guide design of optimal delivery and
+              storage of surface water for successful Flood-MAR.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Flood Management.</span>
+            <span className={styles.boldFont}>Flood Management</span>
             <Typography>
-              While the impact of additional surface water storage on Ball Ranch
-              is not expected to significantly affect flood management in the
-              region, further analysis is required to quantify any changes to
-              flood flow routing associated with Flood-MAR at Ball Ranch.
+              Additional surface water storage on Ball Ranch during high flow
+              periods is not expected to significantly affect flood management
+              in the region. Implementation will include flood management
+              analyses to quantify any changes to flood flow routing associated
+              with Flood-MAR at Ball Ranch, and mitigate any impacts.
             </Typography>
             <br />
-            <span className={styles.boldFont}>Benefit Quantification.</span>
+            <span className={styles.boldFont}>Benefit Quantification</span>
             <Typography>
-              A framework for quantifying groundwater recharge benefits to
-              ecosystem and water management conditions is required to assess
-              the relative value of different scales of Flood-MAR at Ball Ranch.
+              This feasibility analysis has identified a high potential for
+              Flood-MAR benefits to GDEs. However, very little guidance exists
+              on how to effectively monitor and document GDE improvements.
+              Implementation will include development of a framework for
+              quantifying groundwater recharge benefits to ecosystem and water
+              management conditions associated with different scales of
+              Flood-MAR at Ball Ranch.
             </Typography>
-          </div>
-          <div className={`${styles.nextStepsColumn} ${styles.greenBackdrop}`}>
-            <Typography
-              variant='subtitle1'
-              className={`${styles.orderedListHeader} ${styles.semiBoldFont}`}
-            >
-              Cohesive strategy for implementation
+            <br />
+            <Typography className={styles.italic}>
+              In addition to the key issues and data gaps described above, the
+              implementation strategy for Flood-MAR at Ball Ranch will address
+              groundwater recharge limitations, long-term management protocols,
+              data collection and management, conceptual implementation
+              alternatives, and a preferred alternative for implementation.
             </Typography>
-            <ol className={styles.orderedList}>
-              <li>
-                Identification and quantification of groundwater recharge
-                limitations;
-              </li>
-              <li>
-                Identification of and recommendations for addressing data gaps
-                and information needs;
-              </li>
-              <li>
-                Identification of revisions required to long-term management
-                protocols for the site resulting from implementation;
-              </li>
-              <li>Data collection and data management plans;</li>
-              <li>
-                Conceptual alternatives for the Phase II Implementation Project;
-              </li>
-              <li>
-                A preferred alternative to carry forward to the Phase II
-                Implementation Project;
-              </li>
-              <li>A final design of the preferred alternative.</li>
-            </ol>
           </div>
         </div>
       </div>
