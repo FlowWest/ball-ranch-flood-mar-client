@@ -74,9 +74,10 @@ const IndexPage = (props: IndexPageProps) => {
         <ImageRow
           image={props.data.imageOne.childImageSharp.fluid}
           reverse={false}
-          header='What is Flood-Mar'
+          header='What is Flood-MAR'
           content='Flood-MAR is a water resource management strategy that uses wet season flows from rainfall or snowmelt to drive groundwater recharge on agricultural lands, working landscapes, and natural managed lands. Flood-MAR can be implemented at multiple scales, from individual landowner flood water diversions using existing infrastructure to regional floodplain inundation using new infrastructure or changes to existing infrastructure such as setting back levees.'
           alt='Image of diagram'
+          imageCaption='Conceptual model of managed aquifer recharge at sites adjacent to rivers like Ball Ranch'
         />
         <ImageRow
           image={props.data.imageTwo.childImageSharp.fluid}
@@ -84,6 +85,7 @@ const IndexPage = (props: IndexPageProps) => {
           header='Why Ball Ranch?'
           content='Ball Ranch was acquired by the San Joaquin River Conservancy for ecosystem recovery and public use benefits. The property is bounded by the San Joaquin River and Little Dry Creek watersheds, and has diverse topography that includes perennial surface water features. A Flood-MAR project at Ball Ranch could take advantage of wet season surface water supplies and existing topography suitable for groundwater recharge to restore lost functions of groundwater dependent ecosystems and enhance adjacent restoration efforts including the San Joaquin River Restoration Program.'
           alt='Image of river'
+          imageCaption='Ball Ranch aerial photo from 2016'
         />
       </div>
 
@@ -145,7 +147,7 @@ export const pageQuery = graphql`
     imageOne: file(relativePath: { eq: "imageOne.jpg" }) {
       ...fluidImage
     }
-    imageTwo: file(relativePath: { eq: "ball-ranch-aerial.jpg" }) {
+    imageTwo: file(relativePath: { eq: "ball-ranch-current.jpg" }) {
       ...fluidImage
     }
     dataCardImageOne: file(relativePath: { eq: "data-card-image-one.jpg" }) {
