@@ -147,7 +147,7 @@ export const pageQuery = graphql`
     imageOne: file(relativePath: { eq: "imageOne.jpg" }) {
       ...fluidImage
     }
-    imageTwo: file(relativePath: { eq: "ball-ranch-aerial.jpg" }) {
+    imageTwo: file(relativePath: { eq: "ball-ranch-current.jpg" }) {
       ...fluidImage
     }
     dataCardImageOne: file(relativePath: { eq: "data-card-image-one.jpg" }) {
