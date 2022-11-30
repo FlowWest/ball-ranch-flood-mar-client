@@ -6,28 +6,18 @@ import {
   ReactCompareSliderHandle,
   ReactCompareSliderImage,
 } from 'react-compare-slider'
-import Img from 'gatsby-image'
 import { mediaQueries } from '../../layout/theme'
-import {
-  Map,
-  sourceNameToCoordinatesDictionary,
-  sourceNameToZoomValueDictionary,
-} from '../../uiComponents/map'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
+import { startCase } from 'lodash'
 
-import aerialPast from '../../../images/ball-ranch-aerial.jpg'
+import aerialPast from '../../../images/ball-ranch-past.jpg'
 import aerialCurrent from '../../../images/ball-ranch-current.jpg'
-
-//spatial data
-import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
-import casgemWellPts from '../../../data/geospatial/casgem_well_pts.json'
-import fresnoStateWellsPts from '../../../data/geospatial/fresno_state_wells_pts.json'
-import cdecGagesPoints from '../../../data/geospatial/cdec_gages_pts.json'
-import bigDryCreekReservoir from '../../../data/geospatial/big_dry_creek_reservoir.json'
-import bigDryCreek from '../../../data/geospatial/big_dry_creek.json'
-import mcmullinGsaBoundary from '../../../data/geospatial/mcmullin_gsa_boundary.json'
-import nhdLines from '../../../data/geospatial/nhd_lines.json'
-import northKingsGSABoundary from '../../../data/geospatial/north_kings_gsa_boundary.json'
-import soilCharacteristics from '../../../data/geospatial/soil_characteristics.json'
 
 const useStyles = makeStyles<Theme>(() => ({
   contentContainer: {
@@ -35,12 +25,15 @@ const useStyles = makeStyles<Theme>(() => ({
     flexDirection: 'column',
     width: '100%',
   },
-  overlayContainer: {
+  landingContainer: {
     width: '100%',
-    height: '500px',
-    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
     [mediaQueries.below992]: {
       height: '700px',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
   },
   rowContainer: {
@@ -50,53 +43,50 @@ const useStyles = makeStyles<Theme>(() => ({
     alignItems: 'center',
   },
   overlayTextContent: {
-    maxWidth: '630px',
-    position: 'absolute',
-    top: 0,
-    left: 50,
-    zIndex: 10,
+    maxWidth: '500px',
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
     [mediaQueries.below992]: {
-      maxWidth: '400px',
+      maxWidth: '100%',
+      marginBottom: '3rem',
+    },
+    [mediaQueries.above1200]: {
+      maxWidth: '40%',
     },
   },
   overlayImageContent: {
-    width: '648px',
-    position: 'absolute',
-    top: 0,
-    right: 50,
+    height: '100%',
+    marginLeft: '3rem',
     [mediaQueries.below992]: {
-      width: '400px',
+      height: '90%',
+      marginLeft: '0rem',
+      marginBottom: '3rem',
     },
-  },
-  mapContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   greenContainer: {
     backgroundColor: '#8A9155A6',
     width: '100%',
-    padding: '4rem 3rem',
+    padding: '2rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   imageSliderContainer: {
+    height: '100%',
     width: '100%',
     position: 'relative',
     marginBottom: '2rem',
   },
-  textSection: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
+  imageSliderCaption: {
+    textAlign: 'center',
+    maxWidth: '90%',
   },
   header: {
     fontFamily: 'Oswald',
     fontWeight: 600,
     marginBottom: '2rem',
+    [mediaQueries.below992]: {
+      textAlign: 'center',
+    },
   },
   text: {
     fontWeight: 400,
@@ -105,6 +95,76 @@ const useStyles = makeStyles<Theme>(() => ({
     alignSelf: 'center',
   },
 }))
+
+const rows = [
+  {
+    scientificName: 'Castilleja campestris var. succulenta',
+    commonName: "Succulent owl's-clover",
+  },
+  {
+    scientificName: 'Orcuttia inaequalis',
+    commonName: 'San Joaquin Valley Orcutt grass',
+  },
+  {
+    scientificName: 'Branchinecta lynchi',
+    commonName: 'Vernal pool fairy shrimp',
+  },
+  { scientificName: 'Spea hammondii', commonName: 'Western spadefoot' },
+  {
+    scientificName: 'Ambystoma californiense',
+    commonName: 'California tiger salamander - central California DPS',
+  },
+  {
+    scientificName: 'Great Valley Mixed Riparian Forest',
+    commonName: 'Great Valley Mixed Riparian Forest',
+  },
+  {
+    scientificName: 'Sycamore Alluvial Woodland',
+    commonName: 'Sycamore Alluvial Woodland',
+  },
+  {
+    scientificName: 'Ambystoma californiense',
+    commonName: 'California tiger salamander - central California DPS',
+  },
+  { scientificName: 'Mylopharodon conocephalus', commonName: 'Hardhead' },
+  {
+    scientificName: 'Northern Hardpan Vernal Pool',
+    commonName: 'Northern Hardpan Vernal Pool',
+  },
+  {
+    scientificName: 'Linderiella occidentalis',
+    commonName: 'California linderiella',
+  },
+  {
+    scientificName: 'Desmocerus californicus dimorphus',
+    commonName: 'valley elderberry longhorn beetle',
+  },
+  { scientificName: 'Athene cunicularia', commonName: 'burrowing owl' },
+  {
+    scientificName: 'Eryngium spinosepalum',
+    commonName: 'spiny-sepaled button-celery',
+  },
+  { scientificName: 'Downingia pusilla', commonName: 'dwarf downingia' },
+  { scientificName: 'Lytta moesta', commonName: 'moestan blister beetle' },
+  { scientificName: 'Euderma maculatum', commonName: 'spotted bat' },
+  {
+    scientificName: 'Vulpes macrotis mutica',
+    commonName: 'San Joaquin kit fox',
+  },
+  { scientificName: 'Emys marmorata', commonName: 'western pond turtle' },
+  {
+    scientificName: 'Pseudobahia bahiifolia',
+    commonName: "Hartweg's golden sunburst",
+  },
+  { scientificName: 'Buteo swainsoni', commonName: "Swainson's hawk" },
+  {
+    scientificName: 'Coccyzus americanus occidentalis',
+    commonName: 'western yellow-billed cuckoo',
+  },
+  { scientificName: 'Agelaius tricolor', commonName: 'tricolored blackbird' },
+  { scientificName: 'Sagittaria sanfordii', commonName: "Sanford's arrowhead" },
+  { scientificName: 'Calycadenia hooveri', commonName: "Hoover's calycadenia" },
+]
 
 interface EcologyContentProps {
   images: any
@@ -122,144 +182,129 @@ const EcologyContent = (props: EcologyContentProps) => {
 
   return (
     <div className={styles.contentContainer}>
-      <div className={styles.overlayContainer}>
+      <div className={styles.landingContainer}>
         <div className={styles.overlayTextContent}>
           <Typography variant='h1' className={styles.header}>
-            Ecology
+            Ecological Conditions at Ball Ranch
           </Typography>
           <Typography variant='body1' className={styles.text}>
-            The entire San Joaquin River corridor was historically an extremely
-            rich ecosystem supporting a wide variety of aquatic and terrestrial
-            vegetation and wildlife species. Significant changes to the
-            hydrology and land use in the vicinity of Ball Ranch has
-            substantially degraded the ecological diversity and species
-            abundance at Ball Ranch.
-            <br />
-            <br />
-            Phase 1 of the Ball Ranch planning project assessed historical,
-            current, and potential future ecological conditions at Ball Ranch
-            with managed aquifer recharge. This page allows exploration of
-            ecological conditions and potential improvements in groundwater
-            dependent species and habitats at Ball Ranch.
+            Groundwater Dependent Ecosystems (GDEs) include interconnected
+            surface waters (ISWs) such as springs, wetlands, rivers, and natural
+            lakes. Prior to the major hydrologic and landscape changes that
+            occurred at and adjacent to Ball Ranch, the Ball Ranch site
+            exhibited many GDE characteristics (see the historical and current
+            site photo comparison). Groundwater dependent species in the Ball
+            Ranch region typically include aquifer microorganisms; stygofauna;
+            wetland, riparian and terrestrial phreatophytic vegetation; and
+            fauna and flora of connected wetlands, streams. Phase 1 of this
+            project analyzed data from the California Natural Diversity Database
+            (CNDDB) and determined recovery of the following GDE species is
+            feasible with successful MAR at Ball Ranch.
           </Typography>
         </div>
+
         <div className={styles.overlayImageContent}>
-          <Img
-            fluid={props.images.ecologyImage}
-            imgStyle={{ objectFit: 'cover' }}
-          />
-        </div>
-      </div>
-
-      <Divider
-        sx={{
-          border: '1px solid rgba(0, 0, 0, 0.25)',
-          margin: '2rem 6rem 5rem 6rem',
-        }}
-      />
-
-      <div className={styles.mapContainer}>
-        <Map
-          data={{
-            spatial: [
-              sjrcProjectBoundary,
-              casgemWellPts,
-              fresnoStateWellsPts,
-              cdecGagesPoints,
-              bigDryCreekReservoir,
-              bigDryCreek,
-              mcmullinGsaBoundary,
-              nhdLines,
-              northKingsGSABoundary,
-              soilCharacteristics,
-            ],
-          }}
-          startingCoordinates={sourceNameToCoordinatesDictionary.entire_map}
-          startingZoomValue={sourceNameToZoomValueDictionary.entire_map}
-        />
-      </div>
-
-      <Divider
-        sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
-      />
-
-      <div className={styles.greenContainer}>
-        <Typography variant='h1' className={styles.header}>
-          Historical and Current Views of Ball Ranch
-        </Typography>
-        <div
-          className={`${styles.imageSliderContainer} ${styles.rowContainer}`}
-        >
-          <ReactCompareSlider
-            {...props}
-            handle={
-              <ReactCompareSliderHandle
-                buttonStyle={{
-                  backdropFilter: undefined,
-                  background: 'white',
-                  border: 0,
-                  color: '#333',
+          <div className={styles.greenContainer}>
+            <div
+              className={`${styles.imageSliderContainer} ${styles.rowContainer}`}
+            >
+              <ReactCompareSlider
+                {...props}
+                handle={
+                  <ReactCompareSliderHandle
+                    buttonStyle={{
+                      backdropFilter: undefined,
+                      background: 'white',
+                      border: 0,
+                      color: '#333',
+                    }}
+                  />
+                }
+                itemOne={
+                  <ReactCompareSliderImage
+                    src={aerialPast}
+                    style={{
+                      filter: 'grayscale(1)',
+                      objectFit: 'contain',
+                      backgroundColor: 'black',
+                    }}
+                    alt='one'
+                  />
+                }
+                itemTwo={
+                  <ReactCompareSliderImage
+                    src={aerialCurrent}
+                    alt='two'
+                    style={{ objectFit: 'contain', backgroundColor: 'black' }}
+                  />
+                }
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  height: '60vh',
                 }}
               />
-            }
-            itemOne={
-              <ReactCompareSliderImage
-                src={aerialPast}
-                style={{ filter: 'grayscale(1)', objectFit: 'contain' }}
-                alt='one'
-              />
-            }
-            itemTwo={
-              <ReactCompareSliderImage
-                src={aerialCurrent}
-                alt='two'
-                style={{ objectFit: 'contain' }}
-              />
-            }
-            style={{
-              display: 'flex',
-              width: '100%',
-              height: '60vh',
-            }}
-          />
+            </div>
+            <Typography
+              variant='body1'
+              className={`${styles.text} ${styles.imageSliderCaption}`}
+            >
+              Ball Ranch ecological conditions in 1937 (prior to site
+              development) and present day. Use the slider to compare historical
+              and current ecological conditions at the site.
+            </Typography>
+          </div>
         </div>
-        <Typography variant='body1' className={styles.text}>
-          Slide bar to see how landscape changes between 1940 and Present Day
-        </Typography>
       </div>
 
       <Divider
         sx={{ border: '1px solid rgba(0, 0, 0, 0.25)', margin: '5rem 6rem' }}
       />
 
-      <div className={styles.textSection}>
-        <Typography
-          variant='h1'
-          className={`${styles.header} ${styles.alignSelfCenter}`}
-        >
-          Species composition change over time
-        </Typography>
-        <div>
-          <Typography>
-            Prior to completion of Friant dam upstream of Ball Ranch, this
-            portion of the San Joaquin River was a dynamic floodplain
-            environment that was regularly inundated by high flows.
-            <br />
-            <br />
-            This created a diverse mosaic of aquatic, riparian, and floodplain
-            habitats throughout the Ball Ranch property. Hydrology, landuse
-            change, and expanding water needs have increased the dry and
-            disconnected conditions at Ball Ranch have reduced vegetation
-            diversity and density, and impacted the fish and wildlife species
-            dependent on these habitats.
-            <br />
-            <br />
-            It is likely that Flood-MAR at Ball Ranch could restore some of
-            these lost habitats and species, and enhance conditions for the
-            species that have persisted.
-          </Typography>
-        </div>
-      </div>
+      <Typography style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        Ball Ranch GDE historic species/communities’ occurrence (CNDDB 2022,
+        extracted)
+      </Typography>
+      <TableContainer
+        component={Paper}
+        style={{ boxShadow: '0px -8px 45px 6px rgba(0,0,0,0.1)' }}
+      >
+        <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <Typography variant='body1' className={styles.text}>
+                  Scientific Name
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant='body1' className={styles.text}>
+                  Common Name
+                </Typography>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.scientificName}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component='th' scope='row'>
+                  <Typography variant='body1' className={styles.text}>
+                    {startCase(row.scientificName)}
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='body1' className={styles.text}>
+                    {startCase(row.commonName)}
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   )
 }

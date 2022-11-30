@@ -84,10 +84,10 @@ const SoilsContent = (props: SoilsContentProps) => {
                 ],
               }}
               startingCoordinates={
-                sourceNameToCoordinatesDictionary.north_kings_gsa_boundary
+                sourceNameToCoordinatesDictionary.soil_characteristics
               }
               startingZoomValue={
-                sourceNameToZoomValueDictionary.north_kings_gsa_boundary
+                sourceNameToZoomValueDictionary.soil_characteristics
               }
             />
           </div>

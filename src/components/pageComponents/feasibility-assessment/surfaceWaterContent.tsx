@@ -47,7 +47,6 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
     [mediaQueries.below992]: {
       flexDirection: 'column',
       justifyContent: 'space-evenly',
@@ -265,15 +264,6 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             (including the Fresno stormwater detention Basin); and 3. San
             Joaquin River. Click on the map to see historical surface flows from
             all of these sources.
-            <br />
-            <br />A preliminary analysis of potential surface water supply from
-            Little Dry Creek, Big Dry Creek, and the Fresno stormwater detention
-            basin completed in Phase 1 of this project showed that surface water
-            could be available for recharge in Above Normal and Wet water year
-            types, even after accounting for existing regulatory constraints on
-            diversions in the San Joaquin watershed. The following bar chart
-            shows that as much as 3.8 to 11.6 thousand acre feet could be
-            available for recharge in Above Normal and Wet years.
           </Typography>
         </div>
         <div className={styles.mapContainer}>
@@ -291,22 +281,6 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
             startingZoomValue={sourceNameToZoomValueDictionary.nhd_lines}
           />
         </div>
-      </div>
-      <div className={styles.marginedToOverlayContainer}>
-        <Typography variant='body1' className={styles.text}>
-          Phase 1 of this project also explored potential surface water supply
-          from San Joaquin River flood releases through the Friant Kern canal
-          and Little Dry Creek. This would only be possible if the resulting
-          flow management provided benefits to Reclamation’s San Joaquin River
-          Restoration Program and satisfied existing water rights conditions.
-          <br />
-          <br />
-          The next phase of this project will determine water rights
-          coordination and water management infrastructure improvements needed
-          to enable surface water deliveries to Ball Ranch in Above Normal and
-          Wet Years, and quantify potential surface water supply from the San
-          Joaquin River.
-        </Typography>
       </div>
 
       <Divider

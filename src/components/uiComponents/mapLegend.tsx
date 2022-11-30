@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-evenly',
   },
   legendContainer: {
-    scale: 0.8,
     position: 'absolute',
     margin: '1rem',
     padding: '0 1rem',
