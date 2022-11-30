@@ -46,8 +46,11 @@ const useStyles = makeStyles<Theme>(() => ({
     maxWidth: '500px',
     backgroundColor: 'rgba(255, 255, 255, 0.6)',
     [mediaQueries.below992]: {
-      maxWidth: '400px',
+      maxWidth: '100%',
       marginBottom: '3rem',
+    },
+    [mediaQueries.above1200]: {
+      maxWidth: '40%',
     },
   },
   overlayImageContent: {
