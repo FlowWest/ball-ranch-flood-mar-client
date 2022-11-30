@@ -43,7 +43,7 @@ const OverviewContent = (props: FeasibilityOverviewContentProps) => {
         image={props.images.feasibilityAssesmentChart}
         imageWidth='450px'
         reverse={true}
-        header='Overview'
+        header='Feasibility Factors'
         content='The feasibility of flood-driven managed aquifer recharge (Flood-MAR) at Ball Ranch depends on strong stakeholder support and several critical biophysical factors: surface water availability, soil and geologic conditions, groundwater dynamics, and ecological improvements to groundwater dependent ecosystems (GDE). Phase 1 of this project has received very strong stakeholder support. In addition, Phase 1 has completed data acquisition and initial analysis of all of these factors and determined that conditions are generally feasible for Flood-MAR at Ball Ranch (hover over graphic below for a high level summary). Available data, data gaps, and actions needed to implement Flood-MAR at Ball Ranch are described on the data pages for each critical factor. '
         alt='Image of flow-chart'
       />
