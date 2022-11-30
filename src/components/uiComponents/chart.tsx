@@ -97,7 +97,13 @@ export default class Chart extends React.Component<ChartProps, ChartState> {
                 }
               </Label>
             </XAxis>
-            <YAxis>
+            <YAxis
+              domain={
+                this.props.data.name.includes('Fresno State Well Locations')
+                  ? [280, 295]
+                  : undefined
+              }
+            >
               <Label
                 angle={270}
                 position='left'
