@@ -23,15 +23,11 @@ import {
 
 //spatial data
 import sjrcProjectBoundary from '../../../data/geospatial/sjrc_project_boundary.json'
-import casgemWellPts from '../../../data/geospatial/casgem_well_pts.json'
-import fresnoStateWellsPts from '../../../data/geospatial/fresno_state_wells_pts.json'
 import cdecGagesPoints from '../../../data/geospatial/cdec_gages_pts.json'
 import bigDryCreekReservoir from '../../../data/geospatial/big_dry_creek_reservoir.json'
 import bigDryCreek from '../../../data/geospatial/big_dry_creek.json'
-import mcmullinGsaBoundary from '../../../data/geospatial/mcmullin_gsa_boundary.json'
 import nhdLines from '../../../data/geospatial/nhd_lines.json'
-import northKingsGSABoundary from '../../../data/geospatial/north_kings_gsa_boundary.json'
-import soilCharacteristics from '../../../data/geospatial/soil_characteristics.json'
+import bigDryCreekDam from '../../../data/geospatial/big_dry_creek_dam.json'
 
 import mdkScenariosDataFormatted from '../../../data/mdkScenarios/mdk_scenarios_dta_formatted.json'
 
@@ -274,6 +270,7 @@ const SurfaceWaterContent = (props: SurfaceWaterContentProps) => {
                 cdecGagesPoints,
                 bigDryCreekReservoir,
                 bigDryCreek,
+                bigDryCreekDam, 
                 nhdLines,
               ],
             }}

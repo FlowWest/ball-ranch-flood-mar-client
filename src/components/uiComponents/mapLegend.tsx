@@ -141,6 +141,7 @@ const MapLegend = (props: MapLegendProps) => {
     cdec_gages_pts: true,
     big_dry_creek_reservoir: true,
     big_dry_creek: true,
+    big_dry_creek_dam: true,
     mcmullin_gsa_boundary: true,
     nhd_lines: true,
     north_kings_gsa_boundary: true,
