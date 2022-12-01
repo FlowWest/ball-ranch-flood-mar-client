@@ -30,6 +30,9 @@ import cdecLDC from '../../data/gage/cdec_ldc.json'
 import cdecSJF from '../../data/gage/cdec_sjf.json'
 import MapLegend from './mapLegend'
 
+// Big Dry Creek Data
+import bigDryCreekDamData from '../../data/big_dry_creek/big_dry_creek_dam_data.json'
+
 mapboxgl.accessToken = process.env.GATSBY_MAPBOX_ACCESS_TOKEN
 
 // CONSTANTS
@@ -39,6 +42,7 @@ const fresnoStateWellPointsString = 'Fresno State Well Locations'
 const cdecGagePointsString = 'CDEC Gage Locations'
 const bigDryCreekReservoirString = 'Big Dry Creek Reservoir'
 const bigDryCreekString = 'Big Dry Creek'
+const bigDryCreekDamString = 'Big Dry Creek Dam'
 const mcmullinGsaBoundary = 'Mcmullin GSA Boundary'
 const nhdLines = 'NHD Lines'
 const northKingsGSABoundary = 'North Kings GSA Boundary'
@@ -51,6 +55,7 @@ export const sourceNameToNameDictionary = {
   cdec_gages_pts: cdecGagePointsString,
   big_dry_creek_reservoir: bigDryCreekReservoirString,
   big_dry_creek: bigDryCreekString,
+  big_dry_creek_dam: bigDryCreekDamString,
   mcmullin_gsa_boundary: mcmullinGsaBoundary,
   nhd_lines: nhdLines,
   north_kings_gsa_boundary: northKingsGSABoundary,
@@ -65,6 +70,7 @@ export const sourceNameToCoordinatesDictionary = {
   cdec_gages_pts: { lng: -119.73564874517581, lat: 36.93135363506484 },
   big_dry_creek_reservoir: { lng: -119.63752675524671, lat: 36.88231568220175 },
   big_dry_creek: { lng: -119.68331354875829, lat: 36.902262812604405 },
+  big_dry_creek_dam: { lng: -119.66103420247165, lat: 36.88725825669877 },
   mcmullin_gsa_boundary: { lng: -120.07256211887199, lat: 36.667185406267336 },
   nhd_lines: { lng: -119.63128395141746, lat: 36.9274768275794 },
   north_kings_gsa_boundary: {
@@ -82,6 +88,7 @@ export const sourceNameToZoomValueDictionary = {
   cdec_gages_pts: 11.5,
   big_dry_creek_reservoir: 13,
   big_dry_creek: 12,
+  big_dry_creek_dam: 12,
   mcmullin_gsa_boundary: 10,
   nhd_lines: 10,
   north_kings_gsa_boundary: 9.5,
@@ -95,6 +102,7 @@ export const sourceNameToFillColorDictionary = {
   cdec_gages_pts: '#F40000',
   big_dry_creek_reservoir: '#1f78b4',
   big_dry_creek: '#1f78b4',
+  big_dry_creek_dam: '#62B0E4',
   mcmullin_gsa_boundary: '#fb9a99',
   nhd_lines: '#a6cee3',
   north_kings_gsa_boundary: '#b2df8a',
@@ -141,6 +149,7 @@ const identifierToChartDataDictionary = {
   '369363N1197299W001': casgemSiteTwo,
   '369310N1197318W001': casgemSiteThree,
   '369246N1197407W001': casgemSiteFour,
+  'Big dry creek dam': bigDryCreekDamData,
 }
 
 export const nameToChartDataKeysDictionary = {
@@ -150,6 +159,7 @@ export const nameToChartDataKeysDictionary = {
     yAxis: 'water_table_elevation_ft',
   },
   [cdecGagePointsString]: { xAxis: 'obs_date', yAxis: 'value' },
+  [bigDryCreekDamString]: { xAxis: 'DATE', yAxis: 'PER-AVER__1' },
 }
 
 export const nameToChartLabelsDictionary = {
@@ -162,6 +172,7 @@ export const nameToChartLabelsDictionary = {
     yAxis: 'Water Table Elevation (feet)',
   },
   [cdecGagePointsString]: { xAxis: 'Date', yAxis: 'Flow (cfs)' },
+  [bigDryCreekDamString]: { xAxis: 'Date', yAxis: 'Flow (cfs)' },
 }
 
 // HELPER FUNCTIONS
@@ -177,6 +188,8 @@ const getIdentifier = (event) => {
   } else if (event.features[0].source === 'big_dry_creek_reservoir') {
     return toTitleCase(event.features[0].source.replaceAll('_', ' '))
   } else if (event.features[0].source === 'big_dry_creek') {
+    return toTitleCase(event.features[0].source.replaceAll('_', ' '))
+  } else if (event.features[0].source === 'big_dry_creek_dam') {
     return toTitleCase(event.features[0].source.replaceAll('_', ' '))
   } else if (event.features[0].source === 'mcmullin_gsa_boundary') {
     return toTitleCase(event.features[0].source.replaceAll('_', ' '))
@@ -253,7 +266,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1000,
     top: 0,
     right: 10,
-    width: '65%',
+    width: '90%',
     height: '90%',
   },
   decriptionSlide: {
@@ -392,10 +405,7 @@ export const Map = (props) => {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
           }
           const identifier = getIdentifier(e)
-          popup
-            .setLngLat(coordinates)
-            .setHTML(identifier)
-            .addTo(map)
+          popup.setLngLat(coordinates).setHTML(identifier).addTo(map)
         })
 
         // Change back to a pointer and hide popup when it leaves.

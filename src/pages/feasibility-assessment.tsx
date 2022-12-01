@@ -35,17 +35,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: '0 5rem',
   },
   scrollableContainer: {
-    overflow: 'scroll',
-    maxHeight: '85vh',
-    paddingTop: '5rem',
+    // overflow: 'scroll',
+    // maxHeight: '85vh',
+    // paddingTop: '5rem',
     [mediaQueries.below992]: {
-      margin: '0 1.5rem',
+      // margin: '0 1.5rem',
+      padding: '5rem 1.5rem 0 1.5rem',
     },
     [mediaQueries.below1200]: {
-      margin: '0 2.5rem',
+      // margin: '0 2.5rem',
+      padding: '5rem 2.5rem 0 2.5rem',
     },
     [mediaQueries.above1200]: {
-      margin: '0 7.5rem',
+      // margin: '0 7.5rem',
+      padding: '5rem 7.5rem 0 7.5rem',
     },
 
     '&::-webkit-scrollbar': {
@@ -53,11 +56,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '7px',
     },
 
-    '&::-webkit-scrollbar-thumb': {
-      borderRadius: '4px',
-      backgroundColor: 'rgba(0, 0, 0, .20)',
-      boxShadow: '0 0 1px rgba(255, 255, 255, .5)',
-    },
+    // '&::-webkit-scrollbar-thumb': {
+    //   borderRadius: '4px',
+    //   backgroundColor: 'rgba(0, 0, 0, .20)',
+    //   boxShadow: '0 0 1px rgba(255, 255, 255, .5)',
+    // },
   },
 }))
 
