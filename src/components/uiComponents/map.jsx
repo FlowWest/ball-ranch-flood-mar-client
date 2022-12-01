@@ -266,7 +266,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1000,
     top: 0,
     right: 10,
-    width: '65%',
+    width: '90%',
     height: '90%',
   },
   decriptionSlide: {
