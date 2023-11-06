@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   presentorLogo: {
     height: '100px',
     width: '100px',
-    marginRight: '0.5rem'
+    marginRight: '0.5rem',
   },
   presentorInfo: {
     maxWidth: '160px',
@@ -314,10 +314,7 @@ const ProjectPartnersPage = (props: ProjectPartnersPageProps) => {
             info={`The California Department of Water Resources’ (DWR) mission is to sustainably manage and regulate the water resources of California in cooperation with other agencies, to benefit the state’s people and protect, restore, and enhance the natural and human environments. DWR pursues expanded implementation of Flood-MAR, towards the goal of making Flood-MAR an integral part of California’s water portfolio. For the Ball Ranch Flood-MAR feasibility analysis, DWR has supported the project through in-kind technical services identifying potential surface water resources for recharge on the site. `}
           />
           <ProjectPartnerCmpt
-            fluidImages={[
-              props.data.flowwestLogo.childImageSharp.fluid,
-              props.data.flowwestText.childImageSharp.fluid,
-            ]}
+            fluidImage={props.data.flowwestLogo.childImageSharp.fluid}
             info={`FlowWest’s innovative use of technology, and commitment to building a diverse and inclusive team allows them to deliver unique and effective water and natural resource solutions. FlowWest is part of the project team, and is responsible for delivering the preliminary planning memo, updated planning memo, stakeholder memo, feasibility analysis, and project implementation strategy for this project over the span of 2021-2023`}
           />
           <ProjectPartnerCmpt
@@ -365,10 +362,7 @@ export const pageQuery = graphql`
     cdwrBanner: file(relativePath: { eq: "cdwr-banner.jpg" }) {
       ...fluidImage
     }
-    flowwestLogo: file(relativePath: { eq: "flowwest-logo.jpg" }) {
-      ...fluidImage
-    }
-    flowwestText: file(relativePath: { eq: "flowwest-text.jpg" }) {
+    flowwestLogo: file(relativePath: { eq: "trans-logo-treb.png" }) {
       ...fluidImage
     }
     riverPartnersBanner: file(
